@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SudoSiteReputation  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="SudoSiteReputation  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          SudoSiteReputation 0.0.1 Docs
+        </a>
+        
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">SudoSiteReputation Reference</a>
+      <img class="carat" src="img/carat.png" />
+      SudoSiteReputation  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/DefaultSudoSiteReputationClient.html">DefaultSudoSiteReputationClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/DefaultSudoSiteReputationClient/ConfigurationError.html">– ConfigurationError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/SiteReputationCheckError.html">SiteReputationCheckError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/SiteReputationUpdateError.html">SiteReputationUpdateError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/Cache">Cache</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/SudoSiteReputationClient.html">SudoSiteReputationClient</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/SiteReputation.html">SiteReputation</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            
+            <h1 id='sudo-site-reputation-sdk-for-ios' class='heading'>Sudo Site Reputation SDK for iOS</h1>
+<h2 id='project-setup' class='heading'>Project setup</h2>
+
+<p>Clone this repo.</p>
+
+<p>Install dependencies with <a href="https://cocoapods.org">cocoapods</a></p>
+
+<p><code>pod install</code></p>
+
+<p>Or if you&rsquo;re a <a href="https://bundler.io">bundler</a> user</p>
+
+<p><code>bundle install &amp;&amp; bundle exec pod install</code></p>
+<h2 id='running-integration-tests' class='heading'>Running integration tests</h2>
+
+<p>To run the integration tests,</p>
+
+<ol>
+<li>Obtain AWS credentials to download the client config from AWS parameter store.</li>
+<li>Run the following command to download the client config into the project directory.</li>
+</ol>
+
+<p><code>sh download_config.sh -c &lt;tenant_name&gt;</code></p>
+
+<ol>
+<li>Select <code>SudoSiteReputationIntegrationTests</code> build schema and run all enabled tests.</li>
+</ol>
+<h2 id='running-unit-tests' class='heading'>Running unit tests</h2>
+
+<ol>
+<li>Select <code>SudoSiteReputation</code> build schema and run all enabled tests.</li>
+</ol>
+<h2 id='publishing' class='heading'>Publishing</h2>
+
+<p>To publish a new pod version externally,</p>
+
+<ol>
+<li>Ensure the <code>CHANGELOG.md</code> file and podspec are updated for the release.</li>
+<li>Create a new tag on GitLab.</li>
+<li>In the release notes, copy the relevant changes from <code>CHANGELOG.md</code>.</li>
+<li>Run the &ldquo;publish&rdquo; stage of the resulting pipeline for the tag.</li>
+</ol>
+<h2 id='consumption' class='heading'>Consumption</h2>
+
+<p>In order to include this library in an iOS app:</p>
+
+<ol>
+<li>Install CocoaPods.</li>
+<li>Create a <code>Podfile</code> in your project root with the following</li>
+</ol>
+<pre class="highlight ruby"><code><span class="n">target</span> <span class="s1">'MyApp'</span> <span class="k">do</span>
+<span class="sr">//</span><span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+    <span class="nf">pod</span> <span class="s1">'SudoSiteReputation’, :git =&gt; '</span><span class="n">git</span><span class="vi">@gitlab</span><span class="p">.</span><span class="nf">tools</span><span class="p">.</span><span class="nf">anonyome</span><span class="p">.</span><span class="nf">com</span><span class="ss">:platform</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">reputation</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">reputation</span><span class="o">-</span><span class="n">ios</span><span class="p">.</span><span class="nf">git</span><span class="err">'</span>
+<span class="k">end</span>
+</code></pre>
+
+<ol>
+<li>Run <code>pod install</code>.</li>
+</ol>
+<h2 id='sonarqube' class='heading'>Sonarqube</h2>
+
+<p>This project uses Sonarqube to analyze merge requests.</p>
+
+<p>See the output of Sonarqube pipeline stages for more information and analysis results.</p>
+<h2 id='swiftlint' class='heading'>SwiftLint</h2>
+
+<p>This project has customized source code linting rules using <a href="https://github.com/realm/SwiftLint">SwiftLint</a>.</p>
+
+<p>To lint the project, run <code>brew install swiftlint</code> then run <code>swiftlint</code> from the project directory.</p>
+<h2 id='jazzy' class='heading'>Jazzy</h2>
+
+<p>This project supports using <a href="https://github.com/realm/jazzy">Jazzy</a> to generate API reference documentation.</p>
+
+<p>To generate documentation, run <code>bundle install &amp;&amp; bundle exec jazzy</code> from the project directory.</p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2021 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2021-01-22)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
