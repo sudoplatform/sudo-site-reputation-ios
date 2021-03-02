@@ -12,5 +12,5 @@ Pod::Spec.new do |spec|
   spec.swift_version         = '5.0'
 
   spec.dependency 'SudoLogging', '~> 0.3'
-  spec.dependency 'SudoUser', '~> 8.0'
+  spec.dependency 'SudoUser', '~> 10.0'
 end

@@ -25,6 +25,7 @@
 		CFA626A925A3975700581543 /* SudoSiteReputation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA626A725A3975700581543 /* SudoSiteReputation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFA626B125A3979700581543 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA626B025A3979700581543 /* Client.swift */; };
 		CFBA2A2025A650A00072594C /* SudoSiteReputationIntegrationTestHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA2A1F25A650A00072594C /* SudoSiteReputationIntegrationTestHostApp.swift */; };
+		CFEACB6825CDF4680040658C /* LocalizedErrorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */; };
 		F9B919A88DE5AFB1E9B92DC8 /* Pods_SudoSiteReputation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6964999C8183DF3AC34F2DEA /* Pods_SudoSiteReputation.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		CFBA2A1F25A650A00072594C /* SudoSiteReputationIntegrationTestHostApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudoSiteReputationIntegrationTestHostApp.swift; sourceTree = "<group>"; };
 		CFBA2A2825A650A10072594C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC955FF25A3A36000CC9372 /* SudoSiteReputation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = SudoSiteReputation.podspec; sourceTree = "<group>"; };
+		CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedErrorsTests.swift; sourceTree = "<group>"; };
 		EE35B90ABDE94E11002C5F06 /* Pods_SudoSiteReputationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoSiteReputationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -153,6 +155,7 @@
 				CF2A537125A3C43300AF0FEF /* Info.plist */,
 				CF2A536F25A3C43300AF0FEF /* ClientTests.swift */,
 				CF2A545E25A4FE5700AF0FEF /* DiskCacheTests.swift */,
+				CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */,
 				CF2A546425A52FB800AF0FEF /* Mocks */,
 			);
 			path = SudoSiteReputationTests;
@@ -540,6 +543,7 @@
 				CF2A53B425A4E1D200AF0FEF /* MockS3Client.swift in Sources */,
 				CF2A545F25A4FE5700AF0FEF /* DiskCacheTests.swift in Sources */,
 				CF2A537025A3C43300AF0FEF /* ClientTests.swift in Sources */,
+				CFEACB6825CDF4680040658C /* LocalizedErrorsTests.swift in Sources */,
 				CF92617525A7809500076899 /* MockCacheAccessor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
