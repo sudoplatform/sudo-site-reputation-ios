@@ -50,7 +50,7 @@ func listMaliciousDomainLists(
 ) {
     let request = AWSS3ListObjectsV2Request()!
     request.bucket = bucket
-    request.prefix = "/site-reputation/reputation-lists/MALICIOUSDOMAIN/"
+    request.prefix = "/reputation-lists/MALICIOUSDOMAIN/"
 
     listAllS3Objects(s3: s3, logger: logger, request: request) { result in
         switch result {

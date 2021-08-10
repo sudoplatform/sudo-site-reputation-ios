@@ -89,17 +89,23 @@ public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
     /// Instantiates a `DefaultSiteReputationClient`.
     public convenience init(
         userClient: SudoUserClient,
+        config: SudoConfigManager? = nil,
         storageNamespace: String = "main"
     ) throws {
-        guard let configManager = DefaultSudoConfigManager() else {
+
+        guard let configManager = config ?? DefaultSudoConfigManager() else {
             throw ConfigurationError.failedToReadConfigurationFile
         }
 
         guard let identityConfig = configManager.getConfigSet(namespace: "identityService"),
-              let region = identityConfig["region"] as? String,
               let poolId = identityConfig["poolId"] as? String,
-              let identityPoolId = identityConfig["identityPoolId"] as? String,
-              let staticDataBucket = identityConfig["staticDataBucket"] as? String else {
+              let identityPoolId = identityConfig["identityPoolId"] as? String else {
+            throw ConfigurationError.missingKey
+        }
+
+        guard let siteReputationServiceConfig = configManager.getConfigSet(namespace: "siteReputationService"),
+              let region = siteReputationServiceConfig["region"] as? String,
+              let bucket = siteReputationServiceConfig["bucket"] as? String else {
             throw ConfigurationError.missingKey
         }
 
@@ -127,7 +133,7 @@ public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
         }
 
         self.init(
-            staticDataBucket: staticDataBucket,
+            staticDataBucket: bucket,
             userClient: userClient,
             s3Client: DefaultS3Client(config: awsServiceConfig),
             cache: DiskCacheAccessor(

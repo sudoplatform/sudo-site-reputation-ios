@@ -6,12 +6,36 @@
 
 import XCTest
 @testable import SudoSiteReputation
-import SudoUser
+import  SudoUser
+import SudoConfigManager
 
 final class SudoSiteReputationTests: XCTestCase {
     func testInitWithConfigFileMissing() throws {
         // We can't unit test init with config manager since the SDK config file
         // doesn't exist in the unit test bundle, but we do test the error case!
+
+        typealias ConfigError = DefaultSudoSiteReputationClient.ConfigurationError
+        let expected = ConfigError.failedToReadConfigurationFile
+
+        XCTAssertThrowsError(
+            try DefaultSudoSiteReputationClient(userClient: MockSudoUserClient()),
+            "should throw invalid config error"
+        ) { error in
+            XCTAssertEqual(error as? ConfigError, expected)
+        }
+    }
+
+    func testCanPassConfigDuringInit() {
+        class MockConfig: SudoConfigManager {
+            var getConfigSetCalled = false
+            var getConfigSetParam: String = ""
+            var getConfigSetReturn: [String: Any]?
+            func getConfigSet(namespace: String) -> [String : Any]? {
+                getConfigSetCalled = true
+                getConfigSetParam = namespace
+                return getConfigSetReturn
+            }
+        }
 
         typealias ConfigError = DefaultSudoSiteReputationClient.ConfigurationError
         let expected = ConfigError.failedToReadConfigurationFile
@@ -162,7 +186,7 @@ evil-website.example
         )
 
         // Set up S3 mocks to return new malicious domain list objects.
-        let prefix = "/site-reputation/reputation-lists/MALICIOUSDOMAIN/"
+        let prefix = "/reputation-lists/MALICIOUSDOMAIN/"
         let key1 = prefix + "key1.txt"
         let body1 = """
 some-evil-site.example
@@ -232,7 +256,7 @@ evil-website.example
 192.0.2.42
 """
         let list = MaliciousDomainList(
-            key: "/site-reputation/reputation-lists/MALICIOUSDOMAIN/unit-test.txt",
+            key: "/reputation-lists/MALICIOUSDOMAIN/unit-test.txt",
             eTag: "OUTDATED-unit-test", // NOTE: Outdated ETag.
             category: "MALICIOUSDOMAIN",
             name: "Unit Test Sample",
@@ -250,7 +274,7 @@ evil-website.example
 
         // Set up S3 mocks to indicate a new version is available,
         // but fail to actually retrieve said new version.
-        let prefix = "/site-reputation/reputation-lists/MALICIOUSDOMAIN/"
+        let prefix = "/reputation-lists/MALICIOUSDOMAIN/"
         s3Client._listObjectsV2 = { request, completion in
             XCTAssertEqual(request.bucket, "unit-test")
             XCTAssertEqual(request.prefix, prefix)

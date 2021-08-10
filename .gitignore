@@ -3,3 +3,5 @@ xcuserdata/
 Pods/
 /config/
 *.xcresult
+.vendor
+.bundle
