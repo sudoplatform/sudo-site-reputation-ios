@@ -26,6 +26,14 @@
 		CFA626B125A3979700581543 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA626B025A3979700581543 /* Client.swift */; };
 		CFBA2A2025A650A00072594C /* SudoSiteReputationIntegrationTestHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA2A1F25A650A00072594C /* SudoSiteReputationIntegrationTestHostApp.swift */; };
 		CFEACB6825CDF4680040658C /* LocalizedErrorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */; };
+		E2A6A3DC270F70DE005C8BCD /* SiteReputationRuleset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6A3DB270F70DE005C8BCD /* SiteReputationRuleset.swift */; };
+		E2A6A3DE270F714B005C8BCD /* MaliciousDomainListTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6A3DD270F714B005C8BCD /* MaliciousDomainListTransformer.swift */; };
+		E2A6A3E0270F71BA005C8BCD /* SiteReputationMatchReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6A3DF270F71BA005C8BCD /* SiteReputationMatchReason.swift */; };
+		E2F80E0A26FA6EB500E2CB53 /* SiteReputationProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F80E0926FA6EB500E2CB53 /* SiteReputationProviderTests.swift */; };
+		E2F80E0C26FAA49400E2CB53 /* SiteReputationRulesetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F80E0B26FAA49400E2CB53 /* SiteReputationRulesetTests.swift */; };
+		E2F80E0E26FBD18100E2CB53 /* MaliciousDomainProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F80E0D26FBD18100E2CB53 /* MaliciousDomainProvider.swift */; };
+		E2FBDBB026F3C15F00C934D5 /* SiteReputationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBDBAF26F3C15F00C934D5 /* SiteReputationClient.swift */; };
+		E2FBDBB726F9811100C934D5 /* SiteReputationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBDBB626F9811100C934D5 /* SiteReputationProvider.swift */; };
 		F9B919A88DE5AFB1E9B92DC8 /* Pods_SudoSiteReputation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6964999C8183DF3AC34F2DEA /* Pods_SudoSiteReputation.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +94,14 @@
 		CFBA2A2825A650A10072594C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC955FF25A3A36000CC9372 /* SudoSiteReputation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = SudoSiteReputation.podspec; sourceTree = "<group>"; };
 		CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedErrorsTests.swift; sourceTree = "<group>"; };
+		E2A6A3DB270F70DE005C8BCD /* SiteReputationRuleset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteReputationRuleset.swift; sourceTree = "<group>"; };
+		E2A6A3DD270F714B005C8BCD /* MaliciousDomainListTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaliciousDomainListTransformer.swift; sourceTree = "<group>"; };
+		E2A6A3DF270F71BA005C8BCD /* SiteReputationMatchReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteReputationMatchReason.swift; sourceTree = "<group>"; };
+		E2F80E0926FA6EB500E2CB53 /* SiteReputationProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteReputationProviderTests.swift; sourceTree = "<group>"; };
+		E2F80E0B26FAA49400E2CB53 /* SiteReputationRulesetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteReputationRulesetTests.swift; sourceTree = "<group>"; };
+		E2F80E0D26FBD18100E2CB53 /* MaliciousDomainProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaliciousDomainProvider.swift; sourceTree = "<group>"; };
+		E2FBDBAF26F3C15F00C934D5 /* SiteReputationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteReputationClient.swift; sourceTree = "<group>"; };
+		E2FBDBB626F9811100C934D5 /* SiteReputationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteReputationProvider.swift; sourceTree = "<group>"; };
 		EE35B90ABDE94E11002C5F06 /* Pods_SudoSiteReputationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoSiteReputationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -157,6 +173,8 @@
 				CF2A545E25A4FE5700AF0FEF /* DiskCacheTests.swift */,
 				CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */,
 				CF2A546425A52FB800AF0FEF /* Mocks */,
+				E2F80E0926FA6EB500E2CB53 /* SiteReputationProviderTests.swift */,
+				E2F80E0B26FAA49400E2CB53 /* SiteReputationRulesetTests.swift */,
 			);
 			path = SudoSiteReputationTests;
 			sourceTree = "<group>";
@@ -225,6 +243,7 @@
 		CFA626A625A3975700581543 /* SudoSiteReputation */ = {
 			isa = PBXGroup;
 			children = (
+				E2A6A3DA270F70BC005C8BCD /* ReputationEngine */,
 				CFA626A725A3975700581543 /* SudoSiteReputation.h */,
 				CFA626A825A3975700581543 /* Info.plist */,
 				CF2A538425A3C55D00AF0FEF /* MaliciousDomainList.swift */,
@@ -232,6 +251,8 @@
 				CF2A539025A3D18400AF0FEF /* S3 */,
 				CF2A539125A3D19800AF0FEF /* Storage */,
 				CF9261EE25A8DBA800076899 /* LocalizedErrors.swift */,
+				E2FBDBAF26F3C15F00C934D5 /* SiteReputationClient.swift */,
+				E2F80E0D26FBD18100E2CB53 /* MaliciousDomainProvider.swift */,
 			);
 			path = SudoSiteReputation;
 			sourceTree = "<group>";
@@ -243,6 +264,17 @@
 				CFBA2A2825A650A10072594C /* Info.plist */,
 			);
 			path = SudoSiteReputationIntegrationTestHost;
+			sourceTree = "<group>";
+		};
+		E2A6A3DA270F70BC005C8BCD /* ReputationEngine */ = {
+			isa = PBXGroup;
+			children = (
+				E2FBDBB626F9811100C934D5 /* SiteReputationProvider.swift */,
+				E2A6A3DB270F70DE005C8BCD /* SiteReputationRuleset.swift */,
+				E2A6A3DD270F714B005C8BCD /* MaliciousDomainListTransformer.swift */,
+				E2A6A3DF270F71BA005C8BCD /* SiteReputationMatchReason.swift */,
+			);
+			path = ReputationEngine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -541,9 +573,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF2A53B425A4E1D200AF0FEF /* MockS3Client.swift in Sources */,
+				E2F80E0A26FA6EB500E2CB53 /* SiteReputationProviderTests.swift in Sources */,
 				CF2A545F25A4FE5700AF0FEF /* DiskCacheTests.swift in Sources */,
 				CF2A537025A3C43300AF0FEF /* ClientTests.swift in Sources */,
 				CFEACB6825CDF4680040658C /* LocalizedErrorsTests.swift in Sources */,
+				E2F80E0C26FAA49400E2CB53 /* SiteReputationRulesetTests.swift in Sources */,
 				CF92617525A7809500076899 /* MockCacheAccessor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -561,11 +595,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF2A535325A3B15F00AF0FEF /* S3DataSource.swift in Sources */,
+				E2A6A3E0270F71BA005C8BCD /* SiteReputationMatchReason.swift in Sources */,
+				E2F80E0E26FBD18100E2CB53 /* MaliciousDomainProvider.swift in Sources */,
+				E2A6A3DC270F70DE005C8BCD /* SiteReputationRuleset.swift in Sources */,
 				CF9261EF25A8DBA800076899 /* LocalizedErrors.swift in Sources */,
 				CFA626B125A3979700581543 /* Client.swift in Sources */,
 				CF2A538B25A3C80C00AF0FEF /* Cache.swift in Sources */,
+				E2FBDBB026F3C15F00C934D5 /* SiteReputationClient.swift in Sources */,
 				CF2A53AE25A4DFDA00AF0FEF /* S3Client.swift in Sources */,
+				E2FBDBB726F9811100C934D5 /* SiteReputationProvider.swift in Sources */,
 				CF2A538525A3C55D00AF0FEF /* MaliciousDomainList.swift in Sources */,
+				E2A6A3DE270F714B005C8BCD /* MaliciousDomainListTransformer.swift in Sources */,
 				CF2A545B25A4F79E00AF0FEF /* DiskCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,6 +680,7 @@
 			baseConfigurationReference = 287767ED35788254430A7BD9 /* Pods-SudoSiteReputationIntegrationTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UU2W43R8JA;
 				INFOPLIST_FILE = SudoSiteReputationIntegrationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -659,6 +700,7 @@
 			baseConfigurationReference = 557884E13A6006757A07F702 /* Pods-SudoSiteReputationIntegrationTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UU2W43R8JA;
 				INFOPLIST_FILE = SudoSiteReputationIntegrationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -852,6 +894,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = UU2W43R8JA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SudoSiteReputationIntegrationTestHost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -871,6 +914,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = UU2W43R8JA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SudoSiteReputationIntegrationTestHost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

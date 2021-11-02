@@ -7,14 +7,18 @@
 import XCTest
 import SudoKeyManager
 import SudoUser
-import SudoSiteReputation
+@testable import SudoSiteReputation
 
 class SudoSiteReputationIntegrationTests: XCTestCase {
-    func testCheckSiteReputation() throws {
+
+    var client: DefaultSudoSiteReputationClient!
+    var userClient: SudoUserClient!
+
+    override func setUpWithError() throws {
         // Initialize the client.
         let namespace = "srs-integration-test"
-        let userClient = try DefaultSudoUserClient(keyNamespace: namespace)
-        let client = try DefaultSudoSiteReputationClient(
+        self.userClient = try DefaultSudoUserClient(keyNamespace: namespace)
+        self.client = try DefaultSudoSiteReputationClient(
             userClient: userClient,
             storageNamespace: namespace
         )
@@ -25,14 +29,18 @@ class SudoSiteReputationIntegrationTests: XCTestCase {
         XCTAssertFalse(userClient.isRegistered())
 
         try register(userClient: userClient)
-        defer {
-            try? deregister(userClient: userClient)
-            try? userClient.reset()
-            try? client.clearStorage()
-        }
+
 
         try signIn(userClient: userClient)
+    }
 
+    override func tearDownWithError() throws {
+        try deregister(userClient: userClient)
+        try userClient.reset()
+        try client.clearStorage()
+    }
+
+    func testCheckSiteReputation() throws {
         // Perform a check before `update` and verify that it fails.
         let check1Result = client.getSiteReputation(url: "https://sudoplatform.com")
         switch check1Result {
@@ -74,7 +82,7 @@ class SudoSiteReputationIntegrationTests: XCTestCase {
 
         // Check that known non-malicious sites have good reputation.
         let check = { (url: String, expectedMalicious: Bool) in
-            let reputation = try client.getSiteReputation(url: url).get()
+            let reputation = try self.client.getSiteReputation(url: url).get()
             XCTAssertEqual(reputation.isMalicious, expectedMalicious)
         }
         try check("https://docs.sudoplatform.com/guides/getting-started", false)
@@ -87,6 +95,53 @@ class SudoSiteReputationIntegrationTests: XCTestCase {
         if siteReputationServiceIsConfigured {
             try check("192.0.2.42", true)
             try check("https://subdomain.evil-site.example/some/path.php", true)
+        }
+    }
+
+    func test_all_maliciousDomains_are_malicious() throws {
+        // Perform an `update`.
+        let updateExpectation = expectation(description: "update")
+        client.update { result in
+            updateExpectation.fulfill()
+            switch result {
+            case .success: break
+            case .failure(let error):
+                XCTFail("update failed: \(error)")
+            }
+        }
+        wait(for: [updateExpectation], timeout: 60)
+
+        NSLog("Checking all domain lists")
+
+        // get all the malicious domains pulled from the service.
+        let domainList = client.maliciousDomainListProvider.fetchMaliciousDomainLists() ?? []
+        XCTAssertTrue(domainList.count != 0)
+
+        // loop over all the lists
+        for (index, list) in domainList.enumerated() {
+            NSLog("Checking items from list \(index+1)/ \(domainList.count).")
+            NSLog("\(list.name) contains \(list.domains.count) items")
+
+            let domains = list.domains
+            XCTAssertTrue(domains.count != 0)
+
+            // Check all malicious domains from the list are considered malicious by the engine.
+            for domain in domains {
+
+                // Filter comments from the lists
+                if domain.hasPrefix("#") || domain.isEmpty { continue }
+
+                let checkResult = self.client.getSiteReputation(url: domain)
+
+                do {
+                    let result = try checkResult.get()
+                    XCTAssertTrue(result.isMalicious, "Expected \(domain) to be malicious")
+                }
+                catch {
+                    XCTFail("Found a domain reported an error")
+                    NSLog("Found a domain reported an error while checking \(domain)")
+                }
+            }
         }
     }
 

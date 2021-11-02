@@ -20,6 +20,13 @@ struct MaliciousDomainList: Codable, Equatable {
     let body: Data
 }
 
+extension MaliciousDomainList {
+
+    var domains: [String] {
+        return String(decoding: body, as: UTF8.self).components(separatedBy: "\n")
+    }
+}
+
 let slugFromKey = { (key: String) in
     // The service guarantees that the filename component
     // of the key is unique among malicious domain lists.

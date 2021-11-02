@@ -63,7 +63,7 @@ class DiskCacheAccessor: CacheAccessor {
             return .failure(.storageError(error))
         }
 
-        return contents.map { path -> Result<MaliciousDomainList, CacheAccessError> in
+        let parsedLists = contents.map { path -> Result<MaliciousDomainList, CacheAccessError> in
             let data: Data
             do {
                 data = try Data(contentsOf: path)
@@ -79,8 +79,23 @@ class DiskCacheAccessor: CacheAccessor {
             }
 
             return .success(list)
-        }.reduce(.success([])) { acc, cur in
-            acc.flatMap { accs in cur.map { curr in accs + [curr] } }
+        }
+
+        // extract the result of each
+        let maliciousDomainLists = parsedLists.compactMap {
+            return $0.value
+        }
+
+        let parseErrors: [CacheAccessError] = parsedLists.compactMap {
+            return $0.error
+        }
+
+        // Only consider fetching lists a failure if there was an error and no other lists were successfully parsed.
+        // swiftlint:disable empty_count
+        if let firstParseError = parseErrors.first, maliciousDomainLists.count == 0 {
+            return .failure(firstParseError)
+        } else {
+            return .success(maliciousDomainLists)
         }
     }
 
@@ -120,6 +135,24 @@ class DiskCacheAccessor: CacheAccessor {
             } else {
                 try? fileManager.removeItem(at: lastUpdateFile)
             }
+        }
+    }
+}
+
+extension Result {
+
+    /// Will return the associated success value from the instance if it is the `success` case
+    var value: Success? {
+        return try? self.get()
+    }
+
+    /// Will return the associated error if the instance is the `failed` case
+    var error: Failure? {
+        switch self {
+        case .failure(let output):
+            return output
+        case .success:
+            return nil
         }
     }
 }

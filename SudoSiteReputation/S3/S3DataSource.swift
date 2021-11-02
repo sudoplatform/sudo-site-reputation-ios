@@ -42,7 +42,7 @@ typealias MaliciousDomainListResult =
 ///   - logger: Logger.
 ///   - bucket: Bucket to query. This is the typically Identity Service Static Data Bucket.
 ///   - completion: Called once when the list of identifiers is obtained or an error occurs.
-func listMaliciousDomainLists(
+func listMaliciousDomainListKeys(
     s3: S3Client,
     logger: Logger,
     bucket: String,
@@ -50,7 +50,7 @@ func listMaliciousDomainLists(
 ) {
     let request = AWSS3ListObjectsV2Request()!
     request.bucket = bucket
-    request.prefix = "/reputation-lists/MALICIOUSDOMAIN/"
+    request.prefix = "/reputation-lists/"
 
     listAllS3Objects(s3: s3, logger: logger, request: request) { result in
         switch result {

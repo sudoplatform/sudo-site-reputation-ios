@@ -76,7 +76,7 @@ evil-website.example
         // Verify that getSiteReputation() succeeds and returns the right results.
         let check = { (url: String, expectedMalicious: Bool) in
             let reputation = try client.getSiteReputation(url: url).get()
-            XCTAssertEqual(reputation.isMalicious, expectedMalicious)
+            XCTAssertEqual(reputation.isMalicious, expectedMalicious, "expect \(url) to be malicious")
         }
 
         // check bare hosts
@@ -186,7 +186,7 @@ evil-website.example
         )
 
         // Set up S3 mocks to return new malicious domain list objects.
-        let prefix = "/reputation-lists/MALICIOUSDOMAIN/"
+        let prefix = "/reputation-lists/"
         let key1 = prefix + "key1.txt"
         let body1 = """
 some-evil-site.example
@@ -274,7 +274,7 @@ evil-website.example
 
         // Set up S3 mocks to indicate a new version is available,
         // but fail to actually retrieve said new version.
-        let prefix = "/reputation-lists/MALICIOUSDOMAIN/"
+        let prefix = "/reputation-lists/"
         s3Client._listObjectsV2 = { request, completion in
             XCTAssertEqual(request.bucket, "unit-test")
             XCTAssertEqual(request.prefix, prefix)
