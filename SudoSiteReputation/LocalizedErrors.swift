@@ -25,7 +25,7 @@ extension SiteReputationCheckError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .reputationDataNotPresent:
-            return "Reputation data is not present. Call `update` to obtain the latest reputation data."
+            return "Reputation data is not present. Call `update` or `loadCachedData` to obtain the latest reputation data."
         }
     }
 }
@@ -93,11 +93,5 @@ extension CacheAccessError: LocalizedError {
         case .codableError(let underlyingError):
             return "An error occurred when encoding or decoding cached data: \(underlyingError)"
         }
-    }
-}
-
-extension Cache.CacheAccessTimeoutError: LocalizedError {
-    var errorDescription: String? {
-        return "Acquisition of exclusive access to the cache timed out."
     }
 }

@@ -1,4 +1,4 @@
-platform :ios, '13.0'
+platform :ios, '14.0'
 
 use_frameworks! :linkage => :dynamic # FIXME: :static when bumped to AWS >= 2.17.0
 use_modular_headers!

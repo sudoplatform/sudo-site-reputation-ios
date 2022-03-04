@@ -9,20 +9,15 @@ import AWSS3
 /// Abstraction of `AWSS3` to enable mocking.
 protocol S3Client {
     /// See AWSS3.listObjectsV2
-    func listObjectsV2(
-        _ request: AWSS3ListObjectsV2Request,
-        completionHandler: ((AWSS3ListObjectsV2Output?, Error?) -> Void)?
-    )
+    func listObjectsV2(_ request: AWSS3ListObjectsV2Request) async throws -> AWSS3ListObjectsV2Output?
 
     /// See AWSS3.getObject
-    func getObject(
-        _ request: AWSS3GetObjectRequest,
-        completionHandler: ((AWSS3GetObjectOutput?, Error?) -> Void)?
-    )
+    func getObject(_ request: AWSS3GetObjectRequest) async throws-> AWSS3GetObjectOutput?
 }
 
 /// Implementation of `S3Client` backed by `AWSS3`.
 final class DefaultS3Client: S3Client {
+
     private let awsServiceConfig: AWSServiceConfiguration
 
     /// Instantiates a `DefaultS3Client`.
@@ -47,11 +42,19 @@ final class DefaultS3Client: S3Client {
         }
     }
 
-    func listObjectsV2(_ request: AWSS3ListObjectsV2Request, completionHandler: ((AWSS3ListObjectsV2Output?, Error?) -> Void)?) {
-        return s3.listObjectsV2(request, completionHandler: completionHandler)
+    func listObjectsV2(_ request: AWSS3ListObjectsV2Request) async throws -> AWSS3ListObjectsV2Output? {
+        return try await s3.listObjectsV2(request)
     }
 
-    func getObject(_ request: AWSS3GetObjectRequest, completionHandler: ((AWSS3GetObjectOutput?, Error?) -> Void)?) {
-        return s3.getObject(request, completionHandler: completionHandler)
+    func getObject(_ request: AWSS3GetObjectRequest) async throws -> AWSS3GetObjectOutput? {
+        return try await withCheckedThrowingContinuation({ continuation in
+            s3.getObject(request) { output, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                } else if let output = output {
+                    continuation.resume(returning: output)
+                }
+            }
+        })
     }
 }

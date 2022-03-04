@@ -26,9 +26,9 @@ class SiteReputationProviderTests: XCTestCase {
         let rulesets: [SiteReputationRuleset] = [maliciousListOne, maliciousListTwo].map { list in
             let rules = list.compactMap({SiteReputationRule(urlString: $0)})
             return SiteReputationRuleset(key: "key",
-                                                       category: "category",
-                                                       name: "name",
-                                                       rules: rules)
+                                         category: "category",
+                                         name: "name",
+                                         rules: rules)
         }
         instanceUnderTest = SiteReputationProvider(rulesets: rulesets)
     }
@@ -115,7 +115,6 @@ class SiteReputationProviderTests: XCTestCase {
 }
 
 extension SiteReputationProvider {
-
     convenience init(urls: [String]) {
         self.init(
             rulesets: [SiteReputationRuleset(
