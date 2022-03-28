@@ -88,4 +88,10 @@ class LocalizedErrorsTests: XCTestCase {
             CacheAccessError.codableError(TestError()),
         ].forEach(assertErrorIsLocalized)
     }
+
+    func test_CacheAccessTimeoutError() {
+        [
+            Cache.CacheAccessTimeoutError(),
+        ].forEach(assertErrorIsLocalized)
+    }
 }

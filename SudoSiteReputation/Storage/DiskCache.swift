@@ -6,44 +6,8 @@
 
 import Foundation
 
-/// An interface to a persistent cache of malicious domain lists.
-protocol ServiceDataCache: Actor {
-    /// Places a malicious domain list in the cache.
-    /// - Parameter list: List to store.
-    /// - Returns: Success or an error from persistent storage.
-    func put(list: MaliciousDomainList) -> Result<Void, CacheAccessError>
-
-    /// Retrieves a single malicious domain list from the cache.
-    /// - Parameter key: Key identifying the malicious domain list.
-    /// - Returns: The list, or nil if not in the cache, or an error from persistent storage.
-    func get(key: MaliciousDomainListKey) -> Result<MaliciousDomainList?, CacheAccessError>
-
-    /// Retrieves all malicious domain lists from the cache.
-    /// - Returns: The lists or an error from persistent storage.
-    func get() -> Result<[MaliciousDomainList], CacheAccessError>
-
-    /// Clears all contents in persistent storage.
-    /// - Returns: Success or an error from persistent storage.
-    /// The caller should inspect the error to determine if a retry is warranted.
-    func reset() -> Result<Void, CacheAccessError>
-
-    /// A value managed by the user of the cache which tracks the timestamp of cache contents.
-    var lastUpdatePerformedAt: Date? { get set }
-
-    func setLastUpdatePerformedAt(date: Date?) async
-}
-
-/// An error raised by a `ServiceDataCache`.
-enum CacheAccessError: Error {
-    /// An error occurred when accessing the persistent storage.
-    case storageError(_ underlyingError: Error)
-
-    /// An error occurred when encoding or decoding cached data.
-    case codableError(_ underlyingError: Error)
-}
-
-/// An implementation of `ServiceDataCache` that stores malicious domain lists to disk.
-actor DiskServiceDataCache: ServiceDataCache {
+/// An implementation of `CacheAccessor` that stores malicious domain lists to disk.
+class DiskCacheAccessor: CacheAccessor {
     private let fileManager: FileManager
     private let directory: URL
 
@@ -57,15 +21,15 @@ actor DiskServiceDataCache: ServiceDataCache {
 
     func put(list: MaliciousDomainList) -> Result<Void, CacheAccessError> {
         return Result { try JSONEncoder().encode(list) }
-        .mapError(CacheAccessError.codableError)
-        .flatMap { data in Result {
-            try fileManager.createDirectory(
-                at: directory,
-                withIntermediateDirectories: true,
-                attributes: nil
-            )
-            try data.write(to: directory.appendingPathComponent(list.slug))
-        }.mapError(CacheAccessError.storageError) }
+            .mapError(CacheAccessError.codableError)
+            .flatMap { data in Result {
+                try fileManager.createDirectory(
+                    at: directory,
+                    withIntermediateDirectories: true,
+                    attributes: nil
+                )
+                try data.write(to: directory.appendingPathComponent(list.slug))
+            }.mapError(CacheAccessError.storageError) }
     }
 
     func get(key: MaliciousDomainListKey) -> Result<MaliciousDomainList?, CacheAccessError> {
@@ -143,7 +107,7 @@ actor DiskServiceDataCache: ServiceDataCache {
                 // Ignore error if directory does not exist.
             }
         })
-            .mapError(CacheAccessError.storageError)
+        .mapError(CacheAccessError.storageError)
     }
 
     private var lastUpdateFile: URL {
@@ -172,10 +136,6 @@ actor DiskServiceDataCache: ServiceDataCache {
                 try? fileManager.removeItem(at: lastUpdateFile)
             }
         }
-    }
-
-    func setLastUpdatePerformedAt(date: Date?) async {
-        self.lastUpdatePerformedAt = date
     }
 }
 

@@ -67,6 +67,14 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/Cache">Cache</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -108,9 +116,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation0abC6ClientP03getbC03urlAA0bC0VSS_tYaKF"></a>
+                    <a name="/s:18SudoSiteReputation0abC6ClientP03getbC03urls6ResultOyAA0bC0VAA0bC10CheckErrorOGSS_tF"></a>
                     <a name="//apple_ref/swift/Method/getSiteReputation(url:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation0abC6ClientP03getbC03urlAA0bC0VSS_tYaKF">getSiteReputation(url:<wbr>)</a>
+                    <a class="token" href="#/s:18SudoSiteReputation0abC6ClientP03getbC03urls6ResultOyAA0bC0VAA0bC10CheckErrorOGSS_tF">getSiteReputation(url:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -125,7 +133,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getSiteReputation</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="n">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/SiteReputation.html">SiteReputation</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getSiteReputation</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/SiteReputation.html">SiteReputation</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/SiteReputationCheckError.html">SiteReputationCheckError</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -154,9 +162,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation0abC6ClientP6updateyyYaKF"></a>
-                    <a name="//apple_ref/swift/Method/update()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation0abC6ClientP6updateyyYaKF">update()</a>
+                    <a name="/s:18SudoSiteReputation0abC6ClientP6update10completionyys6ResultOyytAA0bC11UpdateErrorOGc_tF"></a>
+                    <a name="//apple_ref/swift/Method/update(completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SudoSiteReputation0abC6ClientP6update10completionyys6ResultOyytAA0bC11UpdateErrorOGc_tF">update(completion:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -171,7 +179,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">update</span><span class="p">()</span> <span class="n">async</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">update</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Result</span><span class="o">&lt;</span><span class="kt">Void</span><span class="p">,</span> <span class="kt"><a href="../Enums/SiteReputationUpdateError.html">SiteReputationUpdateError</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -182,7 +190,7 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>throws</em>
+                                <em>completion</em>
                                 </code>
                               </td>
                               <td>
@@ -200,9 +208,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation0abC6ClientP21lastUpdatePerformedAt10Foundation4DateVSgyYaF"></a>
-                    <a name="//apple_ref/swift/Method/lastUpdatePerformedAt()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation0abC6ClientP21lastUpdatePerformedAt10Foundation4DateVSgyYaF">lastUpdatePerformedAt()</a>
+                    <a name="/s:18SudoSiteReputation0abC6ClientP21lastUpdatePerformedAt10Foundation4DateVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/lastUpdatePerformedAt" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SudoSiteReputation0abC6ClientP21lastUpdatePerformedAt10Foundation4DateVSgvp">lastUpdatePerformedAt</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -218,7 +226,7 @@ or <code>nil</code> if there is no site reputation data stored locally.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">lastUpdatePerformedAt</span><span class="p">()</span> <span class="n">async</span> <span class="o">-&gt;</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">lastUpdatePerformedAt</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -228,9 +236,9 @@ or <code>nil</code> if there is no site reputation data stored locally.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation0abC6ClientP12clearStorageyyYaKF"></a>
+                    <a name="/s:18SudoSiteReputation0abC6ClientP12clearStorageyyKF"></a>
                     <a name="//apple_ref/swift/Method/clearStorage()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation0abC6ClientP12clearStorageyyYaKF">clearStorage()</a>
+                    <a class="token" href="#/s:18SudoSiteReputation0abC6ClientP12clearStorageyyKF">clearStorage()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -246,7 +254,7 @@ Cancels any in-progress calls to <code>update</code>, causing them to return an 
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">clearStorage</span><span class="p">()</span> <span class="n">async</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">clearStorage</span><span class="p">()</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -261,7 +269,7 @@ Cancels any in-progress calls to <code>update</code>, causing them to return an 
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2022 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2022-03-05)</p>
+      <p>&copy; 2022 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2022-03-29)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

@@ -9,24 +9,24 @@ import SudoLogging
 import AWSCore
 
 protocol MaliciousDomainListProviding {
-    func fetchMaliciousDomainLists() async -> [MaliciousDomainList]?
-    func update() async throws
-    func clearStorage() async throws
-    func lastUpdatePerformedAt() async -> Date?
+    func fetchMaliciousDomainLists() -> [MaliciousDomainList]?
+    func update(completion: @escaping (Result<[MaliciousDomainList], SiteReputationUpdateError>) -> Void)
+    func clearStorage() throws
+    var lastUpdatePerformedAt: Date? { get }
 }
 
 class MaliciousDomainListProvider: MaliciousDomainListProviding {
 
-    let staticDataBucket: String
-    var s3: S3Client
-    var cache: ServiceDataCache
-    var cancelInProgressUpdate: (() -> Void)?
+    private let staticDataBucket: String
+    private let s3: S3Client
+    private let cache: Cache
+    private var cancelInProgressUpdate: (() -> Void)?
     var logger: Logger
 
     internal init(
         staticDataBucket: String,
         s3: S3Client,
-        cache: ServiceDataCache,
+        cache: Cache,
         logger: Logger
     ) {
         self.staticDataBucket = staticDataBucket
@@ -37,104 +37,143 @@ class MaliciousDomainListProvider: MaliciousDomainListProviding {
 
     /// Moved from client.  Consults the cache for list data.
     /// - Returns: Lists cached on disk. Nil if no lists were found.
-    func fetchMaliciousDomainLists() async -> [MaliciousDomainList]? {
-        do {
-            let lists = try await cache.get().get()
+    func fetchMaliciousDomainLists() -> [MaliciousDomainList]? {
+        // Since this is only called from init we expect `access` to succeed.
+        // Otherwise rely on the user calling `update` before trying to check.
+        guard let cache = self.cache.tryAccess() else {
+            return nil
+        }
 
-            // It is more likely that an empty cache signifies "data not present"
-            // than "service contains no lists", so flag data as not present then.
-            guard !lists.isEmpty else {
-                return nil
-            }
-
-            return lists
-        } catch {
+        let lists: [MaliciousDomainList]
+        switch cache.get() {
+        case .success(let cachedLists):
+            lists = cachedLists
+        case .failure(let error):
             logger.error("Failed to read cached lists: \(error.localizedDescription)")
             return nil
         }
+
+        // It is more likely that an empty cache signifies "data not present"
+        // than "service contains no lists", so flag data as not present then.
+        guard !lists.isEmpty else {
+            return nil
+        }
+
+        return lists
     }
 
-    func lastUpdatePerformedAt() async -> Date? {
-        return await cache.lastUpdatePerformedAt
+    var lastUpdatePerformedAt: Date? {
+        return cache.lastUpdatePerformedAt
     }
 
-    var inProgressUpdateTask: Task<(), Error>?
     // Moved from client.  Fetches lists and list data from the service.
     // Data is cached and referenced before downloading list data if it hasn't changed.
-    func update() async throws {
+    /// - Returns: Lists or an error.
+    func update(completion: @escaping (Result<[MaliciousDomainList], SiteReputationUpdateError>) -> Void) {
+        var cacheRef = self.cache.tryAccess()
+        guard cacheRef != nil else {
+            // If an update or reset is already in progress, do nothing.
+            return completion(.failure(.alreadyInProgress))
+        }
+
+        // Allow cancelling an in-progress update and releasing the cache ref.
+        // This assignment is safe since we hold the cache lock.
+        // NOTE: This closure must be released before calling completion.
+        self.cancelInProgressUpdate = { cacheRef = nil }
+
         let s3 = self.s3
         let logger = self.logger
         let bucket = self.staticDataBucket
 
-        let updateTask = Task {
-            // Get all keys in cache
-            let keys = try await listMaliciousDomainListKeys(s3: s3, logger: logger, bucket: bucket)
+        listMaliciousDomainListKeys(s3: s3, logger: logger, bucket: bucket) { result in
+            switch result {
+            case .success(let keys):
+                let queue = DispatchQueue(label: "com.sudoplatform.sitereputation.update")
+                let dispatchGroup = DispatchGroup()
+                var maliciousDomainList: [MaliciousDomainList] = []
+                var failure: FetchMaliciousDomainListError?
+                var cancelled = false
 
-            try Task.checkCancellation()
-
-            // Check if any need to be updated
-            var keysNeedingFetch: [MaliciousDomainListKey] = []
-            for key in keys {
-                if let cachedList = try? await self.cache.get(key: key).get() {
-                    if key.eTag != cachedList.eTag {
-                        keysNeedingFetch.append(key)
+                keys.forEach { key in
+                    // Attempt to read the old list version from the cache.
+                    let existingList: MaliciousDomainList?
+                    switch cacheRef?.get(key: key) {
+                    case .none:
+                        queue.sync { cancelled = true }
+                        return
+                    case .success(let list):
+                        existingList = list
+                    case .failure(let error):
+                        logger.error("Failed to read cached list: \(error.localizedDescription)")
+                        existingList = nil
                     }
-                } else {
-                    keysNeedingFetch.append(key)
-                }
-            }
 
-            try Task.checkCancellation()
+                    // Skip fetching the list if the ETag matches what is cached.
+                    if let existingList = existingList, key.eTag == existingList.eTag {
+                        queue.sync { maliciousDomainList.append(existingList) }
+                        return
+                    }
 
-            // Download needed keys
-            var downloads: [MaliciousDomainList] = []
-            await withTaskGroup(of: MaliciousDomainList?.self) { group in
-                for key in keysNeedingFetch {
-                    group.addTask(priority: nil) {
-                        do {
-                            async let list = fetchMaliciousDomainList(s3: s3, logger: logger, key: key)
-                            return try await list
-                        } catch {
-                            // log error of download failure.
-                            return nil
+                    dispatchGroup.enter()
+
+                    fetchMaliciousDomainList(s3: s3, logger: logger, key: key) { result in
+                        defer { dispatchGroup.leave() }
+
+                        switch result {
+                        case .success(let newList):
+                            // Attempt to put the new list in the cache.
+                            switch cacheRef?.put(list: newList) {
+                            case .none:
+                                queue.sync { cancelled = true }
+                            case .success: break
+                            case .failure(let error):
+                                logger.error("Failed to update cached list: \(error.localizedDescription)")
+                            }
+
+                            // Add the new list contents to the list of domains.
+                            queue.sync { maliciousDomainList.append(newList) }
+
+                        case .failure(let error):
+                            logger.error("Failed to fetch list: \(error.localizedDescription)")
+
+                            // If the network update failed, use the existing list.
+                            queue.sync {
+                                if let existingList = existingList {
+                                    maliciousDomainList.append(existingList)
+                                }
+                                failure = error
+                            }
                         }
                     }
                 }
 
-                for await download in group {
-                    if let download = download {
-                        downloads.append(download)
+                dispatchGroup.notify(queue: .main) {
+                    if cancelled {
+                        return completion(.failure(.cancelled))
+                    }
+
+                    self.cancelInProgressUpdate = nil
+
+                    if let failure = failure {
+                        return completion(.failure(.serviceError(failure)))
+                    } else {
+                        cacheRef?.lastUpdatePerformedAt = Date()
+                        return completion(.success(maliciousDomainList))
                     }
                 }
-
-                // Put the new keys in the cache.
-                guard !Task.isCancelled else { return }
-                for download in downloads {
-                    _ = await cache.put(list: download)
-                }
+            case .failure(let error):
+                self.cancelInProgressUpdate = nil
+                return completion(.failure(.serviceError(error)))
             }
         }
-
-        self.inProgressUpdateTask = updateTask
-
-        do {
-            try await updateTask.value
-            self.inProgressUpdateTask = nil
-        } catch {
-            self.inProgressUpdateTask = nil
-            throw error
-        }
-        await cache.setLastUpdatePerformedAt(date: Date())
     }
 
-    func clearStorage() async throws {
-
-        self.inProgressUpdateTask?.cancel()
+    func clearStorage() throws {
         // Cancel an in-progress update call in order to release the cache.
         self.cancelInProgressUpdate?()
         self.cancelInProgressUpdate = nil
 
         // Block until we can access the cache to clear persistent storage.
-        try await self.cache.reset().get()
+        try self.cache.access().reset().get()
     }
 }

@@ -7,7 +7,7 @@
 import Foundation
 
 /// Object that provides site reputation checking functionality.
-protocol SiteReputationProviding: AnyObject {
+protocol SiteReputationProviding {
 
     /// Checks the input URL host and path against the site reputation rules
     /// looking for a match
@@ -38,7 +38,7 @@ class SiteReputationProvider: SiteReputationProviding {
             return nil
         }
 
-        for ruleset in self.rulesets {
+        for set in self.rulesets {
 
             var inputHostComponents = ArraySlice(inputComponents.host.components(separatedBy: "."))
 
@@ -53,7 +53,7 @@ class SiteReputationProvider: SiteReputationProviding {
                 // Current subdomain might be the full domain, at least on the first loop.
                 let currentSubdomain = inputHostComponents.joined(separator: ".")
 
-                guard let domainMatch = ruleset.lookupTable[currentSubdomain] else {
+                guard let domainMatch = set.lookupTable[currentSubdomain] else {
                     continue
                 }
 
