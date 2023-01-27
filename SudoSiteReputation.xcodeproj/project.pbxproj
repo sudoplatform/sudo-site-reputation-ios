@@ -9,23 +9,23 @@
 /* Begin PBXBuildFile section */
 		2D99ECA4D305BBF6DBE0F065 /* Pods_SudoSiteReputationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE35B90ABDE94E11002C5F06 /* Pods_SudoSiteReputationTests.framework */; };
 		4CFE2FF4839EE823F41D7A44 /* Pods_SudoSiteReputationIntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C404C45A7E7FB9C467E563 /* Pods_SudoSiteReputationIntegrationTests.framework */; };
+		75B3239E27C6AA4C00650EC4 /* MaliciousDomainProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B3239D27C6AA4C00650EC4 /* MaliciousDomainProviderTests.swift */; };
+		75B323A727C6B1B100650EC4 /* DiskCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A545E25A4FE5700AF0FEF /* DiskCacheTests.swift */; };
+		75B323A827C6E63100650EC4 /* LocalizedErrorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */; };
+		75B323A927C944EA00650EC4 /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A536F25A3C43300AF0FEF /* ClientTests.swift */; };
 		CF2A535325A3B15F00AF0FEF /* S3DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A535225A3B15F00AF0FEF /* S3DataSource.swift */; };
-		CF2A537025A3C43300AF0FEF /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A536F25A3C43300AF0FEF /* ClientTests.swift */; };
 		CF2A537225A3C43300AF0FEF /* SudoSiteReputation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA626A425A3975700581543 /* SudoSiteReputation.framework */; };
 		CF2A538525A3C55D00AF0FEF /* MaliciousDomainList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A538425A3C55D00AF0FEF /* MaliciousDomainList.swift */; };
-		CF2A538B25A3C80C00AF0FEF /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A538A25A3C80C00AF0FEF /* Cache.swift */; };
 		CF2A53AE25A4DFDA00AF0FEF /* S3Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A53AD25A4DFDA00AF0FEF /* S3Client.swift */; };
 		CF2A53B425A4E1D200AF0FEF /* MockS3Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A53B325A4E1D200AF0FEF /* MockS3Client.swift */; };
-		CF2A545B25A4F79E00AF0FEF /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A545A25A4F79E00AF0FEF /* DiskCache.swift */; };
-		CF2A545F25A4FE5700AF0FEF /* DiskCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A545E25A4FE5700AF0FEF /* DiskCacheTests.swift */; };
 		CF2A54DD25A627CA00AF0FEF /* SudoSiteReputationIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A54DC25A627CA00AF0FEF /* SudoSiteReputationIntegrationTests.swift */; };
 		CF2A54DF25A627CA00AF0FEF /* SudoSiteReputation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA626A425A3975700581543 /* SudoSiteReputation.framework */; };
-		CF92617525A7809500076899 /* MockCacheAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92617425A7809500076899 /* MockCacheAccessor.swift */; };
+		CF92617525A7809500076899 /* MockServiceDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92617425A7809500076899 /* MockServiceDataCache.swift */; };
 		CF9261EF25A8DBA800076899 /* LocalizedErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9261EE25A8DBA800076899 /* LocalizedErrors.swift */; };
 		CFA626A925A3975700581543 /* SudoSiteReputation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA626A725A3975700581543 /* SudoSiteReputation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFA626B125A3979700581543 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA626B025A3979700581543 /* Client.swift */; };
 		CFBA2A2025A650A00072594C /* SudoSiteReputationIntegrationTestHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA2A1F25A650A00072594C /* SudoSiteReputationIntegrationTestHostApp.swift */; };
-		CFEACB6825CDF4680040658C /* LocalizedErrorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */; };
+		E20C6B7127B1E1E800AB48CE /* ServiceDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20C6B7027B1E1E800AB48CE /* ServiceDataCache.swift */; };
 		E2A6A3DC270F70DE005C8BCD /* SiteReputationRuleset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6A3DB270F70DE005C8BCD /* SiteReputationRuleset.swift */; };
 		E2A6A3DE270F714B005C8BCD /* MaliciousDomainListTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6A3DD270F714B005C8BCD /* MaliciousDomainListTransformer.swift */; };
 		E2A6A3E0270F71BA005C8BCD /* SiteReputationMatchReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6A3DF270F71BA005C8BCD /* SiteReputationMatchReason.swift */; };
@@ -67,6 +67,7 @@
 		557884E13A6006757A07F702 /* Pods-SudoSiteReputationIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputationIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputationIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 		57C404C45A7E7FB9C467E563 /* Pods_SudoSiteReputationIntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoSiteReputationIntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6964999C8183DF3AC34F2DEA /* Pods_SudoSiteReputation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoSiteReputation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75B3239D27C6AA4C00650EC4 /* MaliciousDomainProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaliciousDomainProviderTests.swift; sourceTree = "<group>"; };
 		AB934A3ACA91667DC5956E30 /* Pods-SudoSiteReputation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputation.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputation/Pods-SudoSiteReputation.release.xcconfig"; sourceTree = "<group>"; };
 		B4E65FD1B96A53C0592D20B1 /* Pods-SudoSiteReputation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputation.debug.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputation/Pods-SudoSiteReputation.debug.xcconfig"; sourceTree = "<group>"; };
 		C0F6A5F95F2CE4419053864F /* Pods-SudoSiteReputationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputationTests/Pods-SudoSiteReputationTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -75,15 +76,13 @@
 		CF2A536F25A3C43300AF0FEF /* ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
 		CF2A537125A3C43300AF0FEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF2A538425A3C55D00AF0FEF /* MaliciousDomainList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaliciousDomainList.swift; sourceTree = "<group>"; };
-		CF2A538A25A3C80C00AF0FEF /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		CF2A53AD25A4DFDA00AF0FEF /* S3Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3Client.swift; sourceTree = "<group>"; };
 		CF2A53B325A4E1D200AF0FEF /* MockS3Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockS3Client.swift; sourceTree = "<group>"; };
-		CF2A545A25A4F79E00AF0FEF /* DiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCache.swift; sourceTree = "<group>"; };
 		CF2A545E25A4FE5700AF0FEF /* DiskCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCacheTests.swift; sourceTree = "<group>"; };
 		CF2A54DA25A627CA00AF0FEF /* SudoSiteReputationIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudoSiteReputationIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2A54DC25A627CA00AF0FEF /* SudoSiteReputationIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudoSiteReputationIntegrationTests.swift; sourceTree = "<group>"; };
 		CF2A54DE25A627CA00AF0FEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF92617425A7809500076899 /* MockCacheAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCacheAccessor.swift; sourceTree = "<group>"; };
+		CF92617425A7809500076899 /* MockServiceDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServiceDataCache.swift; sourceTree = "<group>"; };
 		CF9261EE25A8DBA800076899 /* LocalizedErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedErrors.swift; sourceTree = "<group>"; };
 		CFA626A425A3975700581543 /* SudoSiteReputation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SudoSiteReputation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA626A725A3975700581543 /* SudoSiteReputation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SudoSiteReputation.h; sourceTree = "<group>"; };
@@ -94,6 +93,7 @@
 		CFBA2A2825A650A10072594C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC955FF25A3A36000CC9372 /* SudoSiteReputation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = SudoSiteReputation.podspec; sourceTree = "<group>"; };
 		CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedErrorsTests.swift; sourceTree = "<group>"; };
+		E20C6B7027B1E1E800AB48CE /* ServiceDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDataCache.swift; sourceTree = "<group>"; };
 		E2A6A3DB270F70DE005C8BCD /* SiteReputationRuleset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteReputationRuleset.swift; sourceTree = "<group>"; };
 		E2A6A3DD270F714B005C8BCD /* MaliciousDomainListTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaliciousDomainListTransformer.swift; sourceTree = "<group>"; };
 		E2A6A3DF270F71BA005C8BCD /* SiteReputationMatchReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteReputationMatchReason.swift; sourceTree = "<group>"; };
@@ -165,16 +165,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		75B3239B27C6A95B00650EC4 /* StorageTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF2A545E25A4FE5700AF0FEF /* DiskCacheTests.swift */,
+			);
+			path = StorageTests;
+			sourceTree = "<group>";
+		};
+		75B3239C27C6A98D00650EC4 /* ReputationEngineTests */ = {
+			isa = PBXGroup;
+			children = (
+				E2F80E0926FA6EB500E2CB53 /* SiteReputationProviderTests.swift */,
+				E2F80E0B26FAA49400E2CB53 /* SiteReputationRulesetTests.swift */,
+			);
+			path = ReputationEngineTests;
+			sourceTree = "<group>";
+		};
 		CF2A536E25A3C43300AF0FEF /* SudoSiteReputationTests */ = {
 			isa = PBXGroup;
 			children = (
+				CF2A546425A52FB800AF0FEF /* Mocks */,
 				CF2A537125A3C43300AF0FEF /* Info.plist */,
 				CF2A536F25A3C43300AF0FEF /* ClientTests.swift */,
-				CF2A545E25A4FE5700AF0FEF /* DiskCacheTests.swift */,
 				CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */,
-				CF2A546425A52FB800AF0FEF /* Mocks */,
-				E2F80E0926FA6EB500E2CB53 /* SiteReputationProviderTests.swift */,
-				E2F80E0B26FAA49400E2CB53 /* SiteReputationRulesetTests.swift */,
+				75B3239D27C6AA4C00650EC4 /* MaliciousDomainProviderTests.swift */,
+				75B3239C27C6A98D00650EC4 /* ReputationEngineTests */,
+				75B3239B27C6A95B00650EC4 /* StorageTests */,
 			);
 			path = SudoSiteReputationTests;
 			sourceTree = "<group>";
@@ -191,8 +208,7 @@
 		CF2A539125A3D19800AF0FEF /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				CF2A538A25A3C80C00AF0FEF /* Cache.swift */,
-				CF2A545A25A4F79E00AF0FEF /* DiskCache.swift */,
+				E20C6B7027B1E1E800AB48CE /* ServiceDataCache.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -201,7 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				CF2A53B325A4E1D200AF0FEF /* MockS3Client.swift */,
-				CF92617425A7809500076899 /* MockCacheAccessor.swift */,
+				CF92617425A7809500076899 /* MockServiceDataCache.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -243,16 +259,16 @@
 		CFA626A625A3975700581543 /* SudoSiteReputation */ = {
 			isa = PBXGroup;
 			children = (
-				E2A6A3DA270F70BC005C8BCD /* ReputationEngine */,
 				CFA626A725A3975700581543 /* SudoSiteReputation.h */,
 				CFA626A825A3975700581543 /* Info.plist */,
 				CF2A538425A3C55D00AF0FEF /* MaliciousDomainList.swift */,
+				E2FBDBAF26F3C15F00C934D5 /* SiteReputationClient.swift */,
 				CFA626B025A3979700581543 /* Client.swift */,
+				CF9261EE25A8DBA800076899 /* LocalizedErrors.swift */,
+				E2F80E0D26FBD18100E2CB53 /* MaliciousDomainProvider.swift */,
+				E2A6A3DA270F70BC005C8BCD /* ReputationEngine */,
 				CF2A539025A3D18400AF0FEF /* S3 */,
 				CF2A539125A3D19800AF0FEF /* Storage */,
-				CF9261EE25A8DBA800076899 /* LocalizedErrors.swift */,
-				E2FBDBAF26F3C15F00C934D5 /* SiteReputationClient.swift */,
-				E2F80E0D26FBD18100E2CB53 /* MaliciousDomainProvider.swift */,
 			);
 			path = SudoSiteReputation;
 			sourceTree = "<group>";
@@ -572,13 +588,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75B323A927C944EA00650EC4 /* ClientTests.swift in Sources */,
+				75B323A727C6B1B100650EC4 /* DiskCacheTests.swift in Sources */,
 				CF2A53B425A4E1D200AF0FEF /* MockS3Client.swift in Sources */,
+				75B323A827C6E63100650EC4 /* LocalizedErrorsTests.swift in Sources */,
+				75B3239E27C6AA4C00650EC4 /* MaliciousDomainProviderTests.swift in Sources */,
 				E2F80E0A26FA6EB500E2CB53 /* SiteReputationProviderTests.swift in Sources */,
-				CF2A545F25A4FE5700AF0FEF /* DiskCacheTests.swift in Sources */,
-				CF2A537025A3C43300AF0FEF /* ClientTests.swift in Sources */,
-				CFEACB6825CDF4680040658C /* LocalizedErrorsTests.swift in Sources */,
 				E2F80E0C26FAA49400E2CB53 /* SiteReputationRulesetTests.swift in Sources */,
-				CF92617525A7809500076899 /* MockCacheAccessor.swift in Sources */,
+				CF92617525A7809500076899 /* MockServiceDataCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,13 +617,12 @@
 				E2A6A3DC270F70DE005C8BCD /* SiteReputationRuleset.swift in Sources */,
 				CF9261EF25A8DBA800076899 /* LocalizedErrors.swift in Sources */,
 				CFA626B125A3979700581543 /* Client.swift in Sources */,
-				CF2A538B25A3C80C00AF0FEF /* Cache.swift in Sources */,
+				E20C6B7127B1E1E800AB48CE /* ServiceDataCache.swift in Sources */,
 				E2FBDBB026F3C15F00C934D5 /* SiteReputationClient.swift in Sources */,
 				CF2A53AE25A4DFDA00AF0FEF /* S3Client.swift in Sources */,
 				E2FBDBB726F9811100C934D5 /* SiteReputationProvider.swift in Sources */,
 				CF2A538525A3C55D00AF0FEF /* MaliciousDomainList.swift in Sources */,
 				E2A6A3DE270F714B005C8BCD /* MaliciousDomainListTransformer.swift in Sources */,
-				CF2A545B25A4F79E00AF0FEF /* DiskCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,7 +783,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -825,7 +841,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

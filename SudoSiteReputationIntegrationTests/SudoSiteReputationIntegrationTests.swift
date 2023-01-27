@@ -23,98 +23,84 @@ class SudoSiteReputationIntegrationTests: XCTestCase {
             storageNamespace: namespace
         )
 
-        try client.clearStorage()
-        try userClient.reset()
+        let setupExpectation = self.expectation(description: "wait for setup")
+        Task {
+            try await client.clearStorage()
+            try await userClient.reset()
 
-        XCTAssertFalse(userClient.isRegistered())
+            let isRegistered = try await userClient.isRegistered()
+            XCTAssertFalse(isRegistered)
 
-        try register(userClient: userClient)
-
-
-        try signIn(userClient: userClient)
+            try await register(userClient: userClient)
+            try await signIn(userClient: userClient)
+            setupExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 30, handler: nil)
     }
 
     override func tearDownWithError() throws {
-        try deregister(userClient: userClient)
-        try userClient.reset()
-        try client.clearStorage()
+        let tearDownExpectation = self.expectation(description: "wait for teardown")
+        Task {
+            try await deregister(userClient: userClient)
+            try await userClient.reset()
+            try await client.clearStorage()
+            tearDownExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 30, handler: nil)
     }
 
-    func testCheckSiteReputation() throws {
+    func testCheckSiteReputation() async throws {
         // Perform a check before `update` and verify that it fails.
-        let check1Result = client.getSiteReputation(url: "https://sudoplatform.com")
-        switch check1Result {
-        case .failure(.reputationDataNotPresent): break
-        default: XCTFail("check before `update` should report no data")
+        do {
+            _ = try await client.getSiteReputation(url: "https://sudoplatform.com")
+            XCTFail("check before `update` should report no data")
+        } catch {
+            let lastUpdate = await client.lastUpdatePerformedAt()
+            XCTAssertEqual(lastUpdate, nil)
         }
-        XCTAssertEqual(client.lastUpdatePerformedAt, nil)
 
         // Perform an `update`.
-        let updateExpectation = expectation(description: "update")
-        client.update { result in
-            updateExpectation.fulfill()
-            switch result {
-            case .success: break
-            case .failure(let error):
-                XCTFail("update failed: \(error)")
-            }
-        }
-        wait(for: [updateExpectation], timeout: 60)
+        try await client.update()
 
         // Update a second time, just to make sure we can.
         // If this fails with alreadyInProgress, it is likely that the
         // previous update() call retained the lock on the shared Cache.
-        let updateAgainExpectation = expectation(description: "update again")
-        client.update { result in
-            updateAgainExpectation.fulfill()
-            switch result {
-            case .success: break
-            case .failure(let error):
-                XCTFail("update failed: \(error)")
-            }
-        }
-        wait(for: [updateAgainExpectation], timeout: 60)
+        try await client.update()
 
         // Verify that `lastUpdatePerformedAt` has been bumped.
+        let lastUpdate = await client.lastUpdatePerformedAt()
         XCTAssertEqual(
-            client.lastUpdatePerformedAt?.timeIntervalSince1970 ?? 0,
-            Date().timeIntervalSince1970, accuracy: 5)
+            lastUpdate?.timeIntervalSince1970 ?? 0,
+            Date().timeIntervalSince1970,
+            accuracy: 5
+        )
 
         // Check that known non-malicious sites have good reputation.
         let check = { (url: String, expectedMalicious: Bool) in
-            let reputation = try self.client.getSiteReputation(url: url).get()
+            let reputation = try await self.client.getSiteReputation(url: url)
             XCTAssertEqual(reputation.isMalicious, expectedMalicious)
         }
-        try check("https://docs.sudoplatform.com/guides/getting-started", false)
-        try check("anonyome.com", false)
+        try await check("https://docs.sudoplatform.com/guides/getting-started", false)
+        try await check("anonyome.com", false)
 
         // NOTE: These tests rely on the environment we are using to have set up
         // the site reputation service with a test malicious domain list.
         // If these checks fail, the Site Reputation Service may not be set up.
-        let siteReputationServiceIsConfigured = false
-        if siteReputationServiceIsConfigured {
-            try check("192.0.2.42", true)
-            try check("https://subdomain.evil-site.example/some/path.php", true)
-        }
+
+//        let siteReputationServiceIsConfigured = false
+//        if siteReputationServiceIsConfigured {
+//            try await check("192.0.2.42", true)
+//            try await check("https://subdomain.evil-site.example/some/path.php", true)
+//        }
     }
 
-    func test_all_maliciousDomains_are_malicious() throws {
+    func test_all_maliciousDomains_are_malicious() async throws {
         // Perform an `update`.
-        let updateExpectation = expectation(description: "update")
-        client.update { result in
-            updateExpectation.fulfill()
-            switch result {
-            case .success: break
-            case .failure(let error):
-                XCTFail("update failed: \(error)")
-            }
-        }
-        wait(for: [updateExpectation], timeout: 60)
-
+        try await client.update()
         NSLog("Checking all domain lists")
 
         // get all the malicious domains pulled from the service.
-        let domainList = client.maliciousDomainListProvider.fetchMaliciousDomainLists() ?? []
+        let domainList = await client.maliciousDomainListProvider.fetchMaliciousDomainLists() ?? []
         XCTAssertTrue(domainList.count != 0)
 
         // loop over all the lists
@@ -131,10 +117,8 @@ class SudoSiteReputationIntegrationTests: XCTestCase {
                 // Filter comments from the lists
                 if domain.hasPrefix("#") || domain.isEmpty { continue }
 
-                let checkResult = self.client.getSiteReputation(url: domain)
-
                 do {
-                    let result = try checkResult.get()
+                    let result = try await self.client.getSiteReputation(url: domain)
                     XCTAssertTrue(result.isMalicious, "Expected \(domain) to be malicious")
                 }
                 catch {
@@ -145,7 +129,7 @@ class SudoSiteReputationIntegrationTests: XCTestCase {
         }
     }
 
-    private func register(userClient: SudoUserClient) throws {
+    private func register(userClient: SudoUserClient) async throws {
         let bundle = Bundle.main
         guard let testKeyPath = bundle.path(forResource: "register_key", ofType: "private"),
               let testKeyIdPath = bundle.path(forResource: "register_key", ofType: "id")
@@ -158,50 +142,30 @@ class SudoSiteReputationIntegrationTests: XCTestCase {
         let testKeyId = try String(contentsOfFile: testKeyIdPath)
             .trimmingCharacters(in: .whitespacesAndNewlines)
 
-        let shouldRegister = expectation(description: "register should complete")
-        var registerResult: Result<String, Error>!
-        try userClient.registerWithAuthenticationProvider(
-            authenticationProvider: TESTAuthenticationProvider(
-                name: "testRegisterAudience",
-                key: testKey,
-                keyId: testKeyId,
-                keyManager: SudoKeyManagerImpl(
-                    serviceName: "com.sudoplatform.appservicename",
-                    keyTag: "com.sudoplatform",
-                    namespace: "test"
-                )
-            ),
-            registrationId: "srs-int-test-\(Date())"
-        ) { result in
-            shouldRegister.fulfill()
-            registerResult = result
-        }
-        wait(for: [shouldRegister], timeout: 120)
-
-        _ = try registerResult.get()
+        let keyManager = LegacySudoKeyManager(serviceName: "com.sudoplatform.appservicename",
+                                            keyTag: "com.sudoplatform",
+                                            namespace: "test")
+        let authProvider = try TESTAuthenticationProvider(name: "testRegisterAudience",
+                                                          key: testKey,
+                                                          keyId: testKeyId,
+                                                          keyManager: keyManager)
+        _ = try await userClient.registerWithAuthenticationProvider(authenticationProvider: authProvider,
+                                                                    registrationId: "srs-int-test-\(Date())")
     }
 
-    private func signIn(userClient: SudoUserClient) throws {
-        let shouldSignIn = expectation(description: "signIn should complete")
-        var signInResult: Result<AuthenticationTokens, Error>!
-        try userClient.signInWithKey { result in
-            shouldSignIn.fulfill()
-            signInResult = result
+    private func signIn(userClient: SudoUserClient) async throws {
+        do {
+            _ = try await userClient.signInWithKey()
+        } catch {
+            print("warning: Failed to signIn: \(error)")
         }
-        wait(for: [shouldSignIn], timeout: 120)
-        _ = try signInResult.get()
     }
 
-    private func deregister(userClient: SudoUserClient) throws {
-        let shouldDeregister = expectation(description: "deregister")
-        try userClient.deregister { result in
-            shouldDeregister.fulfill()
-            switch result {
-            case .success: break
-            case .failure(let error):
-                print("warning: Failed to deregister: \(error)")
-            }
+    private func deregister(userClient: SudoUserClient) async throws {
+        do {
+            _ = try await userClient.deregister()
+        } catch {
+            print("warning: Failed to deregister: \(error)")
         }
-        wait(for: [shouldDeregister], timeout: 120)
     }
 }

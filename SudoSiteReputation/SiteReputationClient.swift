@@ -18,25 +18,25 @@ public protocol SudoSiteReputationClient {
     /// Checks the reputation of the provided URL.
     /// - Parameters:
     ///   - url: The URL that will be checked.
-    func getSiteReputation(url: String) -> Result<SiteReputation, SiteReputationCheckError>
+    func getSiteReputation(url: String) async throws -> SiteReputation
 
     /// Retrieves the latest site reputation data from the Sudo Platform Site Reputation service.
     /// - Parameters:
-    ///   - completion: Called once when reputation data has been updated or an error occurs.
-    func update(completion: @escaping (Result<Void, SiteReputationUpdateError>) -> Void)
+    ///   - throws: Called once when reputation data has been updated or an error occurs.
+    func update() async throws
 
     /// The timestamp of the site reputation data fetched by the last call to `update`,
     /// or `nil` if there is no site reputation data stored locally.
-    var lastUpdatePerformedAt: Date? { get }
+    func lastUpdatePerformedAt() async -> Date?
 
     /// Clears all locally cached data created by the SudoSiteReputation SDK.
     /// Cancels any in-progress calls to `update`, causing them to return an error.
-    func clearStorage() throws
+    func clearStorage() async throws
 }
 
 /// An error raised by `SudoSiteReputationClient.getSiteReputation`.
 public enum SiteReputationCheckError: Error {
-    /// Reputation data is not present. Call `update` to obtain the latest reputation data.
+    /// Reputation data is not present. Call `update` or `loadCachedData` to obtain the latest reputation data.
     case reputationDataNotPresent
 }
 

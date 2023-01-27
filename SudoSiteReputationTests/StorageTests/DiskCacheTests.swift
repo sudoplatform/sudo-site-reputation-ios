@@ -11,7 +11,7 @@ import Foundation
 class DiskCacheTests: XCTestCase {
     var fileManager: FileManager!
     var directory: URL!
-    var cache: DiskCacheAccessor!
+    var cache: DiskServiceDataCache!
 
     let list = MaliciousDomainList(
         key: "/site-reputation/reputation-lists/MALICIOUSDOMAIN/unit-test.txt",
@@ -27,7 +27,7 @@ class DiskCacheTests: XCTestCase {
     override func setUpWithError() throws {
         fileManager = .default
         directory = fileManager.temporaryDirectory.appendingPathComponent("unit-test")
-        cache = DiskCacheAccessor(fileManager: fileManager, directory: directory)
+        cache = DiskServiceDataCache(fileManager: fileManager, directory: directory)
 
         try cleanUpDirectory()
     }
@@ -48,22 +48,25 @@ class DiskCacheTests: XCTestCase {
         }
     }
 
-    func testPutGet() throws {
+    func testPutGet() async throws {
         // Use the cache to store a list.
-        XCTAssertNoThrow(try cache.put(list: list).get())
+        let put = await cache.put(list: list)
+        XCTAssertNoThrow(try put.get())
 
         // Verify that the list was persisted to the disk.
         let expectedPath = directory.appendingPathComponent("unit-test.txt")
         XCTAssertTrue(fileManager.isReadableFile(atPath: expectedPath.path))
 
         // Verify that the list can now be read from the cache by key.
-        XCTAssertEqual(try cache.get(key: key).get(), list)
+        let get = try await cache.get(key: key).get()
+        XCTAssertEqual(get, list)
 
         // Verify that the list is also present when listing all cache entries.
-        XCTAssertTrue(try cache.get().get().contains(list))
+        let getContainsList = try await cache.get().get().contains(list)
+        XCTAssertTrue(getContainsList)
     }
 
-    func testPutError() throws {
+    func testPutError() async throws {
         // Create the directory as read-only.
         try fileManager.createDirectory(
             at: directory,
@@ -72,21 +75,21 @@ class DiskCacheTests: XCTestCase {
         )
 
         // Call put. Verify that it fails as expected.
-        switch cache.put(list: list) {
+        switch await cache.put(list: list) {
         case .failure(.storageError): break
         default: XCTFail("expected failure to modify directory")
         }
     }
 
-    func testGetNil() throws {
+    func testGetNil() async throws {
         // Call get without populating the cache and verify nil is returned.
-        switch cache.get(key: key) {
+        switch await cache.get(key: key) {
         case .success(.none): break
         default: XCTFail("expected nil cache result")
         }
     }
 
-    func testGetError() throws {
+    func testGetError() async throws {
         // Initialize the cache with inaccessible mock data.
         try fileManager.createDirectory(
             at: directory,
@@ -100,21 +103,21 @@ class DiskCacheTests: XCTestCase {
         )
 
         // Call get. Verify that it fails as expected.
-        switch cache.get(key: key) {
+        switch await cache.get(key: key) {
         case .failure(.storageError): break
         default: XCTFail("expected failure to access file")
         }
     }
 
-    func testGetAllEmpty() throws {
+    func testGetAllEmpty() async throws {
         // Call get. Verify that it returns an empty list.
-        switch cache.get() {
+        switch await cache.get() {
         case .success([]): break
         default: XCTFail("expected empty list")
         }
     }
 
-    func testGetAllError() throws {
+    func testGetAllError() async throws {
         // Create the directory as inaccessible.
         try fileManager.createDirectory(
             at: directory,
@@ -123,13 +126,13 @@ class DiskCacheTests: XCTestCase {
         )
 
         // Call get. Verify that it fails as expected.
-        switch cache.get() {
+        switch await cache.get() {
         case .failure(.storageError): break
         default: XCTFail("expected failure to access directory")
         }
     }
 
-    func testReset() throws {
+    func testReset() async throws {
         // Initialize the cache with mock data.
         try fileManager.createDirectory(
             at: directory,
@@ -140,7 +143,7 @@ class DiskCacheTests: XCTestCase {
             .write(to: directory.appendingPathComponent("unit-test.txt"))
 
         // Call reset.
-        try cache.reset().get()
+        try await cache.reset().get()
 
         // Verify that the cache directory is now empty.
         let path = directory.path
@@ -149,7 +152,7 @@ class DiskCacheTests: XCTestCase {
                 || fileManager.contentsOfDirectory(atPath: path).isEmpty)
     }
 
-    func testResetError() throws {
+    func testResetError() async throws {
         // Create the directory as inaccessible.
         try fileManager.createDirectory(
             at: directory,
@@ -158,39 +161,32 @@ class DiskCacheTests: XCTestCase {
         )
 
         // Call reset. Verify that it fails as expected.
-        switch cache.reset() {
+        switch await cache.reset() {
         case .failure(.storageError): break
         default: XCTFail("expected failure to modify directory")
         }
     }
 
-    func testLastUpdatePerformedAt() throws {
+    func testLastUpdatePerformedAt() async throws {
         let date1 = Date().addingTimeInterval(-60 * 60 * 24)
-        cache.lastUpdatePerformedAt = date1
-        XCTAssertEqual(
-            cache.lastUpdatePerformedAt?.timeIntervalSince1970 ?? 0,
-            date1.timeIntervalSince1970,
-            accuracy: 1
-        )
+        await cache.setLastUpdatePerformedAt(date: date1)
+        let cacheDate1 = await cache.lastUpdatePerformedAt?.timeIntervalSince1970 ?? 0
+        XCTAssertEqual(cacheDate1, date1.timeIntervalSince1970, accuracy: 1)
 
         let date2 = Date()
-        cache.lastUpdatePerformedAt = date2
-        XCTAssertEqual(
-            cache.lastUpdatePerformedAt?.timeIntervalSince1970 ?? 0,
-            date2.timeIntervalSince1970,
-            accuracy: 1
-        )
+        await cache.setLastUpdatePerformedAt(date: date2)
+        let cacheDate2 = await cache.lastUpdatePerformedAt?.timeIntervalSince1970 ?? 0
+        XCTAssertEqual(cacheDate2, date2.timeIntervalSince1970, accuracy: 1)
 
-        cache.lastUpdatePerformedAt = nil
-        XCTAssertEqual(cache.lastUpdatePerformedAt, nil)
+        await cache.setLastUpdatePerformedAt(date: nil)
+        let cacheDate3 = await cache.lastUpdatePerformedAt
+        XCTAssertEqual(cacheDate3, nil)
 
-        cache.lastUpdatePerformedAt = date1
-        XCTAssertEqual(
-            cache.lastUpdatePerformedAt?.timeIntervalSince1970 ?? 0,
-            date1.timeIntervalSince1970,
-            accuracy: 1
-        )
-        try cache.reset().get()
-        XCTAssertEqual(cache.lastUpdatePerformedAt, nil)
+        await cache.setLastUpdatePerformedAt(date: date1)
+        XCTAssertEqual(cacheDate1, date1.timeIntervalSince1970, accuracy: 1)
+
+        try await cache.reset().get()
+        let cacheDate4 = await cache.lastUpdatePerformedAt
+        XCTAssertEqual(cacheDate4, nil)
     }
 }

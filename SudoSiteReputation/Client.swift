@@ -38,12 +38,9 @@ public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
     }()
 
     /// Instantiates a `DefaultSiteReputationClient`.
-    public convenience init(
-        userClient: SudoUserClient,
-        config: SudoConfigManager? = nil,
-        storageNamespace: String = "main"
-    ) throws {
-
+    public convenience init(userClient: SudoUserClient,
+                            config: SudoConfigManager? = nil,
+                            storageNamespace: String = "main") throws {
         guard let configManager = config ?? DefaultSudoConfigManager() else {
             throw ConfigurationError.failedToReadConfigurationFile
         }
@@ -87,10 +84,8 @@ public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
             staticDataBucket: bucket,
             userClient: userClient,
             s3Client: DefaultS3Client(config: awsServiceConfig),
-            cache: DiskCacheAccessor(
-                fileManager: fileManager,
-                directory: cacheDirectory
-            )
+            cache: DiskServiceDataCache(fileManager: fileManager,
+                                        directory: cacheDirectory)
         )
     }
 
@@ -98,21 +93,19 @@ public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
         staticDataBucket: String,
         userClient: SudoUserClient,
         s3Client: S3Client,
-        cache: CacheAccessor
+        cache: ServiceDataCache
     ) {
         self.userClient = userClient
         self.maliciousDomainListProvider = MaliciousDomainListProvider(
             staticDataBucket: staticDataBucket,
             s3: s3Client,
-            cache: Cache(accessor: cache),
+            cache: cache,
             logger: Logger(
                 identifier: "com.sudoplatform.sitereputation",
                 driver: NSLogDriver(level: logLevel
                 )
             )
         )
-
-        self.loadInitialData()
     }
 
     private var logger: Logger {
@@ -124,19 +117,18 @@ public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
         )
     }
 
-    public func getSiteReputation(url: String) -> Result<SiteReputation, SiteReputationCheckError> {
+    public func getSiteReputation(url: String) async throws -> SiteReputation {
         guard let reputationProvider = self.reputationProvider else {
-            return .failure(.reputationDataNotPresent)
+            throw SiteReputationCheckError.reputationDataNotPresent
         }
 
         let matchReason = reputationProvider.check(url: url)
-        return .success(SiteReputation(isMalicious: matchReason != nil))
+        return SiteReputation(isMalicious: matchReason != nil)
     }
 
     /// Responsible for populating the ruleset engine with cached lists if present.
-    /// Must only be called once from `init` or optionally after `clearStorage`.
-    private func loadInitialData() {
-        guard let lists = self.maliciousDomainListProvider.fetchMaliciousDomainLists() else {
+    public func loadCachedData() async {
+        guard let lists = await self.maliciousDomainListProvider.fetchMaliciousDomainLists() else {
             return
         }
 
@@ -144,28 +136,23 @@ public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
         reputationProvider = SiteReputationProvider(rulesets: rulesets)
     }
 
-    public func update(completion: @escaping (Result<Void, SiteReputationUpdateError>) -> Void) {
-        self.maliciousDomainListProvider.update { [weak self] result in
-            switch result {
-            case .success(let lists):
-                let rulesets = lists.compactMap {MaliciousDomainListTransformer.transform(list: $0)}
-                self?.reputationProvider = SiteReputationProvider(rulesets: rulesets)
-                completion(.success(()))
-            case .failure(let error):
-                completion(.failure(error))
-            }
+    public func update() async throws {
+        try await self.maliciousDomainListProvider.update()
+        if let lists = await self.maliciousDomainListProvider.fetchMaliciousDomainLists() {
+            let rulesets = lists.compactMap { MaliciousDomainListTransformer.transform(list: $0)}
+            self.reputationProvider = SiteReputationProvider(rulesets: rulesets)
         }
     }
 
-    public var lastUpdatePerformedAt: Date? {
-        return maliciousDomainListProvider.lastUpdatePerformedAt
+    public func lastUpdatePerformedAt() async -> Date? {
+        return await maliciousDomainListProvider.lastUpdatePerformedAt()
     }
 
-    public func clearStorage() throws {
+    public func clearStorage() async throws {
         // Clear the in-memory malicious domain list.
         self.reputationProvider = nil
 
         // clear any cached data
-        try self.maliciousDomainListProvider.clearStorage()
+        try await self.maliciousDomainListProvider.clearStorage()
     }
 }
