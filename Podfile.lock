@@ -50,6 +50,7 @@ PODS:
     - SudoLogging (~> 1.0)
 
 DEPENDENCIES:
+  - AWSCore (~> 2.27)
   - AWSS3 (~> 2.24)
   - MockingbirdFramework (~> 0.20)
   - SudoApiClient (~> 9.0)
