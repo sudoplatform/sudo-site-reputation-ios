@@ -49,9 +49,6 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/DefaultSudoSiteReputationClient.html">DefaultSudoSiteReputationClient</a>
               </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/DefaultSudoSiteReputationClient/ConfigurationError.html">– ConfigurationError</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -62,6 +59,14 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/SiteReputationUpdateError.html">SiteReputationUpdateError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/SiteReputationClientConfig">SiteReputationClientConfig</a>
               </li>
             </ul>
           </li>
@@ -77,6 +82,24 @@
             <a class="nav-group-name-link" href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs.html#/s:18SudoSiteReputation24MissingResponseDataErrorV">MissingResponseDataError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs.html#/s:18SudoSiteReputation20PlatformGraphQLErrorV">PlatformGraphQLError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/RealtimeReputation.html">RealtimeReputation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/RealtimeReputation/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/RealtimeReputation/Scope.html">– Scope</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/RealtimeReputation/MaliciousState.html">– MaliciousState</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/SiteReputation.html">SiteReputation</a>
               </li>
             </ul>
@@ -88,74 +111,41 @@
         <section class="section">
           <div class="section-content top-matter">
             
-            <h1 id='sudo-site-reputation-sdk-for-ios' class='heading'>Sudo Site Reputation SDK for iOS</h1>
-<h2 id='project-setup' class='heading'>Project setup</h2>
+            <h1 id='sudo-site-reputation-ios-sdk' class='heading'>Sudo Site Reputation iOS SDK</h1>
+<h2 id='overview' class='heading'>Overview</h2>
 
-<p>Clone this repo.</p>
+<p>The Sudo Platform makes it effortless to block malicious web content within your existing or new products.</p>
 
-<p>Install dependencies with <a href="https://cocoapods.org">cocoapods</a></p>
+<p>Please see the <a href="https://docs.sudoplatform.com">Sudo Platform Developer Docs</a> for an overview of Site Reputation in the Sudo Platform.</p>
+<h2 id='version-support' class='heading'>Version Support</h2>
 
-<p><code>pod install</code></p>
+<table><thead>
+<tr>
+<th>Technology</th>
+<th>Supported version</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>iOS Deployment Target</td>
+<td>13.0+</td>
+</tr>
+<tr>
+<td>Swift language version</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>Xcode version</td>
+<td>12.0+</td>
+</tr>
+</tbody></table>
+<h2 id='integration-instructions' class='heading'>Integration Instructions</h2>
 
-<p>Or if you&rsquo;re a <a href="https://bundler.io">bundler</a> user</p>
+<p>Visit the <a href="https://docs.sudoplatform.com/guides/site-reputation">Site Reputation section</a> of the Sudo Platform Developer Docs for SDK integration instructions.</p>
+<h2 id='questions-and-support' class='heading'>Questions and Support</h2>
 
-<p><code>bundle install &amp;&amp; bundle exec pod install</code></p>
-<h2 id='running-integration-tests' class='heading'>Running integration tests</h2>
+<p>File any issues you find on the project&rsquo;s GitHub repository. Be careful not to share any Personally Identifiable Information (PII) or sensitive account information (API keys, credentials, etc.) when reporting an issue.</p>
 
-<p>To run the integration tests,</p>
-
-<ol>
-<li><p>Obtain config file and test registration key from admin console <a href="https://safe-browsing-team.dev.sudoplatform.com/login?ret=/console">https://safe-browsing-team.dev.sudoplatform.com/login?ret=/console</a>. Take note of the Key id, you will need it for the next step. </p></li>
-<li><p>Place <code>sudoplatformconfig.json</code> and <code>register_key.private</code> in <code>&lt;project_root&gt;/config</code>.  These are not checked into source control so you may need to create the <code>config</code> directory first. Also in the config directory, create a file named <code>register_key.id</code>.  The contents of this file is the key id from step one.  </p></li>
-<li><p>Select <code>SudoSiteReputationIntegrationTests</code> build schema and run tests.</p></li>
-</ol>
-<h2 id='running-unit-tests' class='heading'>Running unit tests</h2>
-
-<ol>
-<li>Select <code>SudoSiteReputation</code> build schema and run all enabled tests.</li>
-</ol>
-<h2 id='publishing' class='heading'>Publishing</h2>
-
-<p>To publish a new pod version externally,</p>
-
-<ol>
-<li>Ensure the <code>CHANGELOG.md</code> file and podspec are updated for the release.</li>
-<li>Create a new tag on GitLab.</li>
-<li>In the release notes, copy the relevant changes from <code>CHANGELOG.md</code>.</li>
-<li>Run the &ldquo;publish&rdquo; stage of the resulting pipeline for the tag.</li>
-</ol>
-<h2 id='consumption' class='heading'>Consumption</h2>
-
-<p>In order to include this library in an iOS app:</p>
-
-<ol>
-<li>Install CocoaPods.</li>
-<li>Create a <code>Podfile</code> in your project root with the following</li>
-</ol>
-<pre class="highlight ruby"><code><span class="n">target</span> <span class="s1">'MyApp'</span> <span class="k">do</span>
-<span class="sr">//</span><span class="p">.</span><span class="nf">.</span><span class="p">.</span>
-    <span class="nf">pod</span> <span class="s1">'SudoSiteReputation’, :git =&gt; '</span><span class="n">git</span><span class="vi">@gitlab</span><span class="p">.</span><span class="nf">tools</span><span class="p">.</span><span class="nf">anonyome</span><span class="p">.</span><span class="nf">com</span><span class="ss">:platform</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">reputation</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">reputation</span><span class="o">-</span><span class="n">ios</span><span class="p">.</span><span class="nf">git</span><span class="err">'</span>
-<span class="k">end</span>
-</code></pre>
-
-<ol>
-<li>Run <code>pod install</code>.</li>
-</ol>
-<h2 id='sonarqube' class='heading'>Sonarqube</h2>
-
-<p>This project uses Sonarqube to analyze merge requests.</p>
-
-<p>See the output of Sonarqube pipeline stages for more information and analysis results.</p>
-<h2 id='swiftlint' class='heading'>SwiftLint</h2>
-
-<p>This project has customized source code linting rules using <a href="https://github.com/realm/SwiftLint">SwiftLint</a>.</p>
-
-<p>To lint the project, run <code>brew install swiftlint</code> then run <code>swiftlint</code> from the project directory.</p>
-<h2 id='jazzy' class='heading'>Jazzy</h2>
-
-<p>This project supports using <a href="https://github.com/realm/jazzy">Jazzy</a> to generate API reference documentation.</p>
-
-<p>To generate documentation, run <code>bundle install &amp;&amp; bundle exec jazzy</code> from the project directory.</p>
+<p>For general inquiries related to the Sudo Platform, please contact <a href="mailto:partners@sudoplatform.com">partners@sudoplatform.com</a></p>
 
           </div>
         </section>
@@ -164,7 +154,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external noopener">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2023-01-27)</p>
+      <p>&copy; 2023 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external noopener">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2023-02-17)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>

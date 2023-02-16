@@ -8,9 +8,10 @@ import SudoUser
 import SudoConfigManager
 import SudoLogging
 import AWSCore
+import Foundation
+import SwiftUI
 
-/// Default implementation of `SiteReputationClient`.
-public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
+public struct SiteReputationClientConfig {
 
     /// An error raised when initializing the `DefaultSudoSiteReputationClient`.
     public enum ConfigurationError: Error {
@@ -24,24 +25,49 @@ public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
         case missingCachesDirectory
     }
 
-    private let userClient: SudoUserClient
-    internal private (set) var reputationProvider: SiteReputationProvider?
-    internal private (set) var maliciousDomainListProvider: MaliciousDomainListProviding
+    public init(
+        userClient: SudoUserClient,
+        cacheDirectory: URL,
+        region: String,
+        identityPoolId: String,
+        poolId: String,
+        bucket: String
+    ) {
+        self.userClient = userClient
+        self.cacheDirectory = cacheDirectory
+        self.region = region
+        self.identityPoolId = identityPoolId
+        self.poolId = poolId
+        self.bucket = bucket
+    }
 
-    /// Can be used to adjust the verbosity of logging output at runtime.
-    public var logLevel: LogLevel = {
-    #if DEBUG
-        return .debug
-    #else
-        return .info
-    #endif
-    }()
+    // SudoUserClient for identity and authorization.
+    public let userClient: SudoUserClient
 
-    /// Instantiates a `DefaultSiteReputationClient`.
-    public convenience init(userClient: SudoUserClient,
-                            config: SudoConfigManager? = nil,
-                            storageNamespace: String = "main") throws {
-        guard let configManager = config ?? DefaultSudoConfigManager() else {
+    // File storage namespace
+    public let storageNamespace: String = "main"
+
+    // Where to cache files
+    public let cacheDirectory: URL
+
+    // identityService "identityPoolId"
+    public let identityPoolId: String
+
+    // identityService "poolId"
+    public let poolId: String
+
+    // siteReputationService "bucket"
+    public let bucket: String
+
+    // siteReputationService "region"
+    public let region: String
+
+    /// Preferred init when using a sudoplatformconfig.json file. Pulls expected values from the SudoConfigManager.
+    public init(
+        userClient: SudoUserClient,
+        configManager: SudoConfigManager? = nil
+    ) throws {
+        guard let configManager = configManager ?? DefaultSudoConfigManager() else {
             throw ConfigurationError.failedToReadConfigurationFile
         }
 
@@ -57,8 +83,26 @@ public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
             throw ConfigurationError.missingKey
         }
 
+        let fileManager = FileManager.default
+        guard let cacheDirectory = fileManager
+            .urls(for: .cachesDirectory, in: .userDomainMask)
+            .last else {
+            throw ConfigurationError.missingCachesDirectory
+        }
+
+        self.init(
+            userClient: userClient,
+            cacheDirectory: cacheDirectory,
+            region: region,
+            identityPoolId: identityPoolId,
+            poolId: poolId,
+            bucket: bucket
+        )
+    }
+
+    var s3Config: AWSServiceConfiguration {
         // this constructor always returns a non-nil value
-        let awsServiceConfig = AWSServiceConfiguration(
+        return AWSServiceConfiguration(
             region: region.aws_regionTypeValue(),
             credentialsProvider: AWSCognitoCredentialsProvider(
                 regionType: region.aws_regionTypeValue(),
@@ -70,22 +114,48 @@ public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
                 )
             )
         )!
+    }
+}
 
-        let fileManager = FileManager.default
-        guard let cacheDirectory = fileManager
-                .urls(for: .cachesDirectory, in: .userDomainMask)
-                .last?
-                .appendingPathComponent("reputation-lists")
-                .appendingPathComponent(storageNamespace) else {
-            throw ConfigurationError.missingCachesDirectory
-        }
+extension DefaultSudoSiteReputationClient {
+    @available(*, deprecated, message: "Use SiteReputationClientConfig.ConfigurationError")
+    public typealias ConfigurationError = SiteReputationClientConfig.ConfigurationError
+}
+
+/// Default implementation of `SiteReputationClient`.
+public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
+
+    private let userClient: SudoUserClient
+    internal private (set) var reputationProvider: SiteReputationProvider?
+    internal private (set) var maliciousDomainListProvider: MaliciousDomainListProviding
+
+    /// Can be used to adjust the verbosity of logging output at runtime.
+    public var logLevel: LogLevel = {
+    #if DEBUG
+        return .debug
+    #else
+        return .info
+    #endif
+    }()
+
+    public convenience init(userClient: SudoUserClient) throws {
+        self.init(config: try SiteReputationClientConfig(userClient: userClient))
+    }
+
+    /// Instantiates a `DefaultSiteReputationClient` using the provided configuration object.
+    public convenience init(config: SiteReputationClientConfig) {
+        let cacheDirectory = config.cacheDirectory
+            .appendingPathComponent("reputation-lists")
+            .appendingPathComponent(config.storageNamespace)
 
         self.init(
-            staticDataBucket: bucket,
-            userClient: userClient,
-            s3Client: DefaultS3Client(config: awsServiceConfig),
-            cache: DiskServiceDataCache(fileManager: fileManager,
-                                        directory: cacheDirectory)
+            staticDataBucket: config.bucket,
+            userClient: config.userClient,
+            s3Client: DefaultS3Client(config: config.s3Config),
+            cache: DiskServiceDataCache(
+                fileManager: FileManager.default,
+                directory: cacheDirectory
+            )
         )
     }
 

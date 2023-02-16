@@ -1,6 +1,47 @@
 {
   "warnings": [
-
+    {
+      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/site-reputation/site-reputation-ios/SudoSiteReputation/Client.swift",
+      "line": 14,
+      "symbol": "SiteReputationClientConfig",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/site-reputation/site-reputation-ios/SudoSiteReputation/Client.swift",
+      "line": 122,
+      "symbol": "DefaultSudoSiteReputationClient.ConfigurationError",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/site-reputation/site-reputation-ios/SudoSiteReputation/Client.swift",
+      "line": 141,
+      "symbol": "DefaultSudoSiteReputationClient.init(userClient:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/site-reputation/site-reputation-ios/SudoSiteReputation/Error/PlatformGraphQLError.swift",
+      "line": 12,
+      "symbol": "PlatformGraphQLError.errors",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/site-reputation/site-reputation-ios/SudoSiteReputation/RealtimeReputation.swift",
+      "line": 12,
+      "symbol": "RealtimeReputation.init(categories:confidence:isMalicious:scope:status:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/site-reputation/site-reputation-ios/SudoSiteReputation/RealtimeSiteReputationClient.swift",
+      "line": 11,
+      "symbol": "RealtimeSiteReputationClient",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    }
   ],
-  "source_directory": "/Users/broth/sudo/site-reputation-ios"
+  "source_directory": "/Users/anonyome/builds/c2dfa4ea/0/platform/site-reputation/site-reputation-ios"
 }

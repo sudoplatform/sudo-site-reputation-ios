@@ -21,18 +21,25 @@ PODS:
     - AWSCore (= 2.27.15)
   - AWSS3 (2.27.15):
     - AWSCore (= 2.27.15)
+  - MockingbirdFramework (0.20.0)
   - ReachabilitySwift (5.0.0)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
   - Starscream (4.0.4)
-  - SudoConfigManager (3.0.2):
+  - SudoApiClient (9.0.1):
+    - AWSAppSync (~> 3.6.1)
+    - AWSCore (~> 2.27.15)
+    - SudoConfigManager (~> 3.0)
+    - SudoLogging (~> 1.0)
+    - SudoUser (~> 14.0)
+  - SudoConfigManager (3.0.1):
     - AWSCore (~> 2.27.15)
     - AWSS3 (~> 2.27.15)
     - SudoLogging (~> 1.0)
   - SudoKeyManager (2.0.0)
   - SudoLogging (1.0.0)
-  - SudoUser (14.1.0):
+  - SudoUser (14.0.0):
     - AWSAppSync (~> 3.6.1)
     - AWSCognitoIdentityProvider (~> 2.27.15)
     - AWSCore (~> 2.27.15)
@@ -43,8 +50,9 @@ PODS:
     - SudoLogging (~> 1.0)
 
 DEPENDENCIES:
-  - AWSCore (~> 2.27)
-  - AWSS3 (~> 2.27)
+  - AWSS3 (~> 2.24)
+  - MockingbirdFramework (~> 0.20)
+  - SudoApiClient (~> 9.0)
   - SudoLogging (~> 1.0)
   - SudoUser (~> 14.0)
 
@@ -58,9 +66,11 @@ SPEC REPOS:
     - AWSCore
     - AWSMobileClient
     - AWSS3
+    - MockingbirdFramework
     - ReachabilitySwift
     - SQLite.swift
     - Starscream
+    - SudoApiClient
     - SudoConfigManager
     - SudoKeyManager
     - SudoLogging
@@ -75,14 +85,16 @@ SPEC CHECKSUMS:
   AWSCore: c67277201b6aca10e4cf24638eadaa67c85ebf03
   AWSMobileClient: 6f60d1fb6373e21aaada443dd4d4bf087158614d
   AWSS3: 09801b290f8818f532694cabd5d503c7474eb3df
+  MockingbirdFramework: 54e35fbbb47b806c1a1fae2cf3ef99f6eceb55e5
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
-  SudoConfigManager: aee20bc2d03e28342da663ae48378d0daae78f47
+  SudoApiClient: 617925274c2a4a2134b3d23c7f5e5f693803d047
+  SudoConfigManager: 69045b813f59e9776b8e13eb824f5950a0243607
   SudoKeyManager: 64fa72acd541f65d80373c864ae5a6011e8b81b5
   SudoLogging: 93238a71338292a650804358994c67f8f3816d20
-  SudoUser: d58bda9bf5f138d2ec91d7f4d590c06d5f512298
+  SudoUser: f39cc813416a9e91d3392c843b571510cf213d3a
 
-PODFILE CHECKSUM: 3a711187d470d98c104c7ad431fc47974a466cf6
+PODFILE CHECKSUM: bb7c5ec3ab8fe3c038c15e5cdc31e602b5151d34
 
 COCOAPODS: 1.11.3

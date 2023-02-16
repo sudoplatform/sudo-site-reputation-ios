@@ -7,7 +7,7 @@
 import XCTest
 @testable import SudoSiteReputation
 
-private struct TestError: Error, LocalizedError {
+struct TestError: Error, LocalizedError {
     let errorDescription: String? = "test error"
 }
 
@@ -31,9 +31,9 @@ class LocalizedErrorsTests: XCTestCase {
 
     func test_ConfigurationError() {
         [
-            DefaultSudoSiteReputationClient.ConfigurationError.failedToReadConfigurationFile,
-            DefaultSudoSiteReputationClient.ConfigurationError.missingCachesDirectory,
-            DefaultSudoSiteReputationClient.ConfigurationError.missingKey,
+            SiteReputationClientConfig.ConfigurationError.failedToReadConfigurationFile,
+            SiteReputationClientConfig.ConfigurationError.missingCachesDirectory,
+            SiteReputationClientConfig.ConfigurationError.missingKey,
         ].forEach(assertErrorIsLocalized)
     }
 

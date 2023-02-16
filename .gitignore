@@ -5,3 +5,20 @@ Pods/
 *.xcresult
 .vendor
 .bundle
+
+### Mockingbird entries 
+
+# Generated
+*.generated.swift
+
+# Binaries
+Pods/MockingbirdFramework/mockingbird/bin/
+
+# Caches
+**/*.xcodeproj/MockingbirdCache/
+
+.vscode/
+
+### graphql codegen
+node_modules/
+introspection.json

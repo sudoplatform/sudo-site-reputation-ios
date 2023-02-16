@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1300"
+   LastUpgradeVersion = "1340"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -29,6 +29,15 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES"
       onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "Pods/MockingbirdFramework/mockingbird configure SudoSiteReputationTests -- --targets SudoSiteReputation&#10;">
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -46,6 +55,16 @@
                BlueprintIdentifier = "CF2A536C25A3C43300AF0FEF"
                BuildableName = "SudoSiteReputationTests.xctest"
                BlueprintName = "SudoSiteReputationTests"
+               ReferencedContainer = "container:SudoSiteReputation.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CF2A54D925A627CA00AF0FEF"
+               BuildableName = "SudoSiteReputationIntegrationTests.xctest"
+               BlueprintName = "SudoSiteReputationIntegrationTests"
                ReferencedContainer = "container:SudoSiteReputation.xcodeproj">
             </BuildableReference>
          </TestableReference>

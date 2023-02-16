@@ -9,30 +9,21 @@ import SudoKeyManager
 import SudoUser
 @testable import SudoSiteReputation
 
-class SudoSiteReputationIntegrationTests: XCTestCase {
+class SudoSiteReputationIntegrationTests: IntegrationTestBase {
 
     var client: DefaultSudoSiteReputationClient!
-    var userClient: SudoUserClient!
 
     override func setUpWithError() throws {
-        // Initialize the client.
-        let namespace = "srs-integration-test"
-        self.userClient = try DefaultSudoUserClient(keyNamespace: namespace)
+        try super.setUpWithError()
+
         self.client = try DefaultSudoSiteReputationClient(
-            userClient: userClient,
-            storageNamespace: namespace
+            userClient: userClient
         )
+
 
         let setupExpectation = self.expectation(description: "wait for setup")
         Task {
             try await client.clearStorage()
-            try await userClient.reset()
-
-            let isRegistered = try await userClient.isRegistered()
-            XCTAssertFalse(isRegistered)
-
-            try await register(userClient: userClient)
-            try await signIn(userClient: userClient)
             setupExpectation.fulfill()
         }
         waitForExpectations(timeout: 30, handler: nil)
@@ -41,8 +32,6 @@ class SudoSiteReputationIntegrationTests: XCTestCase {
     override func tearDownWithError() throws {
         let tearDownExpectation = self.expectation(description: "wait for teardown")
         Task {
-            try await deregister(userClient: userClient)
-            try await userClient.reset()
             try await client.clearStorage()
             tearDownExpectation.fulfill()
         }
@@ -62,18 +51,18 @@ class SudoSiteReputationIntegrationTests: XCTestCase {
         // Perform an `update`.
         try await client.update()
 
+        // last updated at was set.
+        var firstUpdateTimestamp = await client.lastUpdatePerformedAt()
+        XCTAssertNotNil(firstUpdateTimestamp)
+
         // Update a second time, just to make sure we can.
         // If this fails with alreadyInProgress, it is likely that the
         // previous update() call retained the lock on the shared Cache.
         try await client.update()
 
-        // Verify that `lastUpdatePerformedAt` has been bumped.
-        let lastUpdate = await client.lastUpdatePerformedAt()
-        XCTAssertEqual(
-            lastUpdate?.timeIntervalSince1970 ?? 0,
-            Date().timeIntervalSince1970,
-            accuracy: 5
-        )
+        // Check that updated at was bumped from the previous call.
+        let secondUpdateTimestamp = await client.lastUpdatePerformedAt()!
+        XCTAssertNotEqual(firstUpdateTimestamp!.timeIntervalSince1970, secondUpdateTimestamp.timeIntervalSince1970, accuracy: 0.01)
 
         // Check that known non-malicious sites have good reputation.
         let check = { (url: String, expectedMalicious: Bool) in
@@ -126,46 +115,6 @@ class SudoSiteReputationIntegrationTests: XCTestCase {
                     NSLog("Found a domain reported an error while checking \(domain)")
                 }
             }
-        }
-    }
-
-    private func register(userClient: SudoUserClient) async throws {
-        let bundle = Bundle.main
-        guard let testKeyPath = bundle.path(forResource: "register_key", ofType: "private"),
-              let testKeyIdPath = bundle.path(forResource: "register_key", ofType: "id")
-        else {
-            XCTFail("Missing register_key.private or register_key.id. Please make sure these files are present in ${PROJECT_DIR}/config and are copied to the testing bundle.")
-            return
-        }
-
-        let testKey = try String(contentsOfFile: testKeyPath)
-        let testKeyId = try String(contentsOfFile: testKeyIdPath)
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-
-        let keyManager = LegacySudoKeyManager(serviceName: "com.sudoplatform.appservicename",
-                                            keyTag: "com.sudoplatform",
-                                            namespace: "test")
-        let authProvider = try TESTAuthenticationProvider(name: "testRegisterAudience",
-                                                          key: testKey,
-                                                          keyId: testKeyId,
-                                                          keyManager: keyManager)
-        _ = try await userClient.registerWithAuthenticationProvider(authenticationProvider: authProvider,
-                                                                    registrationId: "srs-int-test-\(Date())")
-    }
-
-    private func signIn(userClient: SudoUserClient) async throws {
-        do {
-            _ = try await userClient.signInWithKey()
-        } catch {
-            print("warning: Failed to signIn: \(error)")
-        }
-    }
-
-    private func deregister(userClient: SudoUserClient) async throws {
-        do {
-            _ = try await userClient.deregister()
-        } catch {
-            print("warning: Failed to deregister: \(error)")
         }
     }
 }

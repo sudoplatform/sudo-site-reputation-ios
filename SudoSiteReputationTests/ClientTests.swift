@@ -35,7 +35,7 @@ final class SudoSiteReputationTests: XCTestCase {
         // We can't unit test init with config manager since the SDK config file
         // doesn't exist in the unit test bundle, but we do test the error case!
 
-        typealias ConfigError = DefaultSudoSiteReputationClient.ConfigurationError
+        typealias ConfigError = SiteReputationClientConfig.ConfigurationError
         let expected = ConfigError.failedToReadConfigurationFile
 
         XCTAssertThrowsError(
@@ -61,7 +61,7 @@ final class SudoSiteReputationTests: XCTestCase {
             }
         }
 
-        typealias ConfigError = DefaultSudoSiteReputationClient.ConfigurationError
+        typealias ConfigError = SiteReputationClientConfig.ConfigurationError
         let expected = ConfigError.failedToReadConfigurationFile
 
         XCTAssertThrowsError(
@@ -72,27 +72,25 @@ final class SudoSiteReputationTests: XCTestCase {
         }
     }
 
-    func testSudoSiteReputationClientInit_passInConfigWithNoIdentityService_willThrowMissingKeyError() {
+    func testSudoSiteReputationClientConfig_passInConfigWithNoIdentityService_willThrowMissingKeyError() {
         class MockConfig: SudoConfigManager {
             // Will return empty key.
             func getConfigSet(namespace: String) -> [String : Any]? { return nil }
             func validateConfig() async throws {}
         }
 
-        typealias ConfigError = DefaultSudoSiteReputationClient.ConfigurationError
+        typealias ConfigError = SiteReputationClientConfig.ConfigurationError
         let expected = ConfigError.missingKey
 
         XCTAssertThrowsError(
-            try DefaultSudoSiteReputationClient(userClient: MockSudoUserClient(),
-                                                config: MockConfig(),
-                                                storageNamespace: ""),
+            try SiteReputationClientConfig(userClient: MockSudoUserClient(), configManager: MockConfig()),
             "should throw invalid config error"
         ) { error in
             XCTAssertEqual(error as? ConfigError, expected)
         }
     }
 
-    func testSudoSiteReputationClientInit_passInConfigWithNoSudoSiteReputationService_willThrowMissingKeyError() {
+    func testSudoSiteReputationClientConfig_passInConfigWithNoSudoSiteReputationService_willThrowMissingKeyError() {
         class MockConfig: SudoConfigManager {
             // Will return empty key.
             var identityServicePassed = false
@@ -108,13 +106,11 @@ final class SudoSiteReputationTests: XCTestCase {
         }
         let configMock = MockConfig()
 
-        typealias ConfigError = DefaultSudoSiteReputationClient.ConfigurationError
+        typealias ConfigError = SiteReputationClientConfig.ConfigurationError
         let expected = ConfigError.missingKey
 
         XCTAssertThrowsError(
-            try DefaultSudoSiteReputationClient(userClient: MockSudoUserClient(),
-                                                config: configMock,
-                                                storageNamespace: ""),
+            try SiteReputationClientConfig(userClient: MockSudoUserClient(), configManager: configMock),
             "should throw invalid config error"
         ) { error in
             XCTAssertTrue(configMock.identityServicePassed)
@@ -144,9 +140,7 @@ final class SudoSiteReputationTests: XCTestCase {
         let configMock = MockConfig()
 
         XCTAssertNoThrow(
-            try DefaultSudoSiteReputationClient(userClient: MockSudoUserClient(),
-                                                config: configMock,
-                                                storageNamespace: "")
+            try SiteReputationClientConfig(userClient: MockSudoUserClient(), configManager: configMock)
         )
     }
 
