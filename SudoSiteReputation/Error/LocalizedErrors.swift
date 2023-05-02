@@ -8,7 +8,7 @@ import protocol Foundation.LocalizedError
 
 // MARK: - SudoSiteReputationClient
 
-extension SiteReputationClientConfig.ConfigurationError: LocalizedError {
+extension LegacySiteReputationClientConfig.ConfigurationError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .failedToReadConfigurationFile:
@@ -21,7 +21,7 @@ extension SiteReputationClientConfig.ConfigurationError: LocalizedError {
     }
 }
 
-extension SiteReputationCheckError: LocalizedError {
+extension LegacySiteReputationCheckError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .reputationDataNotPresent:
@@ -30,7 +30,7 @@ extension SiteReputationCheckError: LocalizedError {
     }
 }
 
-extension SiteReputationUpdateError: LocalizedError {
+extension LegacySiteReputationUpdateError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .alreadyInProgress:

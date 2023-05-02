@@ -15,13 +15,13 @@ final class SudoSiteReputationTests: XCTestCase {
     var s3Client: MockS3Client!
     var serviceDataCache: InMemoryServiceDataCache!
     var userClient: MockSudoUserClient!
-    var instanceUnderTest: DefaultSudoSiteReputationClient!
+    var instanceUnderTest: DefaultLegacySiteReputationClient!
 
     override func setUpWithError() throws {
         s3Client = MockS3Client()
         serviceDataCache = InMemoryServiceDataCache()
         userClient = MockSudoUserClient()
-        instanceUnderTest = DefaultSudoSiteReputationClient(staticDataBucket: "unit-test",
+        instanceUnderTest = DefaultLegacySiteReputationClient(staticDataBucket: "unit-test",
                                                             userClient: userClient,
                                                             s3Client: s3Client,
                                                             cache: serviceDataCache)
@@ -35,11 +35,11 @@ final class SudoSiteReputationTests: XCTestCase {
         // We can't unit test init with config manager since the SDK config file
         // doesn't exist in the unit test bundle, but we do test the error case!
 
-        typealias ConfigError = SiteReputationClientConfig.ConfigurationError
+        typealias ConfigError = LegacySiteReputationClientConfig.ConfigurationError
         let expected = ConfigError.failedToReadConfigurationFile
 
         XCTAssertThrowsError(
-            try DefaultSudoSiteReputationClient(userClient: MockSudoUserClient()),
+            try DefaultLegacySiteReputationClient(userClient: MockSudoUserClient()),
             "should throw invalid config error"
         ) { error in
             XCTAssertEqual(error as? ConfigError, expected)
@@ -61,11 +61,11 @@ final class SudoSiteReputationTests: XCTestCase {
             }
         }
 
-        typealias ConfigError = SiteReputationClientConfig.ConfigurationError
+        typealias ConfigError = LegacySiteReputationClientConfig.ConfigurationError
         let expected = ConfigError.failedToReadConfigurationFile
 
         XCTAssertThrowsError(
-            try DefaultSudoSiteReputationClient(userClient: MockSudoUserClient()),
+            try DefaultLegacySiteReputationClient(userClient: MockSudoUserClient()),
             "should throw invalid config error"
         ) { error in
             XCTAssertEqual(error as? ConfigError, expected)
@@ -79,11 +79,11 @@ final class SudoSiteReputationTests: XCTestCase {
             func validateConfig() async throws {}
         }
 
-        typealias ConfigError = SiteReputationClientConfig.ConfigurationError
+        typealias ConfigError = LegacySiteReputationClientConfig.ConfigurationError
         let expected = ConfigError.missingKey
 
         XCTAssertThrowsError(
-            try SiteReputationClientConfig(userClient: MockSudoUserClient(), configManager: MockConfig()),
+            try LegacySiteReputationClientConfig(userClient: MockSudoUserClient(), configManager: MockConfig()),
             "should throw invalid config error"
         ) { error in
             XCTAssertEqual(error as? ConfigError, expected)
@@ -106,11 +106,11 @@ final class SudoSiteReputationTests: XCTestCase {
         }
         let configMock = MockConfig()
 
-        typealias ConfigError = SiteReputationClientConfig.ConfigurationError
+        typealias ConfigError = LegacySiteReputationClientConfig.ConfigurationError
         let expected = ConfigError.missingKey
 
         XCTAssertThrowsError(
-            try SiteReputationClientConfig(userClient: MockSudoUserClient(), configManager: configMock),
+            try LegacySiteReputationClientConfig(userClient: MockSudoUserClient(), configManager: configMock),
             "should throw invalid config error"
         ) { error in
             XCTAssertTrue(configMock.identityServicePassed)
@@ -140,7 +140,7 @@ final class SudoSiteReputationTests: XCTestCase {
         let configMock = MockConfig()
 
         XCTAssertNoThrow(
-            try SiteReputationClientConfig(userClient: MockSudoUserClient(), configManager: configMock)
+            try LegacySiteReputationClientConfig(userClient: MockSudoUserClient(), configManager: configMock)
         )
     }
 
@@ -198,7 +198,7 @@ evil-website.example
             _ = try await instanceUnderTest.getSiteReputation(url: "https://sudoplatform.com")
             XCTFail("expected check to report no data.")
         } catch {
-            XCTAssertEqual(error as! SiteReputationCheckError, SiteReputationCheckError.reputationDataNotPresent)
+            XCTAssertEqual(error as! LegacySiteReputationCheckError, LegacySiteReputationCheckError.reputationDataNotPresent)
         }
     }
 
@@ -207,7 +207,7 @@ evil-website.example
         struct UnitTestError: Error {}
 
         // Instantiate the client with the faulted cache.
-        let client = DefaultSudoSiteReputationClient(
+        let client = DefaultLegacySiteReputationClient(
             staticDataBucket: "unit-test",
             userClient: MockSudoUserClient(),
             s3Client: MockS3Client(),
@@ -219,7 +219,7 @@ evil-website.example
             _ = try await client.getSiteReputation(url: "https://sudoplatform.com")
             XCTFail("expected check to report no data.")
         } catch {
-            XCTAssertEqual(error as! SiteReputationCheckError, SiteReputationCheckError.reputationDataNotPresent)
+            XCTAssertEqual(error as! LegacySiteReputationCheckError, LegacySiteReputationCheckError.reputationDataNotPresent)
         }
     }
 

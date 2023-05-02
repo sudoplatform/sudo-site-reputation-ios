@@ -48,17 +48,32 @@ class PlatfomAPIClientTests: XCTestCase {
 
     func test_returnsAppSync_successResult() async throws {
         let mockedData = GraphQL.GetSiteReputationQuery.Data.init(getSiteReputation: .init(
-            categories: [],
-            scope: .domain,
-            status: .success,
-            confidence: 0,
-            ttl: 0,
-            isMalicious: true
+            reputationStatus: .notmalicious
         ))
         let result = MockGraphQLResult(data: mockedData, errors: nil)
         mockAPIClient.fetchResult = (result, nil)
         let reputation = try await instanceUnderTest.getReputation(url: "")
         XCTAssertEqual(String(describing: reputation), String(describing: mockedData))
+    }
+    
+    func test_usesCache() async throws {
+        let mockedData = GraphQL.GetSiteReputationQuery.Data.init(getSiteReputation: .init(
+            reputationStatus: .notmalicious
+        ))
+        let result = MockGraphQLResult(data: mockedData, errors: nil)
+        mockAPIClient.fetchResult = (result, nil)
+        
+        // Asking the instance multiple times for the data should result in only
+        // one call to the service.
+        _ = try await instanceUnderTest.getReputation(url: "foo")
+        _ = try await instanceUnderTest.getReputation(url: "foo")
+        _ = try await instanceUnderTest.getReputation(url: "foo")
+        XCTAssertEqual(mockAPIClient.fetchCallCount, 1)
+        
+        // Reset clears the cache and fetching results in another api call
+        await instanceUnderTest.reset()
+        _ = try await instanceUnderTest.getReputation(url: "foo")
+        XCTAssertEqual(mockAPIClient.fetchCallCount, 2)
     }
 }
 

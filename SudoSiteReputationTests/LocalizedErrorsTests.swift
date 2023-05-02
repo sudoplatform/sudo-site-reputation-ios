@@ -31,23 +31,23 @@ class LocalizedErrorsTests: XCTestCase {
 
     func test_ConfigurationError() {
         [
-            SiteReputationClientConfig.ConfigurationError.failedToReadConfigurationFile,
-            SiteReputationClientConfig.ConfigurationError.missingCachesDirectory,
-            SiteReputationClientConfig.ConfigurationError.missingKey,
+            LegacySiteReputationClientConfig.ConfigurationError.failedToReadConfigurationFile,
+            LegacySiteReputationClientConfig.ConfigurationError.missingCachesDirectory,
+            LegacySiteReputationClientConfig.ConfigurationError.missingKey,
         ].forEach(assertErrorIsLocalized)
     }
 
     func test_SiteReputationCheckError() {
         [
-            SiteReputationCheckError.reputationDataNotPresent,
+            LegacySiteReputationCheckError.reputationDataNotPresent,
         ].forEach(assertErrorIsLocalized)
     }
 
     func test_SiteReputationUpdateError() {
         [
-            SiteReputationUpdateError.alreadyInProgress,
-            SiteReputationUpdateError.cancelled,
-            SiteReputationUpdateError.serviceError(TestError()),
+            LegacySiteReputationUpdateError.alreadyInProgress,
+            LegacySiteReputationUpdateError.cancelled,
+            LegacySiteReputationUpdateError.serviceError(TestError()),
         ].forEach(assertErrorIsLocalized)
     }
 

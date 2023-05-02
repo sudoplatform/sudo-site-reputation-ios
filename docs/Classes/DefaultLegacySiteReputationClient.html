@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RealtimeReputation Structure Reference</title>
+    <title>DefaultLegacySiteReputationClient Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Struct/RealtimeReputation" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Class/DefaultLegacySiteReputationClient" class="dashAnchor"></a>
 
-    <a title="RealtimeReputation Structure Reference"></a>
+    <a title="DefaultLegacySiteReputationClient Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">SudoSiteReputation Reference</a>
       <img class="carat" src="../img/carat.png" alt=""/>
-      RealtimeReputation Structure Reference
+      DefaultLegacySiteReputationClient Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -48,7 +48,7 @@
             <a class="nav-group-name-link" href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/DefaultSudoSiteReputationClient.html">DefaultSudoSiteReputationClient</a>
+                <a class="nav-group-task-link" href="../Classes/DefaultLegacySiteReputationClient.html">DefaultLegacySiteReputationClient</a>
               </li>
             </ul>
           </li>
@@ -56,10 +56,10 @@
             <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Enums/SiteReputationCheckError.html">SiteReputationCheckError</a>
+                <a class="nav-group-task-link" href="../Enums/LegacySiteReputationCheckError.html">LegacySiteReputationCheckError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Enums/SiteReputationUpdateError.html">SiteReputationUpdateError</a>
+                <a class="nav-group-task-link" href="../Enums/LegacySiteReputationUpdateError.html">LegacySiteReputationUpdateError</a>
               </li>
             </ul>
           </li>
@@ -67,7 +67,7 @@
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions.html#/SiteReputationClientConfig">SiteReputationClientConfig</a>
+                <a class="nav-group-task-link" href="../Extensions.html#/LegacySiteReputationClientConfig">LegacySiteReputationClientConfig</a>
               </li>
             </ul>
           </li>
@@ -75,7 +75,7 @@
             <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Protocols/SudoSiteReputationClient.html">SudoSiteReputationClient</a>
+                <a class="nav-group-task-link" href="../Protocols/LegacySudoSiteReputationClient.html">LegacySudoSiteReputationClient</a>
               </li>
             </ul>
           </li>
@@ -83,25 +83,19 @@
             <a class="nav-group-name-link" href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/LegacySiteReputation.html">LegacySiteReputation</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs.html#/s:18SudoSiteReputation24MissingResponseDataErrorV">MissingResponseDataError</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs.html#/s:18SudoSiteReputation20PlatformGraphQLErrorV">PlatformGraphQLError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation.html">RealtimeReputation</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation/Status.html">– Status</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation/Scope.html">– Scope</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation/MaliciousState.html">– MaliciousState</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/SiteReputation.html">SiteReputation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SiteReputation.html#/s:18SudoSiteReputation0bC0V0C6StatusO">– ReputationStatus</a>
               </li>
             </ul>
           </li>
@@ -111,15 +105,15 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>RealtimeReputation</h1>
+            <h1>DefaultLegacySiteReputationClient</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RealtimeReputation</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">DefaultLegacySiteReputationClient</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/LegacySudoSiteReputationClient.html">LegacySudoSiteReputationClient</a></span></code></pre>
 
                 </div>
               </div>
-            <p>Reputation data returned from client</p>
+            <p>Default implementation of <code>SiteReputationClient</code>.</p>
 
           </div>
         </section>
@@ -131,9 +125,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation08RealtimeC0V6StatusO"></a>
-                    <a name="//apple_ref/swift/Enum/Status" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation08RealtimeC0V6StatusO">Status</a>
+                    <a name="/s:18SudoSiteReputation013DefaultLegacybC6ClientC8logLevel0A7Logging03LogH0Ovp"></a>
+                    <a name="//apple_ref/swift/Property/logLevel" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SudoSiteReputation013DefaultLegacybC6ClientC8logLevel0A7Logging03LogH0Ovp">logLevel</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -141,15 +135,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Search status</p>
+                        <p>Can be used to adjust the verbosity of logging output at runtime.</p>
 
-                        <a href="../Structs/RealtimeReputation/Status.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Status</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">logLevel</span><span class="p">:</span> <span class="kt">LogLevel</span></code></pre>
 
                         </div>
                       </div>
@@ -159,9 +152,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation08RealtimeC0V5ScopeO"></a>
-                    <a name="//apple_ref/swift/Enum/Scope" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation08RealtimeC0V5ScopeO">Scope</a>
+                    <a name="/s:18SudoSiteReputation013DefaultLegacybC6ClientC6configAcA0ebcF6ConfigV_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(config:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SudoSiteReputation013DefaultLegacybC6ClientC6configAcA0ebcF6ConfigV_tcfc">init(config:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -169,15 +162,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Scope of the search performed</p>
+                        <p>Instantiates a <code>DefaultSiteReputationClient</code> using the provided configuration object.</p>
 
-                        <a href="../Structs/RealtimeReputation/Scope.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Scope</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt">LegacySiteReputationClientConfig</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -187,25 +179,26 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation08RealtimeC0V14MaliciousStateO"></a>
-                    <a name="//apple_ref/swift/Enum/MaliciousState" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation08RealtimeC0V14MaliciousStateO">MaliciousState</a>
+                    <a name="/s:18SudoSiteReputation06LegacyabC6ClientP03getbC03urlAA0dbC0VSS_tYaKF"></a>
+                    <a name="//apple_ref/swift/Method/getSiteReputation(url:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SudoSiteReputation06LegacyabC6ClientP03getbC03urlAA0dbC0VSS_tYaKF">getSiteReputation(url:<wbr>)</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Represents the malicious calculation from the service</p>
-
-                        <a href="../Structs/RealtimeReputation/MaliciousState.html" class="slightly-smaller">See more</a>
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">MaliciousState</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getSiteReputation</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="n">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/LegacySiteReputation.html">LegacySiteReputation</a></span></code></pre>
 
                         </div>
                       </div>
@@ -215,24 +208,27 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation08RealtimeC0V10categoriesSaySiGvp"></a>
-                    <a name="//apple_ref/swift/Property/categories" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation08RealtimeC0V10categoriesSaySiGvp">categories</a>
+                    <a name="/s:18SudoSiteReputation013DefaultLegacybC6ClientC14loadCachedDatayyYaF"></a>
+                    <a name="//apple_ref/swift/Method/loadCachedData()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SudoSiteReputation013DefaultLegacybC6ClientC14loadCachedDatayyYaF">loadCachedData()</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Numerical categories the site is categorized by.</p>
+                        <p>Responsible for populating the ruleset engine with cached lists if present.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">categories</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">loadCachedData</span><span class="p">()</span> <span class="n">async</span></code></pre>
 
                         </div>
                       </div>
@@ -242,24 +238,26 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation08RealtimeC0V10confidenceSdSgvp"></a>
-                    <a name="//apple_ref/swift/Property/confidence" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation08RealtimeC0V10confidenceSdSgvp">confidence</a>
+                    <a name="/s:18SudoSiteReputation06LegacyabC6ClientP6updateyyYaKF"></a>
+                    <a name="//apple_ref/swift/Method/update()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SudoSiteReputation06LegacyabC6ClientP6updateyyYaKF">update()</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The algorithmic calculation of the confidence of the rating */</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">confidence</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">update</span><span class="p">()</span> <span class="n">async</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -269,24 +267,26 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation08RealtimeC0V11isMaliciousAC0F5StateOvp"></a>
-                    <a name="//apple_ref/swift/Property/isMalicious" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation08RealtimeC0V11isMaliciousAC0F5StateOvp">isMalicious</a>
+                    <a name="/s:18SudoSiteReputation06LegacyabC6ClientP21lastUpdatePerformedAt10Foundation4DateVSgyYaF"></a>
+                    <a name="//apple_ref/swift/Method/lastUpdatePerformedAt()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SudoSiteReputation06LegacyabC6ClientP21lastUpdatePerformedAt10Foundation4DateVSgyYaF">lastUpdatePerformedAt()</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Returns <code>true</code> if malicious, <code>false</code> if not, and <code>undefined</code> if unknown.</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">isMalicious</span><span class="p">:</span> <span class="kt"><a href="../Structs/RealtimeReputation/MaliciousState.html">MaliciousState</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">lastUpdatePerformedAt</span><span class="p">()</span> <span class="n">async</span> <span class="o">-&gt;</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -296,51 +296,26 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation08RealtimeC0V5scopeAC5ScopeOSgvp"></a>
-                    <a name="//apple_ref/swift/Property/scope" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation08RealtimeC0V5scopeAC5ScopeOSgvp">scope</a>
+                    <a name="/s:18SudoSiteReputation06LegacyabC6ClientP12clearStorageyyYaKF"></a>
+                    <a name="//apple_ref/swift/Method/clearStorage()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SudoSiteReputation06LegacyabC6ClientP12clearStorageyyYaKF">clearStorage()</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The scope of the search</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">scope</span><span class="p">:</span> <span class="kt"><a href="../Structs/RealtimeReputation/Scope.html">Scope</a></span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:18SudoSiteReputation08RealtimeC0V6statusAC6StatusOvp"></a>
-                    <a name="//apple_ref/swift/Property/status" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation08RealtimeC0V6statusAC6StatusOvp">status</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The returned result of the lookup for the site. If .success you can expect the other properties to be non nil.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">status</span><span class="p">:</span> <span class="kt"><a href="../Structs/RealtimeReputation/Status.html">Status</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">clearStorage</span><span class="p">()</span> <span class="n">async</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -355,7 +330,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external noopener">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2023-02-17)</p>
+      <p>&copy; 2023 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external noopener">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2023-05-03)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>

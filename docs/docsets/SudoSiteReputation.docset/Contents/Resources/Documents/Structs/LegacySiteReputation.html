@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SiteReputation Structure Reference</title>
+    <title>LegacySiteReputation Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Struct/SiteReputation" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Struct/LegacySiteReputation" class="dashAnchor"></a>
 
-    <a title="SiteReputation Structure Reference"></a>
+    <a title="LegacySiteReputation Structure Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">SudoSiteReputation Reference</a>
       <img class="carat" src="../img/carat.png" alt=""/>
-      SiteReputation Structure Reference
+      LegacySiteReputation Structure Reference
     </p>
 
     <div class="content-wrapper">
@@ -105,15 +105,16 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>SiteReputation</h1>
+            <h1>LegacySiteReputation</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SiteReputation</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">LegacySiteReputation</span></code></pre>
 
                 </div>
               </div>
-            <p>Reputation data returned from client</p>
+            <p>Reputation data which can inform a decision on whether to warn
+or block a user from visiting a potentially malicious website.</p>
 
           </div>
         </section>
@@ -125,9 +126,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation0bC0V0C6StatusO"></a>
-                    <a name="//apple_ref/swift/Enum/ReputationStatus" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation0bC0V0C6StatusO">ReputationStatus</a>
+                    <a name="/s:18SudoSiteReputation06LegacybC0V11isMaliciousSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isMalicious" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SudoSiteReputation06LegacybC0V11isMaliciousSbvp">isMalicious</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -135,42 +136,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Search status</p>
+                        <p>True if the site has been reported as malicious.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ReputationStatus</span></code></pre>
-<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">SiteReputation</span><span class="o">.</span><span class="kt">ReputationStatus</span><span class="p">:</span> <span class="kt">Equatable</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:18SudoSiteReputation0bC0V6statusAC0C6StatusOvp"></a>
-                    <a name="//apple_ref/swift/Property/status" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation0bC0V6statusAC0C6StatusOvp">status</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The returned result of the lookup for the site. If .success you can expect the other properties to be non nil.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">status</span><span class="p">:</span> <span class="kt"><a href="../Structs/SiteReputation.html#/s:18SudoSiteReputation0bC0V0C6StatusO">ReputationStatus</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">isMalicious</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>

@@ -11,7 +11,7 @@ import AWSCore
 import Foundation
 import SwiftUI
 
-public struct SiteReputationClientConfig {
+public struct LegacySiteReputationClientConfig {
 
     /// An error raised when initializing the `DefaultSudoSiteReputationClient`.
     public enum ConfigurationError: Error {
@@ -117,13 +117,13 @@ public struct SiteReputationClientConfig {
     }
 }
 
-extension DefaultSudoSiteReputationClient {
+extension DefaultLegacySiteReputationClient {
     @available(*, deprecated, message: "Use SiteReputationClientConfig.ConfigurationError")
-    public typealias ConfigurationError = SiteReputationClientConfig.ConfigurationError
+    public typealias ConfigurationError = LegacySiteReputationClientConfig.ConfigurationError
 }
 
 /// Default implementation of `SiteReputationClient`.
-public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
+public final class DefaultLegacySiteReputationClient: LegacySudoSiteReputationClient {
 
     private let userClient: SudoUserClient
     internal private (set) var reputationProvider: SiteReputationProvider?
@@ -139,11 +139,11 @@ public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
     }()
 
     public convenience init(userClient: SudoUserClient) throws {
-        self.init(config: try SiteReputationClientConfig(userClient: userClient))
+        self.init(config: try LegacySiteReputationClientConfig(userClient: userClient))
     }
 
     /// Instantiates a `DefaultSiteReputationClient` using the provided configuration object.
-    public convenience init(config: SiteReputationClientConfig) {
+    public convenience init(config: LegacySiteReputationClientConfig) {
         let cacheDirectory = config.cacheDirectory
             .appendingPathComponent("reputation-lists")
             .appendingPathComponent(config.storageNamespace)
@@ -187,13 +187,13 @@ public final class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
         )
     }
 
-    public func getSiteReputation(url: String) async throws -> SiteReputation {
+    public func getSiteReputation(url: String) async throws -> LegacySiteReputation {
         guard let reputationProvider = self.reputationProvider else {
-            throw SiteReputationCheckError.reputationDataNotPresent
+            throw LegacySiteReputationCheckError.reputationDataNotPresent
         }
 
         let matchReason = reputationProvider.check(url: url)
-        return SiteReputation(isMalicious: matchReason != nil)
+        return LegacySiteReputation(isMalicious: matchReason != nil)
     }
 
     /// Responsible for populating the ruleset engine with cached lists if present.

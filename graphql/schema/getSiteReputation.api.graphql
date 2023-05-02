@@ -3,36 +3,20 @@ Represents the status of searching for a site reputation result
 """
 enum ReputationStatus {
   """
-  URI found in dataset
+  URI not in dataset as not malicious
   """
-  Success
-
+  NOTMALICIOUS
   """
-  URI not found in dataset
+  URI found in dataset as malicious
   """
-  NotFound
-}
-
-"""
-Represents the scope of the search
-"""
-enum Scope {
+  MALICIOUS
+  
   """
-  Matched on domain
+  `UNKNOWN` is intentionally missing from this enum, though it exists on the service other and SDK's.
+  This is because graphQL codegen for swift will automatically add a `unknown(String)` case which conflicts
+  with the one which would be here. I breifly looked for a way to disable this behavior,
+  but removing seemed the simplest.
   """
-  Domain
-
-  """
-  Matched on path
-  """
-  Path
-}
-
-"""
-Represents the categorization of a url
-"""
-type Category @aws_iam @aws_cognito_user_pools {
-  id: ID!
 }
 
 """
@@ -40,34 +24,9 @@ Representation of a site reputation search result
 """
 type Reputation @aws_iam @aws_cognito_user_pools {
   """
-  Categories the URI is a member of
-  """
-  categories: [Category!]!
-
-  """
-  Scope of the match
-  """
-  scope: Scope
-
-  """
   Search result status
   """
-  status: ReputationStatus!
-
-  """
-  Confidence of the provided rating
-  """
-  confidence: Float
-
-  """
-  Time to Live - cache expiry for the response in seconds
-  """
-  ttl: Int!
-
-  """
-  Service applied business logic of site maliciousness
-  """
-  isMalicious: Boolean
+  reputationStatus: ReputationStatus!
 }
 
 """
@@ -76,3 +35,4 @@ Retrieve site reputation results for the specified uri
 type Query {
   getSiteReputation(uri: String!): Reputation! @aws_iam @aws_cognito_user_pools
 }
+

@@ -8,12 +8,16 @@ import Foundation
 import SudoUser
 import SudoConfigManager
 
-public class RealtimeSiteReputationClient {
+public protocol SudoSiteReputationClient {
+    func getSiteReputation(url: String) async throws -> SiteReputation
+}
+
+public class DefaultSudoSiteReputationClient: SudoSiteReputationClient {
 
     // API client for communicating with the site reputation service backend.
     private let apiClient: APIClient
 
-    // init with an api client. for testing.
+    // init with an api client. Mostly for internal service use and testing.
     internal init(apiClient: APIClient) {
         self.apiClient = apiClient
     }
@@ -24,9 +28,9 @@ public class RealtimeSiteReputationClient {
         self.apiClient = try PlatformAPIClient(userClient: userClient)
     }
 
-    public func getSiteReputation(url: String) async throws -> RealtimeReputation {
+    public func getSiteReputation(url: String) async throws -> SiteReputation {
         let reputation = try await apiClient.getReputation(url: url)
         let snapshot = reputation.getSiteReputation.snapshot
-        return RealtimeReputation(graphQL: GraphQL.Reputation(snapshot: snapshot))
+        return SiteReputation(graphQL: GraphQL.Reputation(snapshot: snapshot))
     }
 }

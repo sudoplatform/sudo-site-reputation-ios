@@ -53,6 +53,9 @@ class SudoAPIClientMock: SudoApiClient {
 
     // on success, the result to return.
     var fetchResult: (result: MockGraphQLResult?, error: Error?)?
+    
+    // fetch call count
+    var fetchCallCount = 0
 
     override public func fetch<Query: GraphQLQuery>(
         query: Query,
@@ -60,6 +63,7 @@ class SudoAPIClientMock: SudoApiClient {
         queue: DispatchQueue = DispatchQueue.main
     ) async throws -> (result: GraphQLResult<Query.Data>?, error: Error?) {
         self.fetchQuery = query
+        self.fetchCallCount += 1
 
         // Base case, throw error if this should throw
         if let error = fetchErrorToThrow {

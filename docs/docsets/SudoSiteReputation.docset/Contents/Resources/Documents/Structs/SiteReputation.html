@@ -48,7 +48,7 @@
             <a class="nav-group-name-link" href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/DefaultSudoSiteReputationClient.html">DefaultSudoSiteReputationClient</a>
+                <a class="nav-group-task-link" href="../Classes/DefaultLegacySiteReputationClient.html">DefaultLegacySiteReputationClient</a>
               </li>
             </ul>
           </li>
@@ -56,10 +56,10 @@
             <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Enums/SiteReputationCheckError.html">SiteReputationCheckError</a>
+                <a class="nav-group-task-link" href="../Enums/LegacySiteReputationCheckError.html">LegacySiteReputationCheckError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Enums/SiteReputationUpdateError.html">SiteReputationUpdateError</a>
+                <a class="nav-group-task-link" href="../Enums/LegacySiteReputationUpdateError.html">LegacySiteReputationUpdateError</a>
               </li>
             </ul>
           </li>
@@ -67,7 +67,7 @@
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions.html#/SiteReputationClientConfig">SiteReputationClientConfig</a>
+                <a class="nav-group-task-link" href="../Extensions.html#/LegacySiteReputationClientConfig">LegacySiteReputationClientConfig</a>
               </li>
             </ul>
           </li>
@@ -75,7 +75,7 @@
             <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Protocols/SudoSiteReputationClient.html">SudoSiteReputationClient</a>
+                <a class="nav-group-task-link" href="../Protocols/LegacySudoSiteReputationClient.html">LegacySudoSiteReputationClient</a>
               </li>
             </ul>
           </li>
@@ -83,25 +83,19 @@
             <a class="nav-group-name-link" href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/LegacySiteReputation.html">LegacySiteReputation</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs.html#/s:18SudoSiteReputation24MissingResponseDataErrorV">MissingResponseDataError</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs.html#/s:18SudoSiteReputation20PlatformGraphQLErrorV">PlatformGraphQLError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation.html">RealtimeReputation</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation/Status.html">– Status</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation/Scope.html">– Scope</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation/MaliciousState.html">– MaliciousState</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/SiteReputation.html">SiteReputation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SiteReputation.html#/s:18SudoSiteReputation0bC0V0C6StatusO">– ReputationStatus</a>
               </li>
             </ul>
           </li>
@@ -119,8 +113,7 @@
 
                 </div>
               </div>
-            <p>Reputation data which can inform a decision on whether to warn
-or block a user from visiting a potentially malicious website.</p>
+            <p>Reputation data returned from client</p>
 
           </div>
         </section>
@@ -132,9 +125,9 @@ or block a user from visiting a potentially malicious website.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation0bC0V11isMaliciousSbvp"></a>
-                    <a name="//apple_ref/swift/Property/isMalicious" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation0bC0V11isMaliciousSbvp">isMalicious</a>
+                    <a name="/s:18SudoSiteReputation0bC0V0C6StatusO"></a>
+                    <a name="//apple_ref/swift/Enum/ReputationStatus" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SudoSiteReputation0bC0V0C6StatusO">ReputationStatus</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -142,14 +135,42 @@ or block a user from visiting a potentially malicious website.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>True if the site has been reported as malicious.</p>
+                        <p>Search status</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">isMalicious</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ReputationStatus</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">SiteReputation</span><span class="o">.</span><span class="kt">ReputationStatus</span><span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18SudoSiteReputation0bC0V6statusAC0C6StatusOvp"></a>
+                    <a name="//apple_ref/swift/Property/status" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SudoSiteReputation0bC0V6statusAC0C6StatusOvp">status</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The returned result of the lookup for the site. If .success you can expect the other properties to be non nil.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">status</span><span class="p">:</span> <span class="kt"><a href="../Structs/SiteReputation.html#/s:18SudoSiteReputation0bC0V0C6StatusO">ReputationStatus</a></span></code></pre>
 
                         </div>
                       </div>
@@ -164,7 +185,7 @@ or block a user from visiting a potentially malicious website.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external noopener">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2023-02-17)</p>
+      <p>&copy; 2023 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external noopener">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2023-05-03)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>

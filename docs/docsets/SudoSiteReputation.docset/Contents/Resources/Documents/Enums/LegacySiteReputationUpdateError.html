@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SiteReputationUpdateError Enumeration Reference</title>
+    <title>LegacySiteReputationUpdateError Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Enum/SiteReputationUpdateError" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Enum/LegacySiteReputationUpdateError" class="dashAnchor"></a>
 
-    <a title="SiteReputationUpdateError Enumeration Reference"></a>
+    <a title="LegacySiteReputationUpdateError Enumeration Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">SudoSiteReputation Reference</a>
       <img class="carat" src="../img/carat.png" alt=""/>
-      SiteReputationUpdateError Enumeration Reference
+      LegacySiteReputationUpdateError Enumeration Reference
     </p>
 
     <div class="content-wrapper">
@@ -48,7 +48,7 @@
             <a class="nav-group-name-link" href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/DefaultSudoSiteReputationClient.html">DefaultSudoSiteReputationClient</a>
+                <a class="nav-group-task-link" href="../Classes/DefaultLegacySiteReputationClient.html">DefaultLegacySiteReputationClient</a>
               </li>
             </ul>
           </li>
@@ -56,10 +56,10 @@
             <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Enums/SiteReputationCheckError.html">SiteReputationCheckError</a>
+                <a class="nav-group-task-link" href="../Enums/LegacySiteReputationCheckError.html">LegacySiteReputationCheckError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Enums/SiteReputationUpdateError.html">SiteReputationUpdateError</a>
+                <a class="nav-group-task-link" href="../Enums/LegacySiteReputationUpdateError.html">LegacySiteReputationUpdateError</a>
               </li>
             </ul>
           </li>
@@ -67,7 +67,7 @@
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions.html#/SiteReputationClientConfig">SiteReputationClientConfig</a>
+                <a class="nav-group-task-link" href="../Extensions.html#/LegacySiteReputationClientConfig">LegacySiteReputationClientConfig</a>
               </li>
             </ul>
           </li>
@@ -75,7 +75,7 @@
             <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Protocols/SudoSiteReputationClient.html">SudoSiteReputationClient</a>
+                <a class="nav-group-task-link" href="../Protocols/LegacySudoSiteReputationClient.html">LegacySudoSiteReputationClient</a>
               </li>
             </ul>
           </li>
@@ -83,25 +83,19 @@
             <a class="nav-group-name-link" href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/LegacySiteReputation.html">LegacySiteReputation</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs.html#/s:18SudoSiteReputation24MissingResponseDataErrorV">MissingResponseDataError</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs.html#/s:18SudoSiteReputation20PlatformGraphQLErrorV">PlatformGraphQLError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation.html">RealtimeReputation</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation/Status.html">– Status</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation/Scope.html">– Scope</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation/MaliciousState.html">– MaliciousState</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/SiteReputation.html">SiteReputation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SiteReputation.html#/s:18SudoSiteReputation0bC0V0C6StatusO">– ReputationStatus</a>
               </li>
             </ul>
           </li>
@@ -111,12 +105,12 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>SiteReputationUpdateError</h1>
+            <h1>LegacySiteReputationUpdateError</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">SiteReputationUpdateError</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
-<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">SiteReputationUpdateError</span><span class="p">:</span> <span class="kt">LocalizedError</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">LegacySiteReputationUpdateError</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">LegacySiteReputationUpdateError</span><span class="p">:</span> <span class="kt">LocalizedError</span></code></pre>
 
                 </div>
               </div>
@@ -132,9 +126,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation0bC11UpdateErrorO17alreadyInProgressyA2CmF"></a>
+                    <a name="/s:18SudoSiteReputation06LegacybC11UpdateErrorO17alreadyInProgressyA2CmF"></a>
                     <a name="//apple_ref/swift/Element/alreadyInProgress" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation0bC11UpdateErrorO17alreadyInProgressyA2CmF">alreadyInProgress</a>
+                    <a class="token" href="#/s:18SudoSiteReputation06LegacybC11UpdateErrorO17alreadyInProgressyA2CmF">alreadyInProgress</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -159,9 +153,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation0bC11UpdateErrorO9cancelledyA2CmF"></a>
+                    <a name="/s:18SudoSiteReputation06LegacybC11UpdateErrorO9cancelledyA2CmF"></a>
                     <a name="//apple_ref/swift/Element/cancelled" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation0bC11UpdateErrorO9cancelledyA2CmF">cancelled</a>
+                    <a class="token" href="#/s:18SudoSiteReputation06LegacybC11UpdateErrorO9cancelledyA2CmF">cancelled</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -186,9 +180,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation0bC11UpdateErrorO07serviceE0yACs0E0_pcACmF"></a>
+                    <a name="/s:18SudoSiteReputation06LegacybC11UpdateErrorO07serviceF0yACs0F0_pcACmF"></a>
                     <a name="//apple_ref/swift/Element/serviceError(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation0bC11UpdateErrorO07serviceE0yACs0E0_pcACmF">serviceError(_:<wbr>)</a>
+                    <a class="token" href="#/s:18SudoSiteReputation06LegacybC11UpdateErrorO07serviceF0yACs0F0_pcACmF">serviceError(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -257,7 +251,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external noopener">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2023-02-17)</p>
+      <p>&copy; 2023 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external noopener">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2023-05-03)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>

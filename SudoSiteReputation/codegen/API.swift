@@ -5,72 +5,36 @@ import AWSAppSync
 
 struct GraphQL {
 
-/// Represents the scope of the search
-internal enum Scope: RawRepresentable, Equatable, JSONDecodable, JSONEncodable {
-  internal typealias RawValue = String
-  /// Matched on domain
-  case domain
-  /// Matched on path
-  case path
-  /// Auto generated constant for unknown enum values
-  case unknown(RawValue)
-
-  internal init?(rawValue: RawValue) {
-    switch rawValue {
-      case "Domain": self = .domain
-      case "Path": self = .path
-      default: self = .unknown(rawValue)
-    }
-  }
-
-  internal var rawValue: RawValue {
-    switch self {
-      case .domain: return "Domain"
-      case .path: return "Path"
-      case .unknown(let value): return value
-    }
-  }
-
-  internal static func == (lhs: Scope, rhs: Scope) -> Bool {
-    switch (lhs, rhs) {
-      case (.domain, .domain): return true
-      case (.path, .path): return true
-      case (.unknown(let lhsValue), .unknown(let rhsValue)): return lhsValue == rhsValue
-      default: return false
-    }
-  }
-}
-
 /// Represents the status of searching for a site reputation result
 internal enum ReputationStatus: RawRepresentable, Equatable, JSONDecodable, JSONEncodable {
   internal typealias RawValue = String
-  /// URI not found in dataset
-  case notFound
-  /// URI found in dataset
-  case success
+  /// URI found in dataset as malicious
+  case malicious
+  /// URI not in dataset as not malicious
+  case notmalicious
   /// Auto generated constant for unknown enum values
   case unknown(RawValue)
 
   internal init?(rawValue: RawValue) {
     switch rawValue {
-      case "NotFound": self = .notFound
-      case "Success": self = .success
+      case "MALICIOUS": self = .malicious
+      case "NOTMALICIOUS": self = .notmalicious
       default: self = .unknown(rawValue)
     }
   }
 
   internal var rawValue: RawValue {
     switch self {
-      case .notFound: return "NotFound"
-      case .success: return "Success"
+      case .malicious: return "MALICIOUS"
+      case .notmalicious: return "NOTMALICIOUS"
       case .unknown(let value): return value
     }
   }
 
   internal static func == (lhs: ReputationStatus, rhs: ReputationStatus) -> Bool {
     switch (lhs, rhs) {
-      case (.notFound, .notFound): return true
-      case (.success, .success): return true
+      case (.malicious, .malicious): return true
+      case (.notmalicious, .notmalicious): return true
       case (.unknown(let lhsValue), .unknown(let rhsValue)): return lhsValue == rhsValue
       default: return false
     }
@@ -125,12 +89,7 @@ internal final class GetSiteReputationQuery: GraphQLQuery {
       internal static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("categories", type: .nonNull(.list(.nonNull(.object(Category.selections))))),
-        GraphQLField("scope", type: .scalar(Scope.self)),
-        GraphQLField("status", type: .nonNull(.scalar(ReputationStatus.self))),
-        GraphQLField("confidence", type: .scalar(Double.self)),
-        GraphQLField("ttl", type: .nonNull(.scalar(Int.self))),
-        GraphQLField("isMalicious", type: .scalar(Bool.self)),
+        GraphQLField("reputationStatus", type: .nonNull(.scalar(ReputationStatus.self))),
       ]
 
       internal var snapshot: Snapshot
@@ -139,8 +98,8 @@ internal final class GetSiteReputationQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      internal init(categories: [Category], scope: Scope? = nil, status: ReputationStatus, confidence: Double? = nil, ttl: Int, isMalicious: Bool? = nil) {
-        self.init(snapshot: ["__typename": "Reputation", "categories": categories.map { $0.snapshot }, "scope": scope, "status": status, "confidence": confidence, "ttl": ttl, "isMalicious": isMalicious])
+      internal init(reputationStatus: ReputationStatus) {
+        self.init(snapshot: ["__typename": "Reputation", "reputationStatus": reputationStatus])
       }
 
       internal var __typename: String {
@@ -152,63 +111,13 @@ internal final class GetSiteReputationQuery: GraphQLQuery {
         }
       }
 
-      /// Categories the URI is a member of
-      internal var categories: [Category] {
-        get {
-          return (snapshot["categories"] as! [Snapshot]).map { Category(snapshot: $0) }
-        }
-        set {
-          snapshot.updateValue(newValue.map { $0.snapshot }, forKey: "categories")
-        }
-      }
-
-      /// Scope of the match
-      internal var scope: Scope? {
-        get {
-          return snapshot["scope"] as? Scope
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "scope")
-        }
-      }
-
       /// Search result status
-      internal var status: ReputationStatus {
+      internal var reputationStatus: ReputationStatus {
         get {
-          return snapshot["status"]! as! ReputationStatus
+          return snapshot["reputationStatus"]! as! ReputationStatus
         }
         set {
-          snapshot.updateValue(newValue, forKey: "status")
-        }
-      }
-
-      /// Confidence of the provided rating
-      internal var confidence: Double? {
-        get {
-          return snapshot["confidence"] as? Double
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "confidence")
-        }
-      }
-
-      /// Time to Live - cache expiry for the response in seconds
-      internal var ttl: Int {
-        get {
-          return snapshot["ttl"]! as! Int
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "ttl")
-        }
-      }
-
-      /// Service applied business logic of site maliciousness
-      internal var isMalicious: Bool? {
-        get {
-          return snapshot["isMalicious"] as? Bool
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "isMalicious")
+          snapshot.updateValue(newValue, forKey: "reputationStatus")
         }
       }
 
@@ -233,61 +142,19 @@ internal final class GetSiteReputationQuery: GraphQLQuery {
           }
         }
       }
-
-      internal struct Category: GraphQLSelectionSet {
-        internal static let possibleTypes = ["Category"]
-
-        internal static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-        ]
-
-        internal var snapshot: Snapshot
-
-        internal init(snapshot: Snapshot) {
-          self.snapshot = snapshot
-        }
-
-        internal init(id: GraphQLID) {
-          self.init(snapshot: ["__typename": "Category", "id": id])
-        }
-
-        internal var __typename: String {
-          get {
-            return snapshot["__typename"]! as! String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "__typename")
-          }
-        }
-
-        internal var id: GraphQLID {
-          get {
-            return snapshot["id"]! as! GraphQLID
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "id")
-          }
-        }
-      }
     }
   }
 }
 
 internal struct Reputation: GraphQLFragment {
   internal static let fragmentString =
-    "fragment Reputation on Reputation {\n  __typename\n  categories {\n    __typename\n    id\n  }\n  scope\n  status\n  confidence\n  ttl\n  isMalicious\n}"
+    "fragment Reputation on Reputation {\n  __typename\n  reputationStatus\n}"
 
   internal static let possibleTypes = ["Reputation"]
 
   internal static let selections: [GraphQLSelection] = [
     GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-    GraphQLField("categories", type: .nonNull(.list(.nonNull(.object(Category.selections))))),
-    GraphQLField("scope", type: .scalar(Scope.self)),
-    GraphQLField("status", type: .nonNull(.scalar(ReputationStatus.self))),
-    GraphQLField("confidence", type: .scalar(Double.self)),
-    GraphQLField("ttl", type: .nonNull(.scalar(Int.self))),
-    GraphQLField("isMalicious", type: .scalar(Bool.self)),
+    GraphQLField("reputationStatus", type: .nonNull(.scalar(ReputationStatus.self))),
   ]
 
   internal var snapshot: Snapshot
@@ -296,8 +163,8 @@ internal struct Reputation: GraphQLFragment {
     self.snapshot = snapshot
   }
 
-  internal init(categories: [Category], scope: Scope? = nil, status: ReputationStatus, confidence: Double? = nil, ttl: Int, isMalicious: Bool? = nil) {
-    self.init(snapshot: ["__typename": "Reputation", "categories": categories.map { $0.snapshot }, "scope": scope, "status": status, "confidence": confidence, "ttl": ttl, "isMalicious": isMalicious])
+  internal init(reputationStatus: ReputationStatus) {
+    self.init(snapshot: ["__typename": "Reputation", "reputationStatus": reputationStatus])
   }
 
   internal var __typename: String {
@@ -309,100 +176,13 @@ internal struct Reputation: GraphQLFragment {
     }
   }
 
-  /// Categories the URI is a member of
-  internal var categories: [Category] {
-    get {
-      return (snapshot["categories"] as! [Snapshot]).map { Category(snapshot: $0) }
-    }
-    set {
-      snapshot.updateValue(newValue.map { $0.snapshot }, forKey: "categories")
-    }
-  }
-
-  /// Scope of the match
-  internal var scope: Scope? {
-    get {
-      return snapshot["scope"] as? Scope
-    }
-    set {
-      snapshot.updateValue(newValue, forKey: "scope")
-    }
-  }
-
   /// Search result status
-  internal var status: ReputationStatus {
+  internal var reputationStatus: ReputationStatus {
     get {
-      return snapshot["status"]! as! ReputationStatus
+      return snapshot["reputationStatus"]! as! ReputationStatus
     }
     set {
-      snapshot.updateValue(newValue, forKey: "status")
-    }
-  }
-
-  /// Confidence of the provided rating
-  internal var confidence: Double? {
-    get {
-      return snapshot["confidence"] as? Double
-    }
-    set {
-      snapshot.updateValue(newValue, forKey: "confidence")
-    }
-  }
-
-  /// Time to Live - cache expiry for the response in seconds
-  internal var ttl: Int {
-    get {
-      return snapshot["ttl"]! as! Int
-    }
-    set {
-      snapshot.updateValue(newValue, forKey: "ttl")
-    }
-  }
-
-  /// Service applied business logic of site maliciousness
-  internal var isMalicious: Bool? {
-    get {
-      return snapshot["isMalicious"] as? Bool
-    }
-    set {
-      snapshot.updateValue(newValue, forKey: "isMalicious")
-    }
-  }
-
-  internal struct Category: GraphQLSelectionSet {
-    internal static let possibleTypes = ["Category"]
-
-    internal static let selections: [GraphQLSelection] = [
-      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-      GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-    ]
-
-    internal var snapshot: Snapshot
-
-    internal init(snapshot: Snapshot) {
-      self.snapshot = snapshot
-    }
-
-    internal init(id: GraphQLID) {
-      self.init(snapshot: ["__typename": "Category", "id": id])
-    }
-
-    internal var __typename: String {
-      get {
-        return snapshot["__typename"]! as! String
-      }
-      set {
-        snapshot.updateValue(newValue, forKey: "__typename")
-      }
-    }
-
-    internal var id: GraphQLID {
-      get {
-        return snapshot["id"]! as! GraphQLID
-      }
-      set {
-        snapshot.updateValue(newValue, forKey: "id")
-      }
+      snapshot.updateValue(newValue, forKey: "reputationStatus")
     }
   }
 }

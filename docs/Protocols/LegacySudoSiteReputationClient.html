@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SudoSiteReputationClient Protocol Reference</title>
+    <title>LegacySudoSiteReputationClient Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Protocol/SudoSiteReputationClient" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Protocol/LegacySudoSiteReputationClient" class="dashAnchor"></a>
 
-    <a title="SudoSiteReputationClient Protocol Reference"></a>
+    <a title="LegacySudoSiteReputationClient Protocol Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">SudoSiteReputation Reference</a>
       <img class="carat" src="../img/carat.png" alt=""/>
-      SudoSiteReputationClient Protocol Reference
+      LegacySudoSiteReputationClient Protocol Reference
     </p>
 
     <div class="content-wrapper">
@@ -48,7 +48,7 @@
             <a class="nav-group-name-link" href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/DefaultSudoSiteReputationClient.html">DefaultSudoSiteReputationClient</a>
+                <a class="nav-group-task-link" href="../Classes/DefaultLegacySiteReputationClient.html">DefaultLegacySiteReputationClient</a>
               </li>
             </ul>
           </li>
@@ -56,10 +56,10 @@
             <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Enums/SiteReputationCheckError.html">SiteReputationCheckError</a>
+                <a class="nav-group-task-link" href="../Enums/LegacySiteReputationCheckError.html">LegacySiteReputationCheckError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Enums/SiteReputationUpdateError.html">SiteReputationUpdateError</a>
+                <a class="nav-group-task-link" href="../Enums/LegacySiteReputationUpdateError.html">LegacySiteReputationUpdateError</a>
               </li>
             </ul>
           </li>
@@ -67,7 +67,7 @@
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions.html#/SiteReputationClientConfig">SiteReputationClientConfig</a>
+                <a class="nav-group-task-link" href="../Extensions.html#/LegacySiteReputationClientConfig">LegacySiteReputationClientConfig</a>
               </li>
             </ul>
           </li>
@@ -75,7 +75,7 @@
             <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Protocols/SudoSiteReputationClient.html">SudoSiteReputationClient</a>
+                <a class="nav-group-task-link" href="../Protocols/LegacySudoSiteReputationClient.html">LegacySudoSiteReputationClient</a>
               </li>
             </ul>
           </li>
@@ -83,25 +83,19 @@
             <a class="nav-group-name-link" href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/LegacySiteReputation.html">LegacySiteReputation</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs.html#/s:18SudoSiteReputation24MissingResponseDataErrorV">MissingResponseDataError</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs.html#/s:18SudoSiteReputation20PlatformGraphQLErrorV">PlatformGraphQLError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation.html">RealtimeReputation</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation/Status.html">– Status</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation/Scope.html">– Scope</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/RealtimeReputation/MaliciousState.html">– MaliciousState</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/SiteReputation.html">SiteReputation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SiteReputation.html#/s:18SudoSiteReputation0bC0V0C6StatusO">– ReputationStatus</a>
               </li>
             </ul>
           </li>
@@ -111,11 +105,11 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>SudoSiteReputationClient</h1>
+            <h1>LegacySudoSiteReputationClient</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SudoSiteReputationClient</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">LegacySudoSiteReputationClient</span></code></pre>
 
                 </div>
               </div>
@@ -131,9 +125,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation0abC6ClientP03getbC03urlAA0bC0VSS_tYaKF"></a>
+                    <a name="/s:18SudoSiteReputation06LegacyabC6ClientP03getbC03urlAA0dbC0VSS_tYaKF"></a>
                     <a name="//apple_ref/swift/Method/getSiteReputation(url:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation0abC6ClientP03getbC03urlAA0bC0VSS_tYaKF">getSiteReputation(url:<wbr>)</a>
+                    <a class="token" href="#/s:18SudoSiteReputation06LegacyabC6ClientP03getbC03urlAA0dbC0VSS_tYaKF">getSiteReputation(url:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Asynchronous
@@ -151,7 +145,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getSiteReputation</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="n">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/SiteReputation.html">SiteReputation</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getSiteReputation</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="n">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/LegacySiteReputation.html">LegacySiteReputation</a></span></code></pre>
 
                         </div>
                       </div>
@@ -180,9 +174,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation0abC6ClientP6updateyyYaKF"></a>
+                    <a name="/s:18SudoSiteReputation06LegacyabC6ClientP6updateyyYaKF"></a>
                     <a name="//apple_ref/swift/Method/update()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation0abC6ClientP6updateyyYaKF">update()</a>
+                    <a class="token" href="#/s:18SudoSiteReputation06LegacyabC6ClientP6updateyyYaKF">update()</a>
                     </code>
                       <span class="declaration-note">
                         Asynchronous
@@ -229,9 +223,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation0abC6ClientP21lastUpdatePerformedAt10Foundation4DateVSgyYaF"></a>
+                    <a name="/s:18SudoSiteReputation06LegacyabC6ClientP21lastUpdatePerformedAt10Foundation4DateVSgyYaF"></a>
                     <a name="//apple_ref/swift/Method/lastUpdatePerformedAt()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation0abC6ClientP21lastUpdatePerformedAt10Foundation4DateVSgyYaF">lastUpdatePerformedAt()</a>
+                    <a class="token" href="#/s:18SudoSiteReputation06LegacyabC6ClientP21lastUpdatePerformedAt10Foundation4DateVSgyYaF">lastUpdatePerformedAt()</a>
                     </code>
                       <span class="declaration-note">
                         Asynchronous
@@ -260,9 +254,9 @@ or <code>nil</code> if there is no site reputation data stored locally.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SudoSiteReputation0abC6ClientP12clearStorageyyYaKF"></a>
+                    <a name="/s:18SudoSiteReputation06LegacyabC6ClientP12clearStorageyyYaKF"></a>
                     <a name="//apple_ref/swift/Method/clearStorage()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SudoSiteReputation0abC6ClientP12clearStorageyyYaKF">clearStorage()</a>
+                    <a class="token" href="#/s:18SudoSiteReputation06LegacyabC6ClientP12clearStorageyyYaKF">clearStorage()</a>
                     </code>
                       <span class="declaration-note">
                         Asynchronous
@@ -296,7 +290,7 @@ Cancels any in-progress calls to <code>update</code>, causing them to return an 
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external noopener">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2023-02-17)</p>
+      <p>&copy; 2023 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external noopener">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2023-05-03)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>

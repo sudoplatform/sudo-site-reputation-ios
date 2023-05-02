@@ -11,12 +11,12 @@ import SudoUser
 
 class SudoSiteReputationIntegrationTests: IntegrationTestBase {
 
-    var client: DefaultSudoSiteReputationClient!
+    var client: DefaultLegacySiteReputationClient!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
 
-        self.client = try DefaultSudoSiteReputationClient(
+        self.client = try DefaultLegacySiteReputationClient(
             userClient: userClient
         )
 

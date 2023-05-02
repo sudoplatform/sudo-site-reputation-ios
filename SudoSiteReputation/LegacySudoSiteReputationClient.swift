@@ -8,17 +8,17 @@ import Foundation
 
 /// Reputation data which can inform a decision on whether to warn
 /// or block a user from visiting a potentially malicious website.
-public struct SiteReputation {
+public struct LegacySiteReputation {
     /// True if the site has been reported as malicious.
     public let isMalicious: Bool
 }
 
 /// A library of functions for querying the reputation of a website using the Sudo Platform Site Reputation service.
-public protocol SudoSiteReputationClient {
+public protocol LegacySudoSiteReputationClient {
     /// Checks the reputation of the provided URL.
     /// - Parameters:
     ///   - url: The URL that will be checked.
-    func getSiteReputation(url: String) async throws -> SiteReputation
+    func getSiteReputation(url: String) async throws -> LegacySiteReputation
 
     /// Retrieves the latest site reputation data from the Sudo Platform Site Reputation service.
     /// - Parameters:
@@ -35,13 +35,13 @@ public protocol SudoSiteReputationClient {
 }
 
 /// An error raised by `SudoSiteReputationClient.getSiteReputation`.
-public enum SiteReputationCheckError: Error {
+public enum LegacySiteReputationCheckError: Error {
     /// Reputation data is not present. Call `update` or `loadCachedData` to obtain the latest reputation data.
     case reputationDataNotPresent
 }
 
 /// An error raised by `SudoSiteReputationClient.update`.
-public enum SiteReputationUpdateError: Error {
+public enum LegacySiteReputationUpdateError: Error {
     /// An outstanding call to `update` or `clearStorage` is already in progress.
     case alreadyInProgress
 
