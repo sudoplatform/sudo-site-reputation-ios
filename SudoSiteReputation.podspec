@@ -14,6 +14,6 @@ Pod::Spec.new do |spec|
   spec.dependency 'AWSS3', '~> 2.24'
   spec.dependency 'AWSCore', '~> 2.27'
   spec.dependency 'SudoLogging', '~> 1.0'
-  spec.dependency 'SudoUser', '~> 14.0'
-  spec.dependency 'SudoApiClient', '~> 9.0'
+  spec.dependency 'SudoUser', '~> 15.0'
+  spec.dependency 'SudoApiClient', '~> 10.0'
 end

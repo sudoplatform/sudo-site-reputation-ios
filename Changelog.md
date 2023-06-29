@@ -1,3 +1,13 @@
+### 6.0.0
+
+### New
+
+- Update SudoUser annd API client depenednecies
+
+### Fixed
+
+- Fix a test case
+
 ### 5.0.0
 
 ### Breaking

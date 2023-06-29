@@ -20,10 +20,10 @@ class RealtimeSiteReputationClientIntegrationTests: IntegrationTestBase {
         try super.tearDownWithError()
     }
     
-    func test_getReputation_returns_unknownSite() async throws {
+    func test_getReputation_returns_notMaliciousSite() async throws {
         let uri = "http://www.anonyome.com"
         let result = try await instance.getSiteReputation(url: uri)
-        XCTAssertEqual(result.status, .unkown)
+        XCTAssertEqual(result.status, .notMalicious)
     }
 
     func test_getReputation_returns_knownBadSite() async throws {

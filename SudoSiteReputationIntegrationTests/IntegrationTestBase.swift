@@ -22,7 +22,7 @@ class IntegrationTestBase: XCTestCase {
         let namespace = "srs-integration-test"
         self.userClient = try DefaultSudoUserClient(keyNamespace: namespace)
 
-        let setupExpectation = self.expectation(description: "wait for setup")
+        let setupExpectation = self.expectation(description: "wait for base setup")
         Task {
             try await userClient.reset()
 
@@ -37,7 +37,7 @@ class IntegrationTestBase: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-        let tearDownExpectation = self.expectation(description: "wait for teardown")
+        let tearDownExpectation = self.expectation(description: "wait for base teardown")
         Task {
             try await deregister(userClient: userClient)
             try await userClient.reset()

@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D99ECA4D305BBF6DBE0F065 /* Pods_SudoSiteReputationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE35B90ABDE94E11002C5F06 /* Pods_SudoSiteReputationTests.framework */; };
+		37C2FC4E9E268DCB51037F80 /* Pods_SudoSiteReputationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990D3296DFFF88CC8F71EBC8 /* Pods_SudoSiteReputationTests.framework */; };
 		3FF67465664D6E38EA2859AA /* SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B8B6E7C267371C34351AF0 /* SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift */; };
-		4CFE2FF4839EE823F41D7A44 /* Pods_SudoSiteReputationIntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C404C45A7E7FB9C467E563 /* Pods_SudoSiteReputationIntegrationTests.framework */; };
+		5BD5CC20061A73EE0C542B50 /* Pods_SudoSiteReputation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB284E74E9888D7304F6CFEE /* Pods_SudoSiteReputation.framework */; };
 		75B3239E27C6AA4C00650EC4 /* MaliciousDomainProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B3239D27C6AA4C00650EC4 /* MaliciousDomainProviderTests.swift */; };
 		75B323A727C6B1B100650EC4 /* DiskCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A545E25A4FE5700AF0FEF /* DiskCacheTests.swift */; };
 		75B323A827C6E63100650EC4 /* LocalizedErrorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */; };
 		75B323A927C944EA00650EC4 /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A536F25A3C43300AF0FEF /* ClientTests.swift */; };
+		7CC0B7636678222B81844682 /* Pods_SudoSiteReputationIntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA79192A1C01CE43D6572A9 /* Pods_SudoSiteReputationIntegrationTests.framework */; };
 		CF2A535325A3B15F00AF0FEF /* S3DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A535225A3B15F00AF0FEF /* S3DataSource.swift */; };
 		CF2A537225A3C43300AF0FEF /* SudoSiteReputation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA626A425A3975700581543 /* SudoSiteReputation.framework */; };
 		CF2A538525A3C55D00AF0FEF /* MaliciousDomainList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A538425A3C55D00AF0FEF /* MaliciousDomainList.swift */; };
@@ -54,7 +55,6 @@
 		E2F80E0E26FBD18100E2CB53 /* MaliciousDomainProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F80E0D26FBD18100E2CB53 /* MaliciousDomainProvider.swift */; };
 		E2FBDBB026F3C15F00C934D5 /* LegacySudoSiteReputationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBDBAF26F3C15F00C934D5 /* LegacySudoSiteReputationClient.swift */; };
 		E2FBDBB726F9811100C934D5 /* SiteReputationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBDBB626F9811100C934D5 /* SiteReputationProvider.swift */; };
-		F9B919A88DE5AFB1E9B92DC8 /* Pods_SudoSiteReputation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6964999C8183DF3AC34F2DEA /* Pods_SudoSiteReputation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,15 +82,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		090F992817982A545D20F8B0 /* Pods-SudoSiteReputationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputationTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputationTests/Pods-SudoSiteReputationTests.debug.xcconfig"; sourceTree = "<group>"; };
-		287767ED35788254430A7BD9 /* Pods-SudoSiteReputationIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputationIntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputationIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
-		557884E13A6006757A07F702 /* Pods-SudoSiteReputationIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputationIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputationIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
-		57C404C45A7E7FB9C467E563 /* Pods_SudoSiteReputationIntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoSiteReputationIntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6964999C8183DF3AC34F2DEA /* Pods_SudoSiteReputation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoSiteReputation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		06B78EDE839A8E455DC9C509 /* Pods-SudoSiteReputationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputationTests/Pods-SudoSiteReputationTests.release.xcconfig"; sourceTree = "<group>"; };
+		315DC59A9C7F8253CD5AE64C /* Pods-SudoSiteReputationIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputationIntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputationIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
+		35FC1AC03E4A8ED7E2D15F02 /* Pods-SudoSiteReputationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputationTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputationTests/Pods-SudoSiteReputationTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4AA79192A1C01CE43D6572A9 /* Pods_SudoSiteReputationIntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoSiteReputationIntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B3239D27C6AA4C00650EC4 /* MaliciousDomainProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaliciousDomainProviderTests.swift; sourceTree = "<group>"; };
-		AB934A3ACA91667DC5956E30 /* Pods-SudoSiteReputation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputation.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputation/Pods-SudoSiteReputation.release.xcconfig"; sourceTree = "<group>"; };
-		B4E65FD1B96A53C0592D20B1 /* Pods-SudoSiteReputation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputation.debug.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputation/Pods-SudoSiteReputation.debug.xcconfig"; sourceTree = "<group>"; };
-		C0F6A5F95F2CE4419053864F /* Pods-SudoSiteReputationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputationTests/Pods-SudoSiteReputationTests.release.xcconfig"; sourceTree = "<group>"; };
+		97D6DF85BE9AEFAF390D3748 /* Pods-SudoSiteReputationIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputationIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputationIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
+		990D3296DFFF88CC8F71EBC8 /* Pods_SudoSiteReputationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoSiteReputationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6B6117CDC61216904167C2B /* Pods-SudoSiteReputation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputation.debug.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputation/Pods-SudoSiteReputation.debug.xcconfig"; sourceTree = "<group>"; };
 		CF2A535225A3B15F00AF0FEF /* S3DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3DataSource.swift; sourceTree = "<group>"; };
 		CF2A536D25A3C43300AF0FEF /* SudoSiteReputationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudoSiteReputationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2A536F25A3C43300AF0FEF /* ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
@@ -114,6 +113,8 @@
 		CFC955FF25A3A36000CC9372 /* SudoSiteReputation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = SudoSiteReputation.podspec; sourceTree = "<group>"; };
 		CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedErrorsTests.swift; sourceTree = "<group>"; };
 		D1B8B6E7C267371C34351AF0 /* SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift"; path = "MockingbirdMocks/SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift"; sourceTree = "<group>"; };
+		D654D110FCF217C2CF123A7D /* Pods-SudoSiteReputation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputation.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputation/Pods-SudoSiteReputation.release.xcconfig"; sourceTree = "<group>"; };
+		DB284E74E9888D7304F6CFEE /* Pods_SudoSiteReputation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoSiteReputation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20C6B7027B1E1E800AB48CE /* ServiceDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDataCache.swift; sourceTree = "<group>"; };
 		E23147BD28F612C900CAA1C1 /* DefaultSudoSiteReputationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSudoSiteReputationClient.swift; sourceTree = "<group>"; };
 		E23147BF28F61D5700CAA1C1 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -143,7 +144,6 @@
 		E2F80E0D26FBD18100E2CB53 /* MaliciousDomainProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaliciousDomainProvider.swift; sourceTree = "<group>"; };
 		E2FBDBAF26F3C15F00C934D5 /* LegacySudoSiteReputationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacySudoSiteReputationClient.swift; sourceTree = "<group>"; };
 		E2FBDBB626F9811100C934D5 /* SiteReputationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteReputationProvider.swift; sourceTree = "<group>"; };
-		EE35B90ABDE94E11002C5F06 /* Pods_SudoSiteReputationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoSiteReputationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF2A537225A3C43300AF0FEF /* SudoSiteReputation.framework in Frameworks */,
-				2D99ECA4D305BBF6DBE0F065 /* Pods_SudoSiteReputationTests.framework in Frameworks */,
+				37C2FC4E9E268DCB51037F80 /* Pods_SudoSiteReputationTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF2A54DF25A627CA00AF0FEF /* SudoSiteReputation.framework in Frameworks */,
-				4CFE2FF4839EE823F41D7A44 /* Pods_SudoSiteReputationIntegrationTests.framework in Frameworks */,
+				7CC0B7636678222B81844682 /* Pods_SudoSiteReputationIntegrationTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,7 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9B919A88DE5AFB1E9B92DC8 /* Pods_SudoSiteReputation.framework in Frameworks */,
+				5BD5CC20061A73EE0C542B50 /* Pods_SudoSiteReputation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,24 +186,14 @@
 		2BC9F3E57CAB83EDD5DE43E9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B4E65FD1B96A53C0592D20B1 /* Pods-SudoSiteReputation.debug.xcconfig */,
-				AB934A3ACA91667DC5956E30 /* Pods-SudoSiteReputation.release.xcconfig */,
-				090F992817982A545D20F8B0 /* Pods-SudoSiteReputationTests.debug.xcconfig */,
-				C0F6A5F95F2CE4419053864F /* Pods-SudoSiteReputationTests.release.xcconfig */,
-				287767ED35788254430A7BD9 /* Pods-SudoSiteReputationIntegrationTests.debug.xcconfig */,
-				557884E13A6006757A07F702 /* Pods-SudoSiteReputationIntegrationTests.release.xcconfig */,
+				A6B6117CDC61216904167C2B /* Pods-SudoSiteReputation.debug.xcconfig */,
+				D654D110FCF217C2CF123A7D /* Pods-SudoSiteReputation.release.xcconfig */,
+				315DC59A9C7F8253CD5AE64C /* Pods-SudoSiteReputationIntegrationTests.debug.xcconfig */,
+				97D6DF85BE9AEFAF390D3748 /* Pods-SudoSiteReputationIntegrationTests.release.xcconfig */,
+				35FC1AC03E4A8ED7E2D15F02 /* Pods-SudoSiteReputationTests.debug.xcconfig */,
+				06B78EDE839A8E455DC9C509 /* Pods-SudoSiteReputationTests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		42893DD55B2B729B15A6D86A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6964999C8183DF3AC34F2DEA /* Pods_SudoSiteReputation.framework */,
-				EE35B90ABDE94E11002C5F06 /* Pods_SudoSiteReputationTests.framework */,
-				57C404C45A7E7FB9C467E563 /* Pods_SudoSiteReputationIntegrationTests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		75B3239B27C6A95B00650EC4 /* StorageTests */ = {
@@ -221,6 +211,16 @@
 				E2F80E0B26FAA49400E2CB53 /* SiteReputationRulesetTests.swift */,
 			);
 			path = ReputationEngineTests;
+			sourceTree = "<group>";
+		};
+		7CC65D182DA2CE71B32C9678 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB284E74E9888D7304F6CFEE /* Pods_SudoSiteReputation.framework */,
+				4AA79192A1C01CE43D6572A9 /* Pods_SudoSiteReputationIntegrationTests.framework */,
+				990D3296DFFF88CC8F71EBC8 /* Pods_SudoSiteReputationTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		91BCB9314A66E0A92579B792 /* Generated Mocks */ = {
@@ -302,8 +302,8 @@
 				CFBA2A1E25A650A00072594C /* SudoSiteReputationIntegrationTestHost */,
 				CFA626A525A3975700581543 /* Products */,
 				2BC9F3E57CAB83EDD5DE43E9 /* Pods */,
-				42893DD55B2B729B15A6D86A /* Frameworks */,
 				91BCB9314A66E0A92579B792 /* Generated Mocks */,
+				7CC65D182DA2CE71B32C9678 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -405,12 +405,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF2A537525A3C43300AF0FEF /* Build configuration list for PBXNativeTarget "SudoSiteReputationTests" */;
 			buildPhases = (
-				1DD81BA268C9492BEB300E69 /* [CP] Check Pods Manifest.lock */,
+				05664DC4309D6712B2BC5B58 /* [CP] Check Pods Manifest.lock */,
 				7B237D0C53EA7920CF2C6AE3 /* Generate Mockingbird Mocks */,
 				CF2A536925A3C43300AF0FEF /* Sources */,
 				CF2A536A25A3C43300AF0FEF /* Frameworks */,
 				CF2A536B25A3C43300AF0FEF /* Resources */,
-				8B856E464371BC3D0A467CBF /* [CP] Embed Pods Frameworks */,
+				ACB4C5B17928AAE5F68A252C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -426,11 +426,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF2A54E225A627CA00AF0FEF /* Build configuration list for PBXNativeTarget "SudoSiteReputationIntegrationTests" */;
 			buildPhases = (
-				806AD2D5417812282B78DE17 /* [CP] Check Pods Manifest.lock */,
+				AF4F192FF138FAC7DD5766AE /* [CP] Check Pods Manifest.lock */,
 				CF2A54D625A627CA00AF0FEF /* Sources */,
 				CF2A54D725A627CA00AF0FEF /* Frameworks */,
 				CF2A54D825A627CA00AF0FEF /* Resources */,
-				0C1AF61569CF2A21F033D246 /* [CP] Embed Pods Frameworks */,
+				FA99589DF3E9679D68670E35 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -447,7 +447,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFA626AC25A3975700581543 /* Build configuration list for PBXNativeTarget "SudoSiteReputation" */;
 			buildPhases = (
-				006DCB1A1BEFCBE56B6C730C /* [CP] Check Pods Manifest.lock */,
+				1B52EC6389A026943CA7FA39 /* [CP] Check Pods Manifest.lock */,
 				CFA6269F25A3975700581543 /* Headers */,
 				CFA626A025A3975700581543 /* Sources */,
 				CFA626A125A3975700581543 /* Frameworks */,
@@ -558,46 +558,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		006DCB1A1BEFCBE56B6C730C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SudoSiteReputation-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		0C1AF61569CF2A21F033D246 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputationIntegrationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputationIntegrationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputationIntegrationTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1DD81BA268C9492BEB300E69 /* [CP] Check Pods Manifest.lock */ = {
+		05664DC4309D6712B2BC5B58 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -613,6 +574,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-SudoSiteReputationTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1B52EC6389A026943CA7FA39 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SudoSiteReputation-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -635,7 +618,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -eu\n\n# Prevent Xcode 13 from running this script while indexing.\n[[ \"${ACTION}\" == \"indexbuild\" ]] && exit 0\n\n\"${SRCROOT}/Pods/MockingbirdFramework/mockingbird\" generate --targets \"SudoSiteReputation\" --outputs \"${SRCROOT}/MockingbirdMocks/SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift\"";
 		};
-		806AD2D5417812282B78DE17 /* [CP] Check Pods Manifest.lock */ = {
+		ACB4C5B17928AAE5F68A252C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputationTests/Pods-SudoSiteReputationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputationTests/Pods-SudoSiteReputationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputationTests/Pods-SudoSiteReputationTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF4F192FF138FAC7DD5766AE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -657,23 +657,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8B856E464371BC3D0A467CBF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputationTests/Pods-SudoSiteReputationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputationTests/Pods-SudoSiteReputationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputationTests/Pods-SudoSiteReputationTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CFBA2A4625A651290072594C /* [Sudo Platform] Copy SDK Config and TEST Registration Key */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -691,6 +674,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo \"Copying SDK config to bundle\"\ncp -f config/sudoplatformconfig.json \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\" || :\n\necho \"Copying TEST registration key ID to bundle\"\nSOURCE=${PROJECT_DIR}/config/register_key.id \ncp -f ${SOURCE} \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\n\necho \"Copying TEST registration key to bundle\"\nSOURCE=${PROJECT_DIR}/config/register_key.private \ncp -f ${SOURCE} \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\n\necho Files copied:\nls ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\n";
+		};
+		FA99589DF3E9679D68670E35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputationIntegrationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputationIntegrationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputationIntegrationTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -788,7 +788,7 @@
 /* Begin XCBuildConfiguration section */
 		CF2A537625A3C43300AF0FEF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 090F992817982A545D20F8B0 /* Pods-SudoSiteReputationTests.debug.xcconfig */;
+			baseConfigurationReference = 35FC1AC03E4A8ED7E2D15F02 /* Pods-SudoSiteReputationTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SudoSiteReputationTests/Info.plist;
@@ -807,7 +807,7 @@
 		};
 		CF2A537725A3C43300AF0FEF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0F6A5F95F2CE4419053864F /* Pods-SudoSiteReputationTests.release.xcconfig */;
+			baseConfigurationReference = 06B78EDE839A8E455DC9C509 /* Pods-SudoSiteReputationTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SudoSiteReputationTests/Info.plist;
@@ -826,7 +826,7 @@
 		};
 		CF2A54E325A627CA00AF0FEF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 287767ED35788254430A7BD9 /* Pods-SudoSiteReputationIntegrationTests.debug.xcconfig */;
+			baseConfigurationReference = 315DC59A9C7F8253CD5AE64C /* Pods-SudoSiteReputationIntegrationTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU2W43R8JA;
@@ -847,7 +847,7 @@
 		};
 		CF2A54E425A627CA00AF0FEF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 557884E13A6006757A07F702 /* Pods-SudoSiteReputationIntegrationTests.release.xcconfig */;
+			baseConfigurationReference = 97D6DF85BE9AEFAF390D3748 /* Pods-SudoSiteReputationIntegrationTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU2W43R8JA;
@@ -990,7 +990,7 @@
 		};
 		CFA626AD25A3975700581543 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B4E65FD1B96A53C0592D20B1 /* Pods-SudoSiteReputation.debug.xcconfig */;
+			baseConfigurationReference = A6B6117CDC61216904167C2B /* Pods-SudoSiteReputation.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1017,7 +1017,7 @@
 		};
 		CFA626AE25A3975700581543 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB934A3ACA91667DC5956E30 /* Pods-SudoSiteReputation.release.xcconfig */;
+			baseConfigurationReference = D654D110FCF217C2CF123A7D /* Pods-SudoSiteReputation.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
