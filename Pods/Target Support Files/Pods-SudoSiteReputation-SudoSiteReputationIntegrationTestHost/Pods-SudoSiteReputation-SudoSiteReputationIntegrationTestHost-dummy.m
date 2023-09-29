@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_SudoSiteReputation_SudoSiteReputationIntegrationTestHost : NSObject
+@end
+@implementation PodsDummy_Pods_SudoSiteReputation_SudoSiteReputationIntegrationTestHost
+@end

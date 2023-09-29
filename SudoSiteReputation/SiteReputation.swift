@@ -10,9 +10,11 @@ import Foundation
 public struct SiteReputation {
     
     public init(
-        status: SiteReputation.ReputationStatus
+        status: SiteReputation.ReputationStatus,
+        categories: [String]
     ) {
         self.status = status
+        self.categories = categories
     }
     
     /// Search status
@@ -27,6 +29,9 @@ public struct SiteReputation {
 
     /// The returned result of the lookup for the site. If .success you can expect the other properties to be non nil.
     public let status: ReputationStatus
+    
+    /// Categorization of the site
+    public let categories: [String]
 }
 
 // MARK: Transformers.
@@ -36,7 +41,8 @@ extension SiteReputation {
     
     init(graphQL: GraphQL.Reputation) {
         self.init(
-            status: ReputationStatus(graphQL: graphQL.reputationStatus)
+            status: ReputationStatus(graphQL: graphQL.reputationStatus),
+            categories: graphQL.categories
         )
     }
 }

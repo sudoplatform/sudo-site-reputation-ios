@@ -60,6 +60,18 @@
             ReferencedContainer = "container:SudoSiteReputation.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "ADMIN_API_KEY"
+            value = "${ADMIN_API_KEY}"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "REGISTER_KEY"
+            value = "${REGISTER_KEY}"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

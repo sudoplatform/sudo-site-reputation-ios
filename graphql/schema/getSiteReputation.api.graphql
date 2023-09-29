@@ -10,13 +10,6 @@ enum ReputationStatus {
   URI found in dataset as malicious
   """
   MALICIOUS
-  
-  """
-  `UNKNOWN` is intentionally missing from this enum, though it exists on the service other and SDK's.
-  This is because graphQL codegen for swift will automatically add a `unknown(String)` case which conflicts
-  with the one which would be here. I breifly looked for a way to disable this behavior,
-  but removing seemed the simplest.
-  """
 }
 
 """
@@ -27,12 +20,11 @@ type Reputation @aws_iam @aws_cognito_user_pools {
   Search result status
   """
   reputationStatus: ReputationStatus!
+  categories: [String!]!
 }
-
 """
 Retrieve site reputation results for the specified uri
 """
 type Query {
   getSiteReputation(uri: String!): Reputation! @aws_iam @aws_cognito_user_pools
 }
-

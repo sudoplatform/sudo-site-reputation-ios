@@ -48,7 +48,8 @@ class PlatfomAPIClientTests: XCTestCase {
 
     func test_returnsAppSync_successResult() async throws {
         let mockedData = GraphQL.GetSiteReputationQuery.Data.init(getSiteReputation: .init(
-            reputationStatus: .notmalicious
+            reputationStatus: .notmalicious,
+            categories: []
         ))
         let result = MockGraphQLResult(data: mockedData, errors: nil)
         mockAPIClient.fetchResult = (result, nil)
@@ -58,7 +59,8 @@ class PlatfomAPIClientTests: XCTestCase {
     
     func test_usesCache() async throws {
         let mockedData = GraphQL.GetSiteReputationQuery.Data.init(getSiteReputation: .init(
-            reputationStatus: .notmalicious
+            reputationStatus: .notmalicious,
+            categories: []
         ))
         let result = MockGraphQLResult(data: mockedData, errors: nil)
         mockAPIClient.fetchResult = (result, nil)

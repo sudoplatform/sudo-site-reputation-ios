@@ -90,6 +90,7 @@ internal final class GetSiteReputationQuery: GraphQLQuery {
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("reputationStatus", type: .nonNull(.scalar(ReputationStatus.self))),
+        GraphQLField("categories", type: .nonNull(.list(.nonNull(.scalar(String.self))))),
       ]
 
       internal var snapshot: Snapshot
@@ -98,8 +99,8 @@ internal final class GetSiteReputationQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      internal init(reputationStatus: ReputationStatus) {
-        self.init(snapshot: ["__typename": "Reputation", "reputationStatus": reputationStatus])
+      internal init(reputationStatus: ReputationStatus, categories: [String]) {
+        self.init(snapshot: ["__typename": "Reputation", "reputationStatus": reputationStatus, "categories": categories])
       }
 
       internal var __typename: String {
@@ -118,6 +119,15 @@ internal final class GetSiteReputationQuery: GraphQLQuery {
         }
         set {
           snapshot.updateValue(newValue, forKey: "reputationStatus")
+        }
+      }
+
+      internal var categories: [String] {
+        get {
+          return snapshot["categories"]! as! [String]
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "categories")
         }
       }
 
@@ -148,13 +158,14 @@ internal final class GetSiteReputationQuery: GraphQLQuery {
 
 internal struct Reputation: GraphQLFragment {
   internal static let fragmentString =
-    "fragment Reputation on Reputation {\n  __typename\n  reputationStatus\n}"
+    "fragment Reputation on Reputation {\n  __typename\n  reputationStatus\n  categories\n}"
 
   internal static let possibleTypes = ["Reputation"]
 
   internal static let selections: [GraphQLSelection] = [
     GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
     GraphQLField("reputationStatus", type: .nonNull(.scalar(ReputationStatus.self))),
+    GraphQLField("categories", type: .nonNull(.list(.nonNull(.scalar(String.self))))),
   ]
 
   internal var snapshot: Snapshot
@@ -163,8 +174,8 @@ internal struct Reputation: GraphQLFragment {
     self.snapshot = snapshot
   }
 
-  internal init(reputationStatus: ReputationStatus) {
-    self.init(snapshot: ["__typename": "Reputation", "reputationStatus": reputationStatus])
+  internal init(reputationStatus: ReputationStatus, categories: [String]) {
+    self.init(snapshot: ["__typename": "Reputation", "reputationStatus": reputationStatus, "categories": categories])
   }
 
   internal var __typename: String {
@@ -183,6 +194,15 @@ internal struct Reputation: GraphQLFragment {
     }
     set {
       snapshot.updateValue(newValue, forKey: "reputationStatus")
+    }
+  }
+
+  internal var categories: [String] {
+    get {
+      return snapshot["categories"]! as! [String]
+    }
+    set {
+      snapshot.updateValue(newValue, forKey: "categories")
     }
   }
 }

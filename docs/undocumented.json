@@ -45,27 +45,27 @@
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/site-reputation/site-reputation-ios/SudoSiteReputation/SiteReputation.swift",
       "line": 12,
-      "symbol": "SiteReputation.init(status:)",
+      "symbol": "SiteReputation.init(status:categories:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/site-reputation/site-reputation-ios/SudoSiteReputation/SiteReputation.swift",
-      "line": 21,
+      "line": 23,
       "symbol": "SiteReputation.ReputationStatus.notMalicious",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/site-reputation/site-reputation-ios/SudoSiteReputation/SiteReputation.swift",
-      "line": 23,
+      "line": 25,
       "symbol": "SiteReputation.ReputationStatus.malicious",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/site-reputation/site-reputation-ios/SudoSiteReputation/SiteReputation.swift",
-      "line": 25,
+      "line": 27,
       "symbol": "SiteReputation.ReputationStatus.unkown",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"

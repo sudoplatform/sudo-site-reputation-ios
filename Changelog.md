@@ -1,3 +1,9 @@
+### 7.0.0
+
+### New
+
+- Added a list of categorizations to reputation response. 
+
 ### 6.0.0
 
 ### New

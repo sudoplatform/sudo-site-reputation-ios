@@ -4,14 +4,29 @@ use_frameworks! :linkage => :dynamic # FIXME: :static when bumped to AWS >= 2.17
 use_modular_headers!
 inhibit_all_warnings!
 
-target 'SudoSiteReputation'
-target 'SudoSiteReputationTests' do
-  use_frameworks!
-  pod 'MockingbirdFramework', '~> 0.20'
-end
-target 'SudoSiteReputationIntegrationTests'
+project 'SudoSiteReputation.xcodeproj'
 
-podspec :name => 'SudoSiteReputation'
+target 'SudoSiteReputation' do
+  podspec :name => 'SudoSiteReputation'
+  
+  target 'SudoSiteReputationTests' do
+    use_frameworks!
+    podspec :name => 'SudoSiteReputation'
+    pod 'MockingbirdFramework', '~> 0.20'
+  end
+  
+  target 'SudoSiteReputationIntegrationTests' do
+    podspec :name => 'SudoSiteReputation'
+    pod 'SudoProfiles'
+    pod 'SudoEntitlements'
+    pod 'SudoEntitlementsAdmin'
+  end
+  
+  target 'SudoSiteReputationIntegrationTestHost' do
+    podspec :name => 'SudoSiteReputation'
+  end
+end
+
 
 # To fix an Xcode 14.3 issue with deployment targets less than 10
 post_install do |installer|

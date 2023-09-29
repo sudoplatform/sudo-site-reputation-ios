@@ -40,7 +40,10 @@ class RealtimeSiteReputationClientTests: XCTestCase {
         
         givenSwift(await apiClient.getReputation(url: testURL)).will { _ in
             return GraphQL.GetSiteReputationQuery.Data(
-                getSiteReputation: .init(reputationStatus: .notmalicious)
+                getSiteReputation: .init(
+                    reputationStatus: .notmalicious,
+                    categories: []
+                )
             )
         }
         let reputation = try
