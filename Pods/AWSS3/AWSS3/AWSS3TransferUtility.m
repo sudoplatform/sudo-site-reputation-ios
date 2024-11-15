@@ -942,6 +942,7 @@ static AWSS3TransferUtility *_defaultS3TransferUtility = nil;
     AWSDDLogDebug(@"Value of timeoutIntervalForResource is %ld", (long)_transferUtilityConfiguration.timeoutIntervalForResource);
     getPreSignedURLRequest.minimumCredentialsExpirationInterval = _transferUtilityConfiguration.timeoutIntervalForResource;
     getPreSignedURLRequest.accelerateModeEnabled = self.transferUtilityConfiguration.isAccelerateModeEnabled;
+    getPreSignedURLRequest.preferredAccessStyle = self.transferUtilityConfiguration.preferredAccessStyle;
     
     [transferUtilityUploadTask.expression assignRequestHeaders:getPreSignedURLRequest];
     [transferUtilityUploadTask.expression assignRequestParameters:getPreSignedURLRequest];
@@ -957,7 +958,13 @@ static AWSS3TransferUtility *_defaultS3TransferUtility = nil;
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:presignedURL];
         request.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
         request.HTTPMethod = @"PUT";
-        
+
+        if (@available(iOS 12.0, *)) {
+            // `NSURLRequest.h` doesn't include an `API_AVAILABLE` for this case,
+            // however the docs state iOS 12.0 +
+            // https://developer.apple.com/documentation/foundation/nsurlrequestnetworkservicetype/nsurlnetworkservicetyperesponsivedata
+            request.networkServiceType = NSURLNetworkServiceTypeResponsiveData;
+        }
         [request setValue:self.configuration.userAgent forHTTPHeaderField:@"User-Agent"];
         
         for (NSString *key in transferUtilityUploadTask.expression.requestHeaders) {
@@ -1444,10 +1451,17 @@ internalDictionaryToAddSubTaskTo: (NSMutableDictionary *) internalDictionaryToAd
     request.expires = [NSDate dateWithTimeIntervalSinceNow:_transferUtilityConfiguration.timeoutIntervalForResource];
     request.minimumCredentialsExpirationInterval = _transferUtilityConfiguration.timeoutIntervalForResource;
     request.accelerateModeEnabled = self.transferUtilityConfiguration.isAccelerateModeEnabled;
+    request.preferredAccessStyle = self.transferUtilityConfiguration.preferredAccessStyle;
     [self filterAndAssignHeaders:transferUtilityMultiPartUploadTask.expression.requestHeaders getPresignedURLRequest:request
                       URLRequest:nil];
     
     [transferUtilityMultiPartUploadTask.expression assignRequestParameters:request];
+
+    NSString *contentMD5 = nil;
+    if (transferUtilityMultiPartUploadTask.expression.useContentMD5) {
+        contentMD5 = [NSString aws_base64md5FromData: [NSData dataWithContentsOfFile: subTask.file]];
+        [request setContentMD5: contentMD5];
+    }
 
     [[[self.preSignedURLBuilder getPreSignedURL:request] continueWithBlock:^id(AWSTask *task) {
         error = task.error;
@@ -1462,7 +1476,10 @@ internalDictionaryToAddSubTaskTo: (NSMutableDictionary *) internalDictionaryToAd
          urlRequest.HTTPMethod = @"PUT";
         [self filterAndAssignHeaders:transferUtilityMultiPartUploadTask.expression.requestHeaders
               getPresignedURLRequest:nil URLRequest: urlRequest];
-        [ urlRequest setValue:[self.configuration.userAgent stringByAppendingString:@" MultiPart"] forHTTPHeaderField:@"User-Agent"];
+        [urlRequest setValue:[self.configuration.userAgent stringByAppendingString:@" MultiPart"] forHTTPHeaderField:@"User-Agent"];
+        if (contentMD5 != nil) {
+            [urlRequest setValue:contentMD5 forHTTPHeaderField:@"Content-MD5"];
+        }
         NSURLSessionUploadTask *nsURLUploadTask = [self getURLSessionUploadTaskWithRequest:urlRequest
                                                                                   fromFile:[NSURL fileURLWithPath:subTask.file]
                                                                                      error:&error];
@@ -1647,6 +1664,7 @@ internalDictionaryToAddSubTaskTo: (NSMutableDictionary *) internalDictionaryToAd
     getPreSignedURLRequest.expires = [NSDate dateWithTimeIntervalSinceNow:_transferUtilityConfiguration.timeoutIntervalForResource];
     getPreSignedURLRequest.minimumCredentialsExpirationInterval = _transferUtilityConfiguration.timeoutIntervalForResource;
     getPreSignedURLRequest.accelerateModeEnabled = self.transferUtilityConfiguration.isAccelerateModeEnabled;
+    getPreSignedURLRequest.preferredAccessStyle = self.transferUtilityConfiguration.preferredAccessStyle;
     
     [transferUtilityDownloadTask.expression assignRequestHeaders:getPreSignedURLRequest];
     [transferUtilityDownloadTask.expression assignRequestParameters:getPreSignedURLRequest];
@@ -2578,6 +2596,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
         _retryLimit = 0;
         _multiPartConcurrencyLimit = @(AWSS3TransferUtilityMultiPartDefaultConcurrencyLimit);
         _timeoutIntervalForResource = AWSS3TransferUtilityTimeoutIntervalForResource;
+        _preferredAccessStyle = AWSS3BucketAccessStyleVirtualHosted;
     }
     return self;
 }
@@ -2589,6 +2608,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     configuration.retryLimit = self.retryLimit;
     configuration.multiPartConcurrencyLimit = self.multiPartConcurrencyLimit;
     configuration.timeoutIntervalForResource = self.timeoutIntervalForResource;
+    configuration.preferredAccessStyle = self.preferredAccessStyle;
     return configuration;
 }
 

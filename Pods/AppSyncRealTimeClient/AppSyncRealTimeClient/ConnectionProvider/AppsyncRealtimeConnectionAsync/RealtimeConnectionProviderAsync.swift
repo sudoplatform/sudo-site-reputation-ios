@@ -12,13 +12,13 @@ import Combine
 
 /// Appsync Real time connection that connects to subscriptions
 /// through websocket.
-@available(iOS 13.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 public class RealtimeConnectionProviderAsync: ConnectionProvider {
     /// Maximum number of seconds a connection may go without receiving a keep alive
     /// message before we consider it stale and force a disconnect
     static let staleConnectionTimeout: TimeInterval = 5 * 60
 
-    let url: URL
+    let urlRequest: URLRequest
     var listeners: [String: ConnectionProviderCallback]
 
     let websocket: AppSyncWebsocketProvider
@@ -63,7 +63,7 @@ public class RealtimeConnectionProviderAsync: ConnectionProvider {
     }
 
     init(
-        url: URL,
+        urlRequest: URLRequest,
         websocket: AppSyncWebsocketProvider,
 
         serialCallbackQueue: DispatchQueue = DispatchQueue(
@@ -71,7 +71,7 @@ public class RealtimeConnectionProviderAsync: ConnectionProvider {
         ),
         connectivityMonitor: ConnectivityMonitor = ConnectivityMonitor()
     ) {
-        self.url = url
+        self.urlRequest = urlRequest
         self.websocket = websocket
         self.listeners = [:]
         self.status = .notConnected
@@ -80,12 +80,19 @@ public class RealtimeConnectionProviderAsync: ConnectionProvider {
         self.serialCallbackQueue = serialCallbackQueue
         self.connectivityMonitor = connectivityMonitor
 
+        // On a physical watchOS device, it is showing "unsatisfied" despite connected to the internet
+        // according to https://developer.apple.com/forums/thread/729568
+        // To avoid an incorrect network status state for the system, do not use connectivity monitor
+        // for watchOS apps.
+        #if !os(watchOS)
         connectivityMonitor.start(onUpdates: handleConnectivityUpdates(connectivity:))
+        #endif
+        
         subscribeToLimitExceededThrottle()
     }
 
-    public convenience init(for url: URL, websocket: AppSyncWebsocketProvider) {
-        self.init(url: url, websocket: websocket)
+    public convenience init(for urlRequest: URLRequest, websocket: AppSyncWebsocketProvider) {
+        self.init(urlRequest: urlRequest, websocket: websocket)
     }
 
     // MARK: - ConnectionProvider methods
@@ -99,13 +106,21 @@ public class RealtimeConnectionProviderAsync: ConnectionProvider {
                 self.updateCallback(event: .connection(self.status))
                 return
             }
+            guard let url = self.urlRequest.url else {
+                self.updateCallback(event: .error(ConnectionProviderError.unknown(
+                    message: "Missing URL",
+                    payload: nil
+                )))
+                return
+            }
             self.status = .inProgress
             self.updateCallback(event: .connection(self.status))
-            let request = AppSyncConnectionRequest(url: self.url)
-
-            let signedRequest = await self.interceptConnection(request, for: self.url)
+            let request = AppSyncConnectionRequest(url: url)
+            let signedRequest = await self.interceptConnection(request, for: url)
+            var urlRequest = self.urlRequest
+            urlRequest.url = signedRequest.url
             self.websocket.connect(
-                url: signedRequest.url,
+                urlRequest: urlRequest,
                 protocols: ["graphql-ws"],
                 delegate: self
             )
@@ -117,8 +132,14 @@ public class RealtimeConnectionProviderAsync: ConnectionProvider {
             guard let self = self else {
                 return
             }
-
-            let signedMessage = await self.interceptMessage(message, for: self.url)
+            guard let url = self.urlRequest.url else {
+                self.updateCallback(event: .error(ConnectionProviderError.unknown(
+                    message: "Missing URL",
+                    payload: nil
+                )))
+                return
+            }
+            let signedMessage = await self.interceptMessage(message, for: url)
 
             let jsonEncoder = JSONEncoder()
             do {

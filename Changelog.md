@@ -1,3 +1,9 @@
+### 8.0.0
+
+### Changed
+
+- Support SudoUser 16
+
 ### 7.0.0
 
 ### New

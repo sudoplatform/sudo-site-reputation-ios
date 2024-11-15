@@ -104,7 +104,7 @@ internal struct AddEntitlementsSetInput: GraphQLMapConvertible {
 internal struct EntitlementInput: GraphQLMapConvertible {
   internal var graphQLMap: GraphQLMap
 
-  internal init(description: Optional<String?> = nil, name: String, value: Int) {
+  internal init(description: Optional<String?> = nil, name: String, value: Double) {
     graphQLMap = ["description": description, "name": name, "value": value]
   }
 
@@ -126,9 +126,9 @@ internal struct EntitlementInput: GraphQLMapConvertible {
     }
   }
 
-  internal var value: Int {
+  internal var value: Double {
     get {
-      return graphQLMap["value"] as! Int
+      return graphQLMap["value"] as! Double
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "value")
@@ -139,8 +139,8 @@ internal struct EntitlementInput: GraphQLMapConvertible {
 internal struct ApplyEntitlementsSequenceToUserInput: GraphQLMapConvertible {
   internal var graphQLMap: GraphQLMap
 
-  internal init(entitlementsSequenceName: String, externalId: String, transitionsRelativeToEpochMs: Optional<Double?> = nil) {
-    graphQLMap = ["entitlementsSequenceName": entitlementsSequenceName, "externalId": externalId, "transitionsRelativeToEpochMs": transitionsRelativeToEpochMs]
+  internal init(entitlementsSequenceName: String, externalId: String, transitionsRelativeToEpochMs: Optional<Double?> = nil, version: Optional<Double?> = nil) {
+    graphQLMap = ["entitlementsSequenceName": entitlementsSequenceName, "externalId": externalId, "transitionsRelativeToEpochMs": transitionsRelativeToEpochMs, "version": version]
   }
 
   internal var entitlementsSequenceName: String {
@@ -169,6 +169,15 @@ internal struct ApplyEntitlementsSequenceToUserInput: GraphQLMapConvertible {
       graphQLMap.updateValue(newValue, forKey: "transitionsRelativeToEpochMs")
     }
   }
+
+  internal var version: Optional<Double?> {
+    get {
+      return graphQLMap["version"] as! Optional<Double?>
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "version")
+    }
+  }
 }
 
 internal struct ApplyEntitlementsSequenceToUsersInput: GraphQLMapConvertible {
@@ -191,8 +200,8 @@ internal struct ApplyEntitlementsSequenceToUsersInput: GraphQLMapConvertible {
 internal struct ApplyEntitlementsSetToUserInput: GraphQLMapConvertible {
   internal var graphQLMap: GraphQLMap
 
-  internal init(entitlementsSetName: String, externalId: String) {
-    graphQLMap = ["entitlementsSetName": entitlementsSetName, "externalId": externalId]
+  internal init(entitlementsSetName: String, externalId: String, version: Optional<Double?> = nil) {
+    graphQLMap = ["entitlementsSetName": entitlementsSetName, "externalId": externalId, "version": version]
   }
 
   internal var entitlementsSetName: String {
@@ -210,6 +219,15 @@ internal struct ApplyEntitlementsSetToUserInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "externalId")
+    }
+  }
+
+  internal var version: Optional<Double?> {
+    get {
+      return graphQLMap["version"] as! Optional<Double?>
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "version")
     }
   }
 }
@@ -234,8 +252,8 @@ internal struct ApplyEntitlementsSetToUsersInput: GraphQLMapConvertible {
 internal struct ApplyEntitlementsToUserInput: GraphQLMapConvertible {
   internal var graphQLMap: GraphQLMap
 
-  internal init(entitlements: [EntitlementInput], externalId: String) {
-    graphQLMap = ["entitlements": entitlements, "externalId": externalId]
+  internal init(entitlements: [EntitlementInput], externalId: String, version: Optional<Double?> = nil) {
+    graphQLMap = ["entitlements": entitlements, "externalId": externalId, "version": version]
   }
 
   internal var entitlements: [EntitlementInput] {
@@ -253,6 +271,15 @@ internal struct ApplyEntitlementsToUserInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "externalId")
+    }
+  }
+
+  internal var version: Optional<Double?> {
+    get {
+      return graphQLMap["version"] as! Optional<Double?>
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "version")
     }
   }
 }
@@ -914,7 +941,7 @@ internal final class AddEntitlementsSetMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
-          GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("value", type: .nonNull(.scalar(Double.self))),
         ]
 
         internal var snapshot: Snapshot
@@ -923,7 +950,7 @@ internal final class AddEntitlementsSetMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        internal init(name: String, description: String? = nil, value: Int) {
+        internal init(name: String, description: String? = nil, value: Double) {
           self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
         }
 
@@ -954,9 +981,9 @@ internal final class AddEntitlementsSetMutation: GraphQLMutation {
           }
         }
 
-        internal var value: Int {
+        internal var value: Double {
           get {
-            return snapshot["value"]! as! Int
+            return snapshot["value"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "value")
@@ -1198,7 +1225,7 @@ internal final class ApplyEntitlementsSequenceToUserMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
-          GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("value", type: .nonNull(.scalar(Double.self))),
         ]
 
         internal var snapshot: Snapshot
@@ -1207,7 +1234,7 @@ internal final class ApplyEntitlementsSequenceToUserMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        internal init(name: String, description: String? = nil, value: Int) {
+        internal init(name: String, description: String? = nil, value: Double) {
           self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
         }
 
@@ -1238,9 +1265,9 @@ internal final class ApplyEntitlementsSequenceToUserMutation: GraphQLMutation {
           }
         }
 
-        internal var value: Int {
+        internal var value: Double {
           get {
-            return snapshot["value"]! as! Int
+            return snapshot["value"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "value")
@@ -1278,7 +1305,7 @@ internal final class ApplyEntitlementsSequenceToUserMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
-          GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("value", type: .nonNull(.scalar(Double.self))),
         ]
 
         internal var snapshot: Snapshot
@@ -1287,7 +1314,7 @@ internal final class ApplyEntitlementsSequenceToUserMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        internal init(name: String, description: String? = nil, value: Int) {
+        internal init(name: String, description: String? = nil, value: Double) {
           self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
         }
 
@@ -1318,9 +1345,9 @@ internal final class ApplyEntitlementsSequenceToUserMutation: GraphQLMutation {
           }
         }
 
-        internal var value: Int {
+        internal var value: Double {
           get {
-            return snapshot["value"]! as! Int
+            return snapshot["value"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "value")
@@ -1608,7 +1635,7 @@ internal final class ApplyEntitlementsSequenceToUsersMutation: GraphQLMutation {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("description", type: .scalar(String.self)),
-            GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("value", type: .nonNull(.scalar(Double.self))),
           ]
 
           internal var snapshot: Snapshot
@@ -1617,7 +1644,7 @@ internal final class ApplyEntitlementsSequenceToUsersMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          internal init(name: String, description: String? = nil, value: Int) {
+          internal init(name: String, description: String? = nil, value: Double) {
             self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
           }
 
@@ -1648,9 +1675,9 @@ internal final class ApplyEntitlementsSequenceToUsersMutation: GraphQLMutation {
             }
           }
 
-          internal var value: Int {
+          internal var value: Double {
             get {
-              return snapshot["value"]! as! Int
+              return snapshot["value"]! as! Double
             }
             set {
               snapshot.updateValue(newValue, forKey: "value")
@@ -1688,7 +1715,7 @@ internal final class ApplyEntitlementsSequenceToUsersMutation: GraphQLMutation {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("description", type: .scalar(String.self)),
-            GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("value", type: .nonNull(.scalar(Double.self))),
           ]
 
           internal var snapshot: Snapshot
@@ -1697,7 +1724,7 @@ internal final class ApplyEntitlementsSequenceToUsersMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          internal init(name: String, description: String? = nil, value: Int) {
+          internal init(name: String, description: String? = nil, value: Double) {
             self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
           }
 
@@ -1728,9 +1755,9 @@ internal final class ApplyEntitlementsSequenceToUsersMutation: GraphQLMutation {
             }
           }
 
-          internal var value: Int {
+          internal var value: Double {
             get {
-              return snapshot["value"]! as! Int
+              return snapshot["value"]! as! Double
             }
             set {
               snapshot.updateValue(newValue, forKey: "value")
@@ -2044,7 +2071,7 @@ internal final class ApplyEntitlementsSetToUserMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
-          GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("value", type: .nonNull(.scalar(Double.self))),
         ]
 
         internal var snapshot: Snapshot
@@ -2053,7 +2080,7 @@ internal final class ApplyEntitlementsSetToUserMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        internal init(name: String, description: String? = nil, value: Int) {
+        internal init(name: String, description: String? = nil, value: Double) {
           self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
         }
 
@@ -2084,9 +2111,9 @@ internal final class ApplyEntitlementsSetToUserMutation: GraphQLMutation {
           }
         }
 
-        internal var value: Int {
+        internal var value: Double {
           get {
-            return snapshot["value"]! as! Int
+            return snapshot["value"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "value")
@@ -2124,7 +2151,7 @@ internal final class ApplyEntitlementsSetToUserMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
-          GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("value", type: .nonNull(.scalar(Double.self))),
         ]
 
         internal var snapshot: Snapshot
@@ -2133,7 +2160,7 @@ internal final class ApplyEntitlementsSetToUserMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        internal init(name: String, description: String? = nil, value: Int) {
+        internal init(name: String, description: String? = nil, value: Double) {
           self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
         }
 
@@ -2164,9 +2191,9 @@ internal final class ApplyEntitlementsSetToUserMutation: GraphQLMutation {
           }
         }
 
-        internal var value: Int {
+        internal var value: Double {
           get {
-            return snapshot["value"]! as! Int
+            return snapshot["value"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "value")
@@ -2454,7 +2481,7 @@ internal final class ApplyEntitlementsSetToUsersMutation: GraphQLMutation {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("description", type: .scalar(String.self)),
-            GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("value", type: .nonNull(.scalar(Double.self))),
           ]
 
           internal var snapshot: Snapshot
@@ -2463,7 +2490,7 @@ internal final class ApplyEntitlementsSetToUsersMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          internal init(name: String, description: String? = nil, value: Int) {
+          internal init(name: String, description: String? = nil, value: Double) {
             self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
           }
 
@@ -2494,9 +2521,9 @@ internal final class ApplyEntitlementsSetToUsersMutation: GraphQLMutation {
             }
           }
 
-          internal var value: Int {
+          internal var value: Double {
             get {
-              return snapshot["value"]! as! Int
+              return snapshot["value"]! as! Double
             }
             set {
               snapshot.updateValue(newValue, forKey: "value")
@@ -2534,7 +2561,7 @@ internal final class ApplyEntitlementsSetToUsersMutation: GraphQLMutation {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("description", type: .scalar(String.self)),
-            GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("value", type: .nonNull(.scalar(Double.self))),
           ]
 
           internal var snapshot: Snapshot
@@ -2543,7 +2570,7 @@ internal final class ApplyEntitlementsSetToUsersMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          internal init(name: String, description: String? = nil, value: Int) {
+          internal init(name: String, description: String? = nil, value: Double) {
             self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
           }
 
@@ -2574,9 +2601,9 @@ internal final class ApplyEntitlementsSetToUsersMutation: GraphQLMutation {
             }
           }
 
-          internal var value: Int {
+          internal var value: Double {
             get {
-              return snapshot["value"]! as! Int
+              return snapshot["value"]! as! Double
             }
             set {
               snapshot.updateValue(newValue, forKey: "value")
@@ -2890,7 +2917,7 @@ internal final class ApplyEntitlementsToUserMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
-          GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("value", type: .nonNull(.scalar(Double.self))),
         ]
 
         internal var snapshot: Snapshot
@@ -2899,7 +2926,7 @@ internal final class ApplyEntitlementsToUserMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        internal init(name: String, description: String? = nil, value: Int) {
+        internal init(name: String, description: String? = nil, value: Double) {
           self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
         }
 
@@ -2930,9 +2957,9 @@ internal final class ApplyEntitlementsToUserMutation: GraphQLMutation {
           }
         }
 
-        internal var value: Int {
+        internal var value: Double {
           get {
-            return snapshot["value"]! as! Int
+            return snapshot["value"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "value")
@@ -2970,7 +2997,7 @@ internal final class ApplyEntitlementsToUserMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
-          GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("value", type: .nonNull(.scalar(Double.self))),
         ]
 
         internal var snapshot: Snapshot
@@ -2979,7 +3006,7 @@ internal final class ApplyEntitlementsToUserMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        internal init(name: String, description: String? = nil, value: Int) {
+        internal init(name: String, description: String? = nil, value: Double) {
           self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
         }
 
@@ -3010,9 +3037,9 @@ internal final class ApplyEntitlementsToUserMutation: GraphQLMutation {
           }
         }
 
-        internal var value: Int {
+        internal var value: Double {
           get {
-            return snapshot["value"]! as! Int
+            return snapshot["value"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "value")
@@ -3300,7 +3327,7 @@ internal final class ApplyEntitlementsToUsersMutation: GraphQLMutation {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("description", type: .scalar(String.self)),
-            GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("value", type: .nonNull(.scalar(Double.self))),
           ]
 
           internal var snapshot: Snapshot
@@ -3309,7 +3336,7 @@ internal final class ApplyEntitlementsToUsersMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          internal init(name: String, description: String? = nil, value: Int) {
+          internal init(name: String, description: String? = nil, value: Double) {
             self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
           }
 
@@ -3340,9 +3367,9 @@ internal final class ApplyEntitlementsToUsersMutation: GraphQLMutation {
             }
           }
 
-          internal var value: Int {
+          internal var value: Double {
             get {
-              return snapshot["value"]! as! Int
+              return snapshot["value"]! as! Double
             }
             set {
               snapshot.updateValue(newValue, forKey: "value")
@@ -3380,7 +3407,7 @@ internal final class ApplyEntitlementsToUsersMutation: GraphQLMutation {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("description", type: .scalar(String.self)),
-            GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("value", type: .nonNull(.scalar(Double.self))),
           ]
 
           internal var snapshot: Snapshot
@@ -3389,7 +3416,7 @@ internal final class ApplyEntitlementsToUsersMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          internal init(name: String, description: String? = nil, value: Int) {
+          internal init(name: String, description: String? = nil, value: Double) {
             self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
           }
 
@@ -3420,9 +3447,9 @@ internal final class ApplyEntitlementsToUsersMutation: GraphQLMutation {
             }
           }
 
-          internal var value: Int {
+          internal var value: Double {
             get {
-              return snapshot["value"]! as! Int
+              return snapshot["value"]! as! Double
             }
             set {
               snapshot.updateValue(newValue, forKey: "value")
@@ -3736,7 +3763,7 @@ internal final class ApplyExpendableEntitlementsToUserMutation: GraphQLMutation 
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
-          GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("value", type: .nonNull(.scalar(Double.self))),
         ]
 
         internal var snapshot: Snapshot
@@ -3745,7 +3772,7 @@ internal final class ApplyExpendableEntitlementsToUserMutation: GraphQLMutation 
           self.snapshot = snapshot
         }
 
-        internal init(name: String, description: String? = nil, value: Int) {
+        internal init(name: String, description: String? = nil, value: Double) {
           self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
         }
 
@@ -3776,9 +3803,9 @@ internal final class ApplyExpendableEntitlementsToUserMutation: GraphQLMutation 
           }
         }
 
-        internal var value: Int {
+        internal var value: Double {
           get {
-            return snapshot["value"]! as! Int
+            return snapshot["value"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "value")
@@ -3816,7 +3843,7 @@ internal final class ApplyExpendableEntitlementsToUserMutation: GraphQLMutation 
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
-          GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("value", type: .nonNull(.scalar(Double.self))),
         ]
 
         internal var snapshot: Snapshot
@@ -3825,7 +3852,7 @@ internal final class ApplyExpendableEntitlementsToUserMutation: GraphQLMutation 
           self.snapshot = snapshot
         }
 
-        internal init(name: String, description: String? = nil, value: Int) {
+        internal init(name: String, description: String? = nil, value: Double) {
           self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
         }
 
@@ -3856,9 +3883,9 @@ internal final class ApplyExpendableEntitlementsToUserMutation: GraphQLMutation 
           }
         }
 
-        internal var value: Int {
+        internal var value: Double {
           get {
-            return snapshot["value"]! as! Int
+            return snapshot["value"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "value")
@@ -4303,7 +4330,7 @@ internal final class GetEntitlementsForUserQuery: GraphQLQuery {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("description", type: .scalar(String.self)),
-            GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("value", type: .nonNull(.scalar(Double.self))),
           ]
 
           internal var snapshot: Snapshot
@@ -4312,7 +4339,7 @@ internal final class GetEntitlementsForUserQuery: GraphQLQuery {
             self.snapshot = snapshot
           }
 
-          internal init(name: String, description: String? = nil, value: Int) {
+          internal init(name: String, description: String? = nil, value: Double) {
             self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
           }
 
@@ -4343,9 +4370,9 @@ internal final class GetEntitlementsForUserQuery: GraphQLQuery {
             }
           }
 
-          internal var value: Int {
+          internal var value: Double {
             get {
-              return snapshot["value"]! as! Int
+              return snapshot["value"]! as! Double
             }
             set {
               snapshot.updateValue(newValue, forKey: "value")
@@ -4383,7 +4410,7 @@ internal final class GetEntitlementsForUserQuery: GraphQLQuery {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("description", type: .scalar(String.self)),
-            GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("value", type: .nonNull(.scalar(Double.self))),
           ]
 
           internal var snapshot: Snapshot
@@ -4392,7 +4419,7 @@ internal final class GetEntitlementsForUserQuery: GraphQLQuery {
             self.snapshot = snapshot
           }
 
-          internal init(name: String, description: String? = nil, value: Int) {
+          internal init(name: String, description: String? = nil, value: Double) {
             self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
           }
 
@@ -4423,9 +4450,9 @@ internal final class GetEntitlementsForUserQuery: GraphQLQuery {
             }
           }
 
-          internal var value: Int {
+          internal var value: Double {
             get {
-              return snapshot["value"]! as! Int
+              return snapshot["value"]! as! Double
             }
             set {
               snapshot.updateValue(newValue, forKey: "value")
@@ -4463,9 +4490,9 @@ internal final class GetEntitlementsForUserQuery: GraphQLQuery {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
-          GraphQLField("value", type: .nonNull(.scalar(Int.self))),
-          GraphQLField("consumed", type: .nonNull(.scalar(Int.self))),
-          GraphQLField("available", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("value", type: .nonNull(.scalar(Double.self))),
+          GraphQLField("consumed", type: .nonNull(.scalar(Double.self))),
+          GraphQLField("available", type: .nonNull(.scalar(Double.self))),
           GraphQLField("firstConsumedAtEpochMs", type: .scalar(Double.self)),
           GraphQLField("lastConsumedAtEpochMs", type: .scalar(Double.self)),
           GraphQLField("consumer", type: .object(Consumer.selections)),
@@ -4477,7 +4504,7 @@ internal final class GetEntitlementsForUserQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        internal init(name: String, value: Int, consumed: Int, available: Int, firstConsumedAtEpochMs: Double? = nil, lastConsumedAtEpochMs: Double? = nil, consumer: Consumer? = nil) {
+        internal init(name: String, value: Double, consumed: Double, available: Double, firstConsumedAtEpochMs: Double? = nil, lastConsumedAtEpochMs: Double? = nil, consumer: Consumer? = nil) {
           self.init(snapshot: ["__typename": "EntitlementConsumption", "name": name, "value": value, "consumed": consumed, "available": available, "firstConsumedAtEpochMs": firstConsumedAtEpochMs, "lastConsumedAtEpochMs": lastConsumedAtEpochMs, "consumer": consumer.flatMap { $0.snapshot }])
         }
 
@@ -4499,27 +4526,27 @@ internal final class GetEntitlementsForUserQuery: GraphQLQuery {
           }
         }
 
-        internal var value: Int {
+        internal var value: Double {
           get {
-            return snapshot["value"]! as! Int
+            return snapshot["value"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "value")
           }
         }
 
-        internal var consumed: Int {
+        internal var consumed: Double {
           get {
-            return snapshot["consumed"]! as! Int
+            return snapshot["consumed"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "consumed")
           }
         }
 
-        internal var available: Int {
+        internal var available: Double {
           get {
-            return snapshot["available"]! as! Int
+            return snapshot["available"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "available")
@@ -5009,7 +5036,7 @@ internal final class GetEntitlementsSetQuery: GraphQLQuery {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
-          GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("value", type: .nonNull(.scalar(Double.self))),
         ]
 
         internal var snapshot: Snapshot
@@ -5018,7 +5045,7 @@ internal final class GetEntitlementsSetQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        internal init(name: String, description: String? = nil, value: Int) {
+        internal init(name: String, description: String? = nil, value: Double) {
           self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
         }
 
@@ -5049,9 +5076,9 @@ internal final class GetEntitlementsSetQuery: GraphQLQuery {
           }
         }
 
-        internal var value: Int {
+        internal var value: Double {
           get {
-            return snapshot["value"]! as! Int
+            return snapshot["value"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "value")
@@ -5766,7 +5793,7 @@ internal final class ListEntitlementsSetsQuery: GraphQLQuery {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("description", type: .scalar(String.self)),
-            GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("value", type: .nonNull(.scalar(Double.self))),
           ]
 
           internal var snapshot: Snapshot
@@ -5775,7 +5802,7 @@ internal final class ListEntitlementsSetsQuery: GraphQLQuery {
             self.snapshot = snapshot
           }
 
-          internal init(name: String, description: String? = nil, value: Int) {
+          internal init(name: String, description: String? = nil, value: Double) {
             self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
           }
 
@@ -5806,9 +5833,9 @@ internal final class ListEntitlementsSetsQuery: GraphQLQuery {
             }
           }
 
-          internal var value: Int {
+          internal var value: Double {
             get {
-              return snapshot["value"]! as! Int
+              return snapshot["value"]! as! Double
             }
             set {
               snapshot.updateValue(newValue, forKey: "value")
@@ -6304,7 +6331,7 @@ internal final class RemoveEntitlementsSetMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
-          GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("value", type: .nonNull(.scalar(Double.self))),
         ]
 
         internal var snapshot: Snapshot
@@ -6313,7 +6340,7 @@ internal final class RemoveEntitlementsSetMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        internal init(name: String, description: String? = nil, value: Int) {
+        internal init(name: String, description: String? = nil, value: Double) {
           self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
         }
 
@@ -6344,9 +6371,9 @@ internal final class RemoveEntitlementsSetMutation: GraphQLMutation {
           }
         }
 
-        internal var value: Int {
+        internal var value: Double {
           get {
-            return snapshot["value"]! as! Int
+            return snapshot["value"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "value")
@@ -6762,7 +6789,7 @@ internal final class SetEntitlementsSetMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
-          GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("value", type: .nonNull(.scalar(Double.self))),
         ]
 
         internal var snapshot: Snapshot
@@ -6771,7 +6798,7 @@ internal final class SetEntitlementsSetMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        internal init(name: String, description: String? = nil, value: Int) {
+        internal init(name: String, description: String? = nil, value: Double) {
           self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
         }
 
@@ -6802,9 +6829,9 @@ internal final class SetEntitlementsSetMutation: GraphQLMutation {
           }
         }
 
-        internal var value: Int {
+        internal var value: Double {
           get {
-            return snapshot["value"]! as! Int
+            return snapshot["value"]! as! Double
           }
           set {
             snapshot.updateValue(newValue, forKey: "value")
@@ -6847,7 +6874,7 @@ internal struct Entitlement: GraphQLFragment {
     GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
     GraphQLField("name", type: .nonNull(.scalar(String.self))),
     GraphQLField("description", type: .scalar(String.self)),
-    GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+    GraphQLField("value", type: .nonNull(.scalar(Double.self))),
   ]
 
   internal var snapshot: Snapshot
@@ -6856,7 +6883,7 @@ internal struct Entitlement: GraphQLFragment {
     self.snapshot = snapshot
   }
 
-  internal init(name: String, description: String? = nil, value: Int) {
+  internal init(name: String, description: String? = nil, value: Double) {
     self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
   }
 
@@ -6887,9 +6914,9 @@ internal struct Entitlement: GraphQLFragment {
     }
   }
 
-  internal var value: Int {
+  internal var value: Double {
     get {
-      return snapshot["value"]! as! Int
+      return snapshot["value"]! as! Double
     }
     set {
       snapshot.updateValue(newValue, forKey: "value")
@@ -6906,9 +6933,9 @@ internal struct EntitlementConsumption: GraphQLFragment {
   internal static let selections: [GraphQLSelection] = [
     GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
     GraphQLField("name", type: .nonNull(.scalar(String.self))),
-    GraphQLField("value", type: .nonNull(.scalar(Int.self))),
-    GraphQLField("consumed", type: .nonNull(.scalar(Int.self))),
-    GraphQLField("available", type: .nonNull(.scalar(Int.self))),
+    GraphQLField("value", type: .nonNull(.scalar(Double.self))),
+    GraphQLField("consumed", type: .nonNull(.scalar(Double.self))),
+    GraphQLField("available", type: .nonNull(.scalar(Double.self))),
     GraphQLField("firstConsumedAtEpochMs", type: .scalar(Double.self)),
     GraphQLField("lastConsumedAtEpochMs", type: .scalar(Double.self)),
     GraphQLField("consumer", type: .object(Consumer.selections)),
@@ -6920,7 +6947,7 @@ internal struct EntitlementConsumption: GraphQLFragment {
     self.snapshot = snapshot
   }
 
-  internal init(name: String, value: Int, consumed: Int, available: Int, firstConsumedAtEpochMs: Double? = nil, lastConsumedAtEpochMs: Double? = nil, consumer: Consumer? = nil) {
+  internal init(name: String, value: Double, consumed: Double, available: Double, firstConsumedAtEpochMs: Double? = nil, lastConsumedAtEpochMs: Double? = nil, consumer: Consumer? = nil) {
     self.init(snapshot: ["__typename": "EntitlementConsumption", "name": name, "value": value, "consumed": consumed, "available": available, "firstConsumedAtEpochMs": firstConsumedAtEpochMs, "lastConsumedAtEpochMs": lastConsumedAtEpochMs, "consumer": consumer.flatMap { $0.snapshot }])
   }
 
@@ -6942,27 +6969,27 @@ internal struct EntitlementConsumption: GraphQLFragment {
     }
   }
 
-  internal var value: Int {
+  internal var value: Double {
     get {
-      return snapshot["value"]! as! Int
+      return snapshot["value"]! as! Double
     }
     set {
       snapshot.updateValue(newValue, forKey: "value")
     }
   }
 
-  internal var consumed: Int {
+  internal var consumed: Double {
     get {
-      return snapshot["consumed"]! as! Int
+      return snapshot["consumed"]! as! Double
     }
     set {
       snapshot.updateValue(newValue, forKey: "consumed")
     }
   }
 
-  internal var available: Int {
+  internal var available: Double {
     get {
-      return snapshot["available"]! as! Int
+      return snapshot["available"]! as! Double
     }
     set {
       snapshot.updateValue(newValue, forKey: "available")
@@ -7651,7 +7678,7 @@ internal struct EntitlementsSet: GraphQLFragment {
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
       GraphQLField("name", type: .nonNull(.scalar(String.self))),
       GraphQLField("description", type: .scalar(String.self)),
-      GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+      GraphQLField("value", type: .nonNull(.scalar(Double.self))),
     ]
 
     internal var snapshot: Snapshot
@@ -7660,7 +7687,7 @@ internal struct EntitlementsSet: GraphQLFragment {
       self.snapshot = snapshot
     }
 
-    internal init(name: String, description: String? = nil, value: Int) {
+    internal init(name: String, description: String? = nil, value: Double) {
       self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
     }
 
@@ -7691,9 +7718,9 @@ internal struct EntitlementsSet: GraphQLFragment {
       }
     }
 
-    internal var value: Int {
+    internal var value: Double {
       get {
-        return snapshot["value"]! as! Int
+        return snapshot["value"]! as! Double
       }
       set {
         snapshot.updateValue(newValue, forKey: "value")
@@ -7940,7 +7967,7 @@ internal struct ExternalEntitlementsConsumption: GraphQLFragment {
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("name", type: .nonNull(.scalar(String.self))),
         GraphQLField("description", type: .scalar(String.self)),
-        GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("value", type: .nonNull(.scalar(Double.self))),
       ]
 
       internal var snapshot: Snapshot
@@ -7949,7 +7976,7 @@ internal struct ExternalEntitlementsConsumption: GraphQLFragment {
         self.snapshot = snapshot
       }
 
-      internal init(name: String, description: String? = nil, value: Int) {
+      internal init(name: String, description: String? = nil, value: Double) {
         self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
       }
 
@@ -7980,9 +8007,9 @@ internal struct ExternalEntitlementsConsumption: GraphQLFragment {
         }
       }
 
-      internal var value: Int {
+      internal var value: Double {
         get {
-          return snapshot["value"]! as! Int
+          return snapshot["value"]! as! Double
         }
         set {
           snapshot.updateValue(newValue, forKey: "value")
@@ -8020,7 +8047,7 @@ internal struct ExternalEntitlementsConsumption: GraphQLFragment {
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("name", type: .nonNull(.scalar(String.self))),
         GraphQLField("description", type: .scalar(String.self)),
-        GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("value", type: .nonNull(.scalar(Double.self))),
       ]
 
       internal var snapshot: Snapshot
@@ -8029,7 +8056,7 @@ internal struct ExternalEntitlementsConsumption: GraphQLFragment {
         self.snapshot = snapshot
       }
 
-      internal init(name: String, description: String? = nil, value: Int) {
+      internal init(name: String, description: String? = nil, value: Double) {
         self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
       }
 
@@ -8060,9 +8087,9 @@ internal struct ExternalEntitlementsConsumption: GraphQLFragment {
         }
       }
 
-      internal var value: Int {
+      internal var value: Double {
         get {
-          return snapshot["value"]! as! Int
+          return snapshot["value"]! as! Double
         }
         set {
           snapshot.updateValue(newValue, forKey: "value")
@@ -8100,9 +8127,9 @@ internal struct ExternalEntitlementsConsumption: GraphQLFragment {
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
       GraphQLField("name", type: .nonNull(.scalar(String.self))),
-      GraphQLField("value", type: .nonNull(.scalar(Int.self))),
-      GraphQLField("consumed", type: .nonNull(.scalar(Int.self))),
-      GraphQLField("available", type: .nonNull(.scalar(Int.self))),
+      GraphQLField("value", type: .nonNull(.scalar(Double.self))),
+      GraphQLField("consumed", type: .nonNull(.scalar(Double.self))),
+      GraphQLField("available", type: .nonNull(.scalar(Double.self))),
       GraphQLField("firstConsumedAtEpochMs", type: .scalar(Double.self)),
       GraphQLField("lastConsumedAtEpochMs", type: .scalar(Double.self)),
       GraphQLField("consumer", type: .object(Consumer.selections)),
@@ -8114,7 +8141,7 @@ internal struct ExternalEntitlementsConsumption: GraphQLFragment {
       self.snapshot = snapshot
     }
 
-    internal init(name: String, value: Int, consumed: Int, available: Int, firstConsumedAtEpochMs: Double? = nil, lastConsumedAtEpochMs: Double? = nil, consumer: Consumer? = nil) {
+    internal init(name: String, value: Double, consumed: Double, available: Double, firstConsumedAtEpochMs: Double? = nil, lastConsumedAtEpochMs: Double? = nil, consumer: Consumer? = nil) {
       self.init(snapshot: ["__typename": "EntitlementConsumption", "name": name, "value": value, "consumed": consumed, "available": available, "firstConsumedAtEpochMs": firstConsumedAtEpochMs, "lastConsumedAtEpochMs": lastConsumedAtEpochMs, "consumer": consumer.flatMap { $0.snapshot }])
     }
 
@@ -8136,27 +8163,27 @@ internal struct ExternalEntitlementsConsumption: GraphQLFragment {
       }
     }
 
-    internal var value: Int {
+    internal var value: Double {
       get {
-        return snapshot["value"]! as! Int
+        return snapshot["value"]! as! Double
       }
       set {
         snapshot.updateValue(newValue, forKey: "value")
       }
     }
 
-    internal var consumed: Int {
+    internal var consumed: Double {
       get {
-        return snapshot["consumed"]! as! Int
+        return snapshot["consumed"]! as! Double
       }
       set {
         snapshot.updateValue(newValue, forKey: "consumed")
       }
     }
 
-    internal var available: Int {
+    internal var available: Double {
       get {
-        return snapshot["available"]! as! Int
+        return snapshot["available"]! as! Double
       }
       set {
         snapshot.updateValue(newValue, forKey: "available")
@@ -8408,7 +8435,7 @@ internal struct ExternalUserEntitlements: GraphQLFragment {
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
       GraphQLField("name", type: .nonNull(.scalar(String.self))),
       GraphQLField("description", type: .scalar(String.self)),
-      GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+      GraphQLField("value", type: .nonNull(.scalar(Double.self))),
     ]
 
     internal var snapshot: Snapshot
@@ -8417,7 +8444,7 @@ internal struct ExternalUserEntitlements: GraphQLFragment {
       self.snapshot = snapshot
     }
 
-    internal init(name: String, description: String? = nil, value: Int) {
+    internal init(name: String, description: String? = nil, value: Double) {
       self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
     }
 
@@ -8448,9 +8475,9 @@ internal struct ExternalUserEntitlements: GraphQLFragment {
       }
     }
 
-    internal var value: Int {
+    internal var value: Double {
       get {
-        return snapshot["value"]! as! Int
+        return snapshot["value"]! as! Double
       }
       set {
         snapshot.updateValue(newValue, forKey: "value")
@@ -8488,7 +8515,7 @@ internal struct ExternalUserEntitlements: GraphQLFragment {
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
       GraphQLField("name", type: .nonNull(.scalar(String.self))),
       GraphQLField("description", type: .scalar(String.self)),
-      GraphQLField("value", type: .nonNull(.scalar(Int.self))),
+      GraphQLField("value", type: .nonNull(.scalar(Double.self))),
     ]
 
     internal var snapshot: Snapshot
@@ -8497,7 +8524,7 @@ internal struct ExternalUserEntitlements: GraphQLFragment {
       self.snapshot = snapshot
     }
 
-    internal init(name: String, description: String? = nil, value: Int) {
+    internal init(name: String, description: String? = nil, value: Double) {
       self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
     }
 
@@ -8528,9 +8555,9 @@ internal struct ExternalUserEntitlements: GraphQLFragment {
       }
     }
 
-    internal var value: Int {
+    internal var value: Double {
       get {
-        return snapshot["value"]! as! Int
+        return snapshot["value"]! as! Double
       }
       set {
         snapshot.updateValue(newValue, forKey: "value")

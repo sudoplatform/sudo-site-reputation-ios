@@ -23,7 +23,7 @@ internal let NoOpOperationString = "No-op"
 /// Delegates will be notified when a mutation is performed from the `mutationCallback`. This pattern is necessary
 /// in order to provide notifications of mutations which are performed after an app restart and the initial callback
 /// context has been lost.
-public protocol AWSAppSyncOfflineMutationDelegate {
+public protocol AWSAppSyncOfflineMutationDelegate: AnyObject {
     func mutationCallback(recordIdentifier: String, operationString: String, snapshot: Snapshot?, error: Error?)
 }
 
@@ -111,6 +111,7 @@ public class AWSAppSyncClient {
         self.mutationQueue = AWSPerformMutationQueue(
             appSyncClient: self,
             networkClient: httpTransport!,
+            apolloStore: store!,
             reachabiltyChangeNotifier: NetworkReachabilityNotifier.shared,
             cacheFileURL: appSyncConfig.cacheConfiguration?.offlineMutations)
 
@@ -285,19 +286,9 @@ public class AWSAppSyncClient {
         optimisticUpdate: OptimisticResponseBlock? = nil,
         conflictResolutionBlock: MutationConflictHandler<Mutation>? = nil,
         resultHandler: OperationResultHandler<Mutation>? = nil) -> Cancellable {
-
-        if let optimisticUpdate = optimisticUpdate {
-            do {
-                _ = try store?.withinReadWriteTransaction { transaction in
-                    optimisticUpdate(transaction)
-                }.await()
-            } catch {
-                AppSyncLog.error("optimisticUpdate error: \(error)")
-            }
-        }
-
         return mutationQueue.add(
             mutation,
+            optimisticUpdate: optimisticUpdate,
             mutationConflictHandler: conflictResolutionBlock,
             mutationResultHandler: resultHandler,
             handlerQueue: queue

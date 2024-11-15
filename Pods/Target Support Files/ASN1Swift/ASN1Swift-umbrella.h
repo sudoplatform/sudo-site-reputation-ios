@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double ReachabilityVersionNumber;
-FOUNDATION_EXPORT const unsigned char ReachabilityVersionString[];
+FOUNDATION_EXPORT double ASN1SwiftVersionNumber;
+FOUNDATION_EXPORT const unsigned char ASN1SwiftVersionString[];
 

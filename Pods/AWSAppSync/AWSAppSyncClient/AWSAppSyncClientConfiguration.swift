@@ -134,7 +134,7 @@ public class AWSAppSyncClientConfiguration {
                             oidcAuthProvider: AWSOIDCAuthProvider? = nil,
                             userPoolsAuthProvider: AWSCognitoUserPoolsAuthProvider? = nil,
                             awsLambdaAuthProvider: AWSLambdaAuthProvider? = nil,
-                            urlSessionConfiguration: URLSessionConfiguration = URLSessionConfiguration.default,
+                            urlSessionConfiguration: URLSessionConfiguration = URLSessionConfiguration.noCacheDefault,
                             cacheConfiguration: AWSAppSyncCacheConfiguration? = nil,
                             connectionStateChangeHandler: ConnectionStateChangeHandler? = nil,
                             s3ObjectManager: AWSS3ObjectManager? = nil,
@@ -197,7 +197,7 @@ public class AWSAppSyncClientConfiguration {
                             oidcAuthProvider: AWSOIDCAuthProvider? = nil,
                             userPoolsAuthProvider: AWSCognitoUserPoolsAuthProvider? = nil,
                             awsLambdaAuthProvider: AWSLambdaAuthProvider? = nil,
-                            urlSessionConfiguration: URLSessionConfiguration = URLSessionConfiguration.default,
+                            urlSessionConfiguration: URLSessionConfiguration = URLSessionConfiguration.noCacheDefault,
                             cacheConfiguration: AWSAppSyncCacheConfiguration? = nil,
                             connectionStateChangeHandler: ConnectionStateChangeHandler? = nil,
                             s3ObjectManager: AWSS3ObjectManager? = nil,
@@ -266,7 +266,7 @@ public class AWSAppSyncClientConfiguration {
                  userPoolsAuthProvider: AWSCognitoUserPoolsAuthProvider?,
                  awsLambdaAuthProvider: AWSLambdaAuthProvider? = nil,
                  oidcAuthProvider: AWSOIDCAuthProvider?,
-                 urlSessionConfiguration: URLSessionConfiguration = URLSessionConfiguration.default,
+                 urlSessionConfiguration: URLSessionConfiguration = URLSessionConfiguration.noCacheDefault,
                  cacheConfiguration: AWSAppSyncCacheConfiguration?,
                  connectionStateChangeHandler: ConnectionStateChangeHandler?,
                  s3ObjectManager: AWSS3ObjectManager?,
@@ -587,13 +587,7 @@ public class AWSAppSyncClientConfiguration {
         if let databaseURL = databaseURL, let cache = try? AWSSQLiteNormalizedCache(fileURL: databaseURL) {
             store = ApolloStore(cache: cache)
         } else {
-            // Prepopulate the InMemoryNormalizedCache record set with an empty QUERY_ROOT, to allow optimistic
-            // updates against empty caches to succeed. Otherwise, such an operation will fail with a "missingValue"
-            // error (#92)
-            let emptyQueryRootRecord = Record(key: AWSAppSyncClient.EmptyQuery.rootCacheKey, [:])
-            let records = RecordSet(records: [emptyQueryRootRecord])
-            let inMemoryCache = InMemoryNormalizedCache(records: records)
-            store = ApolloStore(cache: inMemoryCache)
+            store = ApolloStore(cache: InMemoryNormalizedCache())
         }
         return store
     }
@@ -612,4 +606,12 @@ public class AWSAppSyncClientConfiguration {
         return subscriptionMetadataCache
     }
 
+}
+
+extension URLSessionConfiguration {
+    public static var noCacheDefault: URLSessionConfiguration {
+        let configuration = URLSessionConfiguration.default
+        configuration.urlCache = nil
+        return configuration
+    }
 }

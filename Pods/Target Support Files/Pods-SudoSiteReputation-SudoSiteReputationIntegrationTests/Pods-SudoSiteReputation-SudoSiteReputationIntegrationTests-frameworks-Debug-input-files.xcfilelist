@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ASN1Swift/ASN1Swift.framework
 ${BUILT_PRODUCTS_DIR}/AWSAppSync/AWSAppSync.framework
 ${BUILT_PRODUCTS_DIR}/AWSAuthCore/AWSAuthCore.framework
 ${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework
@@ -7,7 +8,7 @@ ${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework
 ${BUILT_PRODUCTS_DIR}/AWSMobileClient/AWSMobileClient.framework
 ${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework
 ${BUILT_PRODUCTS_DIR}/AppSyncRealTimeClient/AppSyncRealTimeClient.framework
-${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework
+${BUILT_PRODUCTS_DIR}/GzipSwift/Gzip.framework
 ${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework
 ${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework
 ${BUILT_PRODUCTS_DIR}/SudoApiClient/SudoApiClient.framework

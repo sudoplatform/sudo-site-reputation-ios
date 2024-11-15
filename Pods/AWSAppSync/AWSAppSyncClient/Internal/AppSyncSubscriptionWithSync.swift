@@ -420,7 +420,7 @@ final class AppSyncSubscriptionWithSync<Subscription: GraphQLSubscription, BaseQ
         var isSyncOperationSuccessful = false
 
         let baseQueryDispatchTime = DispatchTime.now()
-        
+        // swiftlint:disable:next todo
         // TODO: start subscription should happen outside initial delta sync setup. Depends on enhanced
         // subscription state tracking
         guard startSubscription() else {
@@ -519,7 +519,7 @@ final class AppSyncSubscriptionWithSync<Subscription: GraphQLSubscription, BaseQ
             baseString += type(of: deltaQuery).requestString + variables
         }
 
-        return AWSSignatureSignerUtility.hash(baseString.data(using: .utf8)!).base64EncodedString()
+        return AWSSignatureSignerUtility.hashString(baseString)
     }
     
     deinit {
