@@ -1,0 +1,14 @@
+{
+  "githubProjectName": "sudo-site-reputation-ios",
+  "githubUsername": "sudoplatform-engineering",
+  "gitlabUrl": "https://gitlab.tools.anonyome.com/api/v4/projects/860/",
+  "internalFiles": [
+    ".publisher.json",
+    ".gitlab-ci.yml",
+    ".jazzy.yaml",
+    ".swiftlint.yml",
+    "Gemfile",
+    "Gemfile.lock",
+    "sonar-project.properties"
+  ]
+}

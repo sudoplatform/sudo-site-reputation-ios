@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CFA626A325A3975700581543"
-               BuildableName = "SudoSiteReputation.framework"
+               BlueprintIdentifier = "SudoSiteReputation"
+               BuildableName = "SudoSiteReputation"
                BlueprintName = "SudoSiteReputation"
-               ReferencedContainer = "container:SudoSiteReputation.xcodeproj">
+               ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES"
       onlyGenerateCoverageForSpecifiedTargets = "YES">
-      <PreActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "Pods/MockingbirdFramework/mockingbird configure SudoSiteReputationTests -- --targets SudoSiteReputation&#10;">
-            </ActionContent>
-         </ExecutionAction>
-      </PreActions>
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -55,16 +46,6 @@
                BlueprintIdentifier = "CF2A536C25A3C43300AF0FEF"
                BuildableName = "SudoSiteReputationTests.xctest"
                BlueprintName = "SudoSiteReputationTests"
-               ReferencedContainer = "container:SudoSiteReputation.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CF2A54D925A627CA00AF0FEF"
-               BuildableName = "SudoSiteReputationIntegrationTests.xctest"
-               BlueprintName = "SudoSiteReputationIntegrationTests"
                ReferencedContainer = "container:SudoSiteReputation.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -102,10 +83,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CFA626A325A3975700581543"
-            BuildableName = "SudoSiteReputation.framework"
+            BlueprintIdentifier = "SudoSiteReputation"
+            BuildableName = "SudoSiteReputation"
             BlueprintName = "SudoSiteReputation"
-            ReferencedContainer = "container:SudoSiteReputation.xcodeproj">
+            ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

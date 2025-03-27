@@ -7,71 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01AF638E8E1BFFA85FC002DC /* Pods_SudoSiteReputation_SudoSiteReputationIntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6059F555966B9F306AA064E /* Pods_SudoSiteReputation_SudoSiteReputationIntegrationTests.framework */; };
-		3FF67465664D6E38EA2859AA /* SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B8B6E7C267371C34351AF0 /* SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift */; };
-		5BD5CC20061A73EE0C542B50 /* Pods_SudoSiteReputation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB284E74E9888D7304F6CFEE /* Pods_SudoSiteReputation.framework */; };
 		75B3239E27C6AA4C00650EC4 /* MaliciousDomainProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B3239D27C6AA4C00650EC4 /* MaliciousDomainProviderTests.swift */; };
 		75B323A727C6B1B100650EC4 /* DiskCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A545E25A4FE5700AF0FEF /* DiskCacheTests.swift */; };
 		75B323A827C6E63100650EC4 /* LocalizedErrorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */; };
 		75B323A927C944EA00650EC4 /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A536F25A3C43300AF0FEF /* ClientTests.swift */; };
-		A1D8BF3B1F84BC7AEA277A93 /* Pods_SudoSiteReputation_SudoSiteReputationIntegrationTestHost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FADD609A30EF0F6E4DCE192 /* Pods_SudoSiteReputation_SudoSiteReputationIntegrationTestHost.framework */; };
-		BEF3E703ECD2EB32B315818B /* Pods_SudoSiteReputation_SudoSiteReputationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E2F023F6E4FDB940483D98 /* Pods_SudoSiteReputation_SudoSiteReputationTests.framework */; };
-		CF2A535325A3B15F00AF0FEF /* S3DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A535225A3B15F00AF0FEF /* S3DataSource.swift */; };
-		CF2A537225A3C43300AF0FEF /* SudoSiteReputation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA626A425A3975700581543 /* SudoSiteReputation.framework */; };
-		CF2A538525A3C55D00AF0FEF /* MaliciousDomainList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A538425A3C55D00AF0FEF /* MaliciousDomainList.swift */; };
-		CF2A53AE25A4DFDA00AF0FEF /* S3Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A53AD25A4DFDA00AF0FEF /* S3Client.swift */; };
 		CF2A53B425A4E1D200AF0FEF /* MockS3Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A53B325A4E1D200AF0FEF /* MockS3Client.swift */; };
-		CF2A54DF25A627CA00AF0FEF /* SudoSiteReputation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA626A425A3975700581543 /* SudoSiteReputation.framework */; };
 		CF92617525A7809500076899 /* MockServiceDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92617425A7809500076899 /* MockServiceDataCache.swift */; };
-		CF9261EF25A8DBA800076899 /* LocalizedErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9261EE25A8DBA800076899 /* LocalizedErrors.swift */; };
-		CFA626A925A3975700581543 /* SudoSiteReputation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA626A725A3975700581543 /* SudoSiteReputation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFA626B125A3979700581543 /* DefaultLegacySiteReputationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA626B025A3979700581543 /* DefaultLegacySiteReputationClient.swift */; };
 		CFBA2A2025A650A00072594C /* SudoSiteReputationIntegrationTestHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA2A1F25A650A00072594C /* SudoSiteReputationIntegrationTestHostApp.swift */; };
-		E20C6B7127B1E1E800AB48CE /* ServiceDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20C6B7027B1E1E800AB48CE /* ServiceDataCache.swift */; };
-		E23147BE28F612C900CAA1C1 /* DefaultSudoSiteReputationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23147BD28F612C900CAA1C1 /* DefaultSudoSiteReputationClient.swift */; };
-		E23147C028F61D5700CAA1C1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23147BF28F61D5700CAA1C1 /* Logger.swift */; };
-		E241804929F07B9600BED8B1 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241804829F07B9600BED8B1 /* Cache.swift */; };
+		E22C34DD2CC2BA3B00D3519E /* SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22C34DB2CC2BA3B00D3519E /* SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift */; };
 		E241804B29F07BDB00BED8B1 /* CacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241804A29F07BDB00BED8B1 /* CacheTests.swift */; };
-		E241804D29F2DE5C00BED8B1 /* ExpensiveObjectCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241804C29F2DE5C00BED8B1 /* ExpensiveObjectCache.swift */; };
-		E249DE702944042400760569 /* SiteReputation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E249DE6F2944042400760569 /* SiteReputation.swift */; };
+		E2485B1C2D931D1900055EC1 /* Mockingbird in Frameworks */ = {isa = PBXBuildFile; productRef = E2485B1B2D931D1900055EC1 /* Mockingbird */; };
 		E249DE72294404A500760569 /* ReputationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E249DE71294404A500760569 /* ReputationTests.swift */; };
 		E24CEBB0291190E300847FEA /* RealtimeSiteReputationClientIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24CEBAF291190E300847FEA /* RealtimeSiteReputationClientIntegrationTests.swift */; };
 		E24CEBB22911916800847FEA /* IntegrationTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24CEBB12911916800847FEA /* IntegrationTestBase.swift */; };
-		E24CEBB42911C13B00847FEA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24CEBB32911C13B00847FEA /* API.swift */; };
 		E24CEBB62911E3C900847FEA /* RealtimeSiteReputationClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BAE19C290A339C00BD8465 /* RealtimeSiteReputationClientTests.swift */; };
-		E29DF86729130A9E004EC7EC /* PlatformGraphQLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29DF86629130A9E004EC7EC /* PlatformGraphQLError.swift */; };
-		E29DF86929130BA6004EC7EC /* MissingResponseDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29DF86829130BA6004EC7EC /* MissingResponseDataError.swift */; };
-		E2A6A3DC270F70DE005C8BCD /* SiteReputationRuleset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6A3DB270F70DE005C8BCD /* SiteReputationRuleset.swift */; };
-		E2A6A3DE270F714B005C8BCD /* MaliciousDomainListTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6A3DD270F714B005C8BCD /* MaliciousDomainListTransformer.swift */; };
-		E2A6A3E0270F71BA005C8BCD /* SiteReputationMatchReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6A3DF270F71BA005C8BCD /* SiteReputationMatchReason.swift */; };
 		E2AE98D5290F2BF6006C919F /* MockSudoAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AE98D4290F2BF6006C919F /* MockSudoAPIClient.swift */; };
 		E2AE98D829101D4E006C919F /* captureError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AE98D729101D4E006C919F /* captureError.swift */; };
-		E2AE98DE2910205F006C919F /* InvalidDependencyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AE98DD2910205F006C919F /* InvalidDependencyError.swift */; };
-		E2BAE19B2909C5A500BD8465 /* PlatformAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BAE19A2909C5A500BD8465 /* PlatformAPIClient.swift */; };
 		E2BAE19F290A380900BD8465 /* PlatfomAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BAE19E290A380900BD8465 /* PlatfomAPIClientTests.swift */; };
 		E2D1591C29140D2600414937 /* LoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D1591B29140D2600414937 /* LoggerTests.swift */; };
 		E2F80E0A26FA6EB500E2CB53 /* SiteReputationProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F80E0926FA6EB500E2CB53 /* SiteReputationProviderTests.swift */; };
 		E2F80E0C26FAA49400E2CB53 /* SiteReputationRulesetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F80E0B26FAA49400E2CB53 /* SiteReputationRulesetTests.swift */; };
-		E2F80E0E26FBD18100E2CB53 /* MaliciousDomainProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F80E0D26FBD18100E2CB53 /* MaliciousDomainProvider.swift */; };
-		E2FBDBB026F3C15F00C934D5 /* LegacySudoSiteReputationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBDBAF26F3C15F00C934D5 /* LegacySudoSiteReputationClient.swift */; };
-		E2FBDBB726F9811100C934D5 /* SiteReputationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBDBB626F9811100C934D5 /* SiteReputationProvider.swift */; };
+		E2FC2B012D5BD7C40035B591 /* SudoSiteReputation in Frameworks */ = {isa = PBXBuildFile; productRef = E2FC2B002D5BD7C40035B591 /* SudoSiteReputation */; };
+		E2FC2B032D5BD7C70035B591 /* SudoSiteReputation in Frameworks */ = {isa = PBXBuildFile; productRef = E2FC2B022D5BD7C70035B591 /* SudoSiteReputation */; };
+		E2FC2B072D5BDAD70035B591 /* SudoEntitlements in Frameworks */ = {isa = PBXBuildFile; productRef = E2FC2B062D5BDAD70035B591 /* SudoEntitlements */; };
+		E2FC2B0A2D5BDB350035B591 /* SudoEntitlementsAdmin in Frameworks */ = {isa = PBXBuildFile; productRef = E2FC2B092D5BDB350035B591 /* SudoEntitlementsAdmin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CF2A537325A3C43300AF0FEF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFA6269B25A3975700581543 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CFA626A325A3975700581543;
-			remoteInfo = SudoSiteReputation;
-		};
-		CF2A54E025A627CA00AF0FEF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFA6269B25A3975700581543 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CFA626A325A3975700581543;
-			remoteInfo = SudoSiteReputation;
-		};
 		CFBA2A4025A650DF0072594C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CFA6269B25A3975700581543 /* Project object */;
@@ -82,18 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06B78EDE839A8E455DC9C509 /* Pods-SudoSiteReputationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputationTests/Pods-SudoSiteReputationTests.release.xcconfig"; sourceTree = "<group>"; };
-		315DC59A9C7F8253CD5AE64C /* Pods-SudoSiteReputationIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputationIntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputationIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
-		35FC1AC03E4A8ED7E2D15F02 /* Pods-SudoSiteReputationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputationTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputationTests/Pods-SudoSiteReputationTests.debug.xcconfig"; sourceTree = "<group>"; };
-		49E2F023F6E4FDB940483D98 /* Pods_SudoSiteReputation_SudoSiteReputationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoSiteReputation_SudoSiteReputationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5D6462B0253EC0D3CDCD1386 /* Pods-SudoSiteReputation-SudoSiteReputationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputation-SudoSiteReputationTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationTests/Pods-SudoSiteReputation-SudoSiteReputationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		75B3239D27C6AA4C00650EC4 /* MaliciousDomainProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaliciousDomainProviderTests.swift; sourceTree = "<group>"; };
-		8FADD609A30EF0F6E4DCE192 /* Pods_SudoSiteReputation_SudoSiteReputationIntegrationTestHost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoSiteReputation_SudoSiteReputationIntegrationTestHost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		97D6DF85BE9AEFAF390D3748 /* Pods-SudoSiteReputationIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputationIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputationIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
-		9D5F6DFBE8F37D979A2559BA /* Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
-		A66BB9ED9246FDE3A44EA8B1 /* Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost.debug.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost.debug.xcconfig"; sourceTree = "<group>"; };
-		A6B6117CDC61216904167C2B /* Pods-SudoSiteReputation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputation.debug.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputation/Pods-SudoSiteReputation.debug.xcconfig"; sourceTree = "<group>"; };
-		B778E4272D1C92712EC7CFED /* Pods-SudoSiteReputation-SudoSiteReputationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputation-SudoSiteReputationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationTests/Pods-SudoSiteReputation-SudoSiteReputationTests.release.xcconfig"; sourceTree = "<group>"; };
 		CF2A535225A3B15F00AF0FEF /* S3DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3DataSource.swift; sourceTree = "<group>"; };
 		CF2A536D25A3C43300AF0FEF /* SudoSiteReputationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudoSiteReputationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2A536F25A3C43300AF0FEF /* ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
@@ -107,20 +58,15 @@
 		CF2A54DE25A627CA00AF0FEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF92617425A7809500076899 /* MockServiceDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServiceDataCache.swift; sourceTree = "<group>"; };
 		CF9261EE25A8DBA800076899 /* LocalizedErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedErrors.swift; sourceTree = "<group>"; };
-		CFA626A425A3975700581543 /* SudoSiteReputation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SudoSiteReputation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA626A725A3975700581543 /* SudoSiteReputation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SudoSiteReputation.h; sourceTree = "<group>"; };
 		CFA626A825A3975700581543 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFA626B025A3979700581543 /* DefaultLegacySiteReputationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLegacySiteReputationClient.swift; sourceTree = "<group>"; };
 		CFBA2A1D25A650A00072594C /* SudoSiteReputationIntegrationTestHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudoSiteReputationIntegrationTestHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBA2A1F25A650A00072594C /* SudoSiteReputationIntegrationTestHostApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudoSiteReputationIntegrationTestHostApp.swift; sourceTree = "<group>"; };
 		CFBA2A2825A650A10072594C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CFC955FF25A3A36000CC9372 /* SudoSiteReputation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = SudoSiteReputation.podspec; sourceTree = "<group>"; };
 		CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedErrorsTests.swift; sourceTree = "<group>"; };
-		D1B8B6E7C267371C34351AF0 /* SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift"; path = "MockingbirdMocks/SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift"; sourceTree = "<group>"; };
-		D654D110FCF217C2CF123A7D /* Pods-SudoSiteReputation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputation.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputation/Pods-SudoSiteReputation.release.xcconfig"; sourceTree = "<group>"; };
-		DB284E74E9888D7304F6CFEE /* Pods_SudoSiteReputation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoSiteReputation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD691E6CF1AA94E0559176DC /* Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E20C6B7027B1E1E800AB48CE /* ServiceDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDataCache.swift; sourceTree = "<group>"; };
+		E22C34DB2CC2BA3B00D3519E /* SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift"; sourceTree = "<group>"; };
 		E23147BD28F612C900CAA1C1 /* DefaultSudoSiteReputationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSudoSiteReputationClient.swift; sourceTree = "<group>"; };
 		E23147BF28F61D5700CAA1C1 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		E241804829F07B9600BED8B1 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
@@ -149,8 +95,6 @@
 		E2F80E0D26FBD18100E2CB53 /* MaliciousDomainProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaliciousDomainProvider.swift; sourceTree = "<group>"; };
 		E2FBDBAF26F3C15F00C934D5 /* LegacySudoSiteReputationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacySudoSiteReputationClient.swift; sourceTree = "<group>"; };
 		E2FBDBB626F9811100C934D5 /* SiteReputationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteReputationProvider.swift; sourceTree = "<group>"; };
-		E9EFD48B7AEFE20AE51BD961 /* Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost.release.xcconfig"; path = "Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost.release.xcconfig"; sourceTree = "<group>"; };
-		F6059F555966B9F306AA064E /* Pods_SudoSiteReputation_SudoSiteReputationIntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoSiteReputation_SudoSiteReputationIntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,8 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF2A537225A3C43300AF0FEF /* SudoSiteReputation.framework in Frameworks */,
-				BEF3E703ECD2EB32B315818B /* Pods_SudoSiteReputation_SudoSiteReputationTests.framework in Frameworks */,
+				E2485B1C2D931D1900055EC1 /* Mockingbird in Frameworks */,
+				E2FC2B012D5BD7C40035B591 /* SudoSiteReputation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,16 +111,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF2A54DF25A627CA00AF0FEF /* SudoSiteReputation.framework in Frameworks */,
-				01AF638E8E1BFFA85FC002DC /* Pods_SudoSiteReputation_SudoSiteReputationIntegrationTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CFA626A125A3975700581543 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5BD5CC20061A73EE0C542B50 /* Pods_SudoSiteReputation.framework in Frameworks */,
+				E2FC2B032D5BD7C70035B591 /* SudoSiteReputation in Frameworks */,
+				E2FC2B0A2D5BDB350035B591 /* SudoEntitlementsAdmin in Frameworks */,
+				E2FC2B072D5BDAD70035B591 /* SudoEntitlements in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,32 +121,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1D8BF3B1F84BC7AEA277A93 /* Pods_SudoSiteReputation_SudoSiteReputationIntegrationTestHost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2BC9F3E57CAB83EDD5DE43E9 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A6B6117CDC61216904167C2B /* Pods-SudoSiteReputation.debug.xcconfig */,
-				D654D110FCF217C2CF123A7D /* Pods-SudoSiteReputation.release.xcconfig */,
-				315DC59A9C7F8253CD5AE64C /* Pods-SudoSiteReputationIntegrationTests.debug.xcconfig */,
-				97D6DF85BE9AEFAF390D3748 /* Pods-SudoSiteReputationIntegrationTests.release.xcconfig */,
-				35FC1AC03E4A8ED7E2D15F02 /* Pods-SudoSiteReputationTests.debug.xcconfig */,
-				06B78EDE839A8E455DC9C509 /* Pods-SudoSiteReputationTests.release.xcconfig */,
-				A66BB9ED9246FDE3A44EA8B1 /* Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost.debug.xcconfig */,
-				E9EFD48B7AEFE20AE51BD961 /* Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost.release.xcconfig */,
-				DD691E6CF1AA94E0559176DC /* Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests.debug.xcconfig */,
-				9D5F6DFBE8F37D979A2559BA /* Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests.release.xcconfig */,
-				5D6462B0253EC0D3CDCD1386 /* Pods-SudoSiteReputation-SudoSiteReputationTests.debug.xcconfig */,
-				B778E4272D1C92712EC7CFED /* Pods-SudoSiteReputation-SudoSiteReputationTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		75B3239B27C6A95B00650EC4 /* StorageTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,28 +144,10 @@
 			path = ReputationEngineTests;
 			sourceTree = "<group>";
 		};
-		7CC65D182DA2CE71B32C9678 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DB284E74E9888D7304F6CFEE /* Pods_SudoSiteReputation.framework */,
-				8FADD609A30EF0F6E4DCE192 /* Pods_SudoSiteReputation_SudoSiteReputationIntegrationTestHost.framework */,
-				F6059F555966B9F306AA064E /* Pods_SudoSiteReputation_SudoSiteReputationIntegrationTests.framework */,
-				49E2F023F6E4FDB940483D98 /* Pods_SudoSiteReputation_SudoSiteReputationTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		91BCB9314A66E0A92579B792 /* Generated Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				D1B8B6E7C267371C34351AF0 /* SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift */,
-			);
-			name = "Generated Mocks";
-			sourceTree = "<group>";
-		};
 		CF2A536E25A3C43300AF0FEF /* SudoSiteReputationTests */ = {
 			isa = PBXGroup;
 			children = (
+				E22C34DC2CC2BA3B00D3519E /* GeneratedMocks */,
 				CF2A537125A3C43300AF0FEF /* Info.plist */,
 				CF2A536F25A3C43300AF0FEF /* ClientTests.swift */,
 				CFEACB6725CDF4680040658C /* LocalizedErrorsTests.swift */,
@@ -310,22 +209,18 @@
 			isa = PBXGroup;
 			children = (
 				E25C33112991A2AB00E531C3 /* graphql */,
-				CFC955FF25A3A36000CC9372 /* SudoSiteReputation.podspec */,
 				CFA626A625A3975700581543 /* SudoSiteReputation */,
 				CF2A536E25A3C43300AF0FEF /* SudoSiteReputationTests */,
 				CF2A54DB25A627CA00AF0FEF /* SudoSiteReputationIntegrationTests */,
 				CFBA2A1E25A650A00072594C /* SudoSiteReputationIntegrationTestHost */,
 				CFA626A525A3975700581543 /* Products */,
-				2BC9F3E57CAB83EDD5DE43E9 /* Pods */,
-				91BCB9314A66E0A92579B792 /* Generated Mocks */,
-				7CC65D182DA2CE71B32C9678 /* Frameworks */,
+				E2FC2AFF2D5BD7C40035B591 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		CFA626A525A3975700581543 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CFA626A425A3975700581543 /* SudoSiteReputation.framework */,
 				CF2A536D25A3C43300AF0FEF /* SudoSiteReputationTests.xctest */,
 				CF2A54DA25A627CA00AF0FEF /* SudoSiteReputationIntegrationTests.xctest */,
 				CFBA2A1D25A650A00072594C /* SudoSiteReputationIntegrationTestHost.app */,
@@ -362,6 +257,14 @@
 				CFBA2A2825A650A10072594C /* Info.plist */,
 			);
 			path = SudoSiteReputationIntegrationTestHost;
+			sourceTree = "<group>";
+		};
+		E22C34DC2CC2BA3B00D3519E /* GeneratedMocks */ = {
+			isa = PBXGroup;
+			children = (
+				E22C34DB2CC2BA3B00D3519E /* SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift */,
+			);
+			path = GeneratedMocks;
 			sourceTree = "<group>";
 		};
 		E29DF86529130A91004EC7EC /* Error */ = {
@@ -402,35 +305,27 @@
 			path = TestUtility;
 			sourceTree = "<group>";
 		};
-/* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		CFA6269F25A3975700581543 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CFA626A925A3975700581543 /* SudoSiteReputation.h in Headers */,
+		E2FC2AFF2D5BD7C40035B591 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			name = Frameworks;
+			sourceTree = "<group>";
 		};
-/* End PBXHeadersBuildPhase section */
+/* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
 		CF2A536C25A3C43300AF0FEF /* SudoSiteReputationTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF2A537525A3C43300AF0FEF /* Build configuration list for PBXNativeTarget "SudoSiteReputationTests" */;
 			buildPhases = (
-				05664DC4309D6712B2BC5B58 /* [CP] Check Pods Manifest.lock */,
-				7B237D0C53EA7920CF2C6AE3 /* Generate Mockingbird Mocks */,
 				CF2A536925A3C43300AF0FEF /* Sources */,
 				CF2A536A25A3C43300AF0FEF /* Frameworks */,
 				CF2A536B25A3C43300AF0FEF /* Resources */,
-				ACB4C5B17928AAE5F68A252C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CF2A537425A3C43300AF0FEF /* PBXTargetDependency */,
 			);
 			name = SudoSiteReputationTests;
 			productName = SudoSiteReputationTests;
@@ -441,16 +336,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF2A54E225A627CA00AF0FEF /* Build configuration list for PBXNativeTarget "SudoSiteReputationIntegrationTests" */;
 			buildPhases = (
-				AF4F192FF138FAC7DD5766AE /* [CP] Check Pods Manifest.lock */,
 				CF2A54D625A627CA00AF0FEF /* Sources */,
 				CF2A54D725A627CA00AF0FEF /* Frameworks */,
 				CF2A54D825A627CA00AF0FEF /* Resources */,
-				FA99589DF3E9679D68670E35 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CF2A54E125A627CA00AF0FEF /* PBXTargetDependency */,
 				CFBA2A4125A650DF0072594C /* PBXTargetDependency */,
 			);
 			name = SudoSiteReputationIntegrationTests;
@@ -458,35 +350,14 @@
 			productReference = CF2A54DA25A627CA00AF0FEF /* SudoSiteReputationIntegrationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CFA626A325A3975700581543 /* SudoSiteReputation */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CFA626AC25A3975700581543 /* Build configuration list for PBXNativeTarget "SudoSiteReputation" */;
-			buildPhases = (
-				1B52EC6389A026943CA7FA39 /* [CP] Check Pods Manifest.lock */,
-				CFA6269F25A3975700581543 /* Headers */,
-				CFA626A025A3975700581543 /* Sources */,
-				CFA626A125A3975700581543 /* Frameworks */,
-				CFA626A225A3975700581543 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SudoSiteReputation;
-			productName = SudoSiteReputation;
-			productReference = CFA626A425A3975700581543 /* SudoSiteReputation.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		CFBA2A1C25A650A00072594C /* SudoSiteReputationIntegrationTestHost */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFBA2A2B25A650A10072594C /* Build configuration list for PBXNativeTarget "SudoSiteReputationIntegrationTestHost" */;
 			buildPhases = (
-				34F69603ED84AAA3DCFFCD88 /* [CP] Check Pods Manifest.lock */,
 				CFBA2A1925A650A00072594C /* Sources */,
 				CFBA2A1A25A650A00072594C /* Frameworks */,
 				CFBA2A1B25A650A00072594C /* Resources */,
 				CFBA2A4625A651290072594C /* [Sudo Platform] Copy SDK Config and TEST Registration Key */,
-				DE12E2B594E74F3758E01E9E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -513,10 +384,6 @@
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = CFBA2A1C25A650A00072594C;
 					};
-					CFA626A325A3975700581543 = {
-						CreatedOnToolsVersion = 12.3;
-						LastSwiftMigration = 1230;
-					};
 					CFBA2A1C25A650A00072594C = {
 						CreatedOnToolsVersion = 12.3;
 					};
@@ -531,11 +398,15 @@
 				Base,
 			);
 			mainGroup = CFA6269A25A3975700581543;
+			packageReferences = (
+				E2FC2B052D5BDAD70035B591 /* XCRemoteSwiftPackageReference "sudo-entitlements-ios" */,
+				E2FC2B082D5BDB350035B591 /* XCRemoteSwiftPackageReference "sudo-entitlements-admin-ios" */,
+				E2FC2B0B2D5BDC2F0035B591 /* XCRemoteSwiftPackageReference "mockingbird" */,
+			);
 			productRefGroup = CFA626A525A3975700581543 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CFA626A325A3975700581543 /* SudoSiteReputation */,
 				CF2A536C25A3C43300AF0FEF /* SudoSiteReputationTests */,
 				CF2A54D925A627CA00AF0FEF /* SudoSiteReputationIntegrationTests */,
 				CFBA2A1C25A650A00072594C /* SudoSiteReputationIntegrationTestHost */,
@@ -558,13 +429,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFA626A225A3975700581543 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CFBA2A1B25A650A00072594C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -575,127 +439,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		05664DC4309D6712B2BC5B58 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SudoSiteReputation-SudoSiteReputationTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1B52EC6389A026943CA7FA39 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SudoSiteReputation-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		34F69603ED84AAA3DCFFCD88 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7B237D0C53EA7920CF2C6AE3 /* Generate Mockingbird Mocks */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Generate Mockingbird Mocks";
-			outputPaths = (
-				"$(SRCROOT)/MockingbirdMocks/SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -eu\n\n# Prevent Xcode 13 from running this script while indexing.\n[[ \"${ACTION}\" == \"indexbuild\" ]] && exit 0\n\n\"${SRCROOT}/Pods/MockingbirdFramework/mockingbird\" generate --targets \"SudoSiteReputation\" --outputs \"${SRCROOT}/MockingbirdMocks/SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift\"";
-		};
-		ACB4C5B17928AAE5F68A252C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationTests/Pods-SudoSiteReputation-SudoSiteReputationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationTests/Pods-SudoSiteReputation-SudoSiteReputationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationTests/Pods-SudoSiteReputation-SudoSiteReputationTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AF4F192FF138FAC7DD5766AE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CFBA2A4625A651290072594C /* [Sudo Platform] Copy SDK Config and TEST Registration Key */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -714,40 +457,6 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"Copying SDK config to bundle\"\ncp -f config/sudoplatformconfig.json \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\" || :\n\necho \"Copying TEST registration key ID to bundle\"\nSOURCE=${PROJECT_DIR}/config/register_key.id \ncp -f ${SOURCE} \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\n\necho \"Copying TEST registration key to bundle\"\nSOURCE=${PROJECT_DIR}/config/register_key.private \ncp -f ${SOURCE} \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\n\necho \"Copying entitlements admin api key\"\nSOURCE=${PROJECT_DIR}/config/api.key \ncp -f ${SOURCE} \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\n\necho Files copied:\nls ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\n";
 		};
-		DE12E2B594E74F3758E01E9E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FA99589DF3E9679D68670E35 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests/Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -764,13 +473,13 @@
 				E2D1591C29140D2600414937 /* LoggerTests.swift in Sources */,
 				75B3239E27C6AA4C00650EC4 /* MaliciousDomainProviderTests.swift in Sources */,
 				E2F80E0A26FA6EB500E2CB53 /* SiteReputationProviderTests.swift in Sources */,
+				E22C34DD2CC2BA3B00D3519E /* SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift in Sources */,
 				E2AE98D829101D4E006C919F /* captureError.swift in Sources */,
 				E24CEBB62911E3C900847FEA /* RealtimeSiteReputationClientTests.swift in Sources */,
 				E249DE72294404A500760569 /* ReputationTests.swift in Sources */,
 				E2AE98D5290F2BF6006C919F /* MockSudoAPIClient.swift in Sources */,
 				E2F80E0C26FAA49400E2CB53 /* SiteReputationRulesetTests.swift in Sources */,
 				CF92617525A7809500076899 /* MockServiceDataCache.swift in Sources */,
-				3FF67465664D6E38EA2859AA /* SudoSiteReputationTests-SudoSiteReputationMocks.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,35 +489,6 @@
 			files = (
 				E24CEBB0291190E300847FEA /* RealtimeSiteReputationClientIntegrationTests.swift in Sources */,
 				E24CEBB22911916800847FEA /* IntegrationTestBase.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CFA626A025A3975700581543 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF2A535325A3B15F00AF0FEF /* S3DataSource.swift in Sources */,
-				E24CEBB42911C13B00847FEA /* API.swift in Sources */,
-				E2A6A3E0270F71BA005C8BCD /* SiteReputationMatchReason.swift in Sources */,
-				E23147BE28F612C900CAA1C1 /* DefaultSudoSiteReputationClient.swift in Sources */,
-				E29DF86929130BA6004EC7EC /* MissingResponseDataError.swift in Sources */,
-				E29DF86729130A9E004EC7EC /* PlatformGraphQLError.swift in Sources */,
-				E2F80E0E26FBD18100E2CB53 /* MaliciousDomainProvider.swift in Sources */,
-				E241804929F07B9600BED8B1 /* Cache.swift in Sources */,
-				E23147C028F61D5700CAA1C1 /* Logger.swift in Sources */,
-				E241804D29F2DE5C00BED8B1 /* ExpensiveObjectCache.swift in Sources */,
-				E2A6A3DC270F70DE005C8BCD /* SiteReputationRuleset.swift in Sources */,
-				CF9261EF25A8DBA800076899 /* LocalizedErrors.swift in Sources */,
-				CFA626B125A3979700581543 /* DefaultLegacySiteReputationClient.swift in Sources */,
-				E2AE98DE2910205F006C919F /* InvalidDependencyError.swift in Sources */,
-				E2BAE19B2909C5A500BD8465 /* PlatformAPIClient.swift in Sources */,
-				E249DE702944042400760569 /* SiteReputation.swift in Sources */,
-				E20C6B7127B1E1E800AB48CE /* ServiceDataCache.swift in Sources */,
-				E2FBDBB026F3C15F00C934D5 /* LegacySudoSiteReputationClient.swift in Sources */,
-				CF2A53AE25A4DFDA00AF0FEF /* S3Client.swift in Sources */,
-				E2FBDBB726F9811100C934D5 /* SiteReputationProvider.swift in Sources */,
-				CF2A538525A3C55D00AF0FEF /* MaliciousDomainList.swift in Sources */,
-				E2A6A3DE270F714B005C8BCD /* MaliciousDomainListTransformer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,16 +503,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CF2A537425A3C43300AF0FEF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CFA626A325A3975700581543 /* SudoSiteReputation */;
-			targetProxy = CF2A537325A3C43300AF0FEF /* PBXContainerItemProxy */;
-		};
-		CF2A54E125A627CA00AF0FEF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CFA626A325A3975700581543 /* SudoSiteReputation */;
-			targetProxy = CF2A54E025A627CA00AF0FEF /* PBXContainerItemProxy */;
-		};
 		CFBA2A4125A650DF0072594C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CFBA2A1C25A650A00072594C /* SudoSiteReputationIntegrationTestHost */;
@@ -843,7 +513,6 @@
 /* Begin XCBuildConfiguration section */
 		CF2A537625A3C43300AF0FEF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D6462B0253EC0D3CDCD1386 /* Pods-SudoSiteReputation-SudoSiteReputationTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SudoSiteReputationTests/Info.plist;
@@ -855,14 +524,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.SudoSiteReputationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		CF2A537725A3C43300AF0FEF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B778E4272D1C92712EC7CFED /* Pods-SudoSiteReputation-SudoSiteReputationTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SudoSiteReputationTests/Info.plist;
@@ -874,14 +546,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.SudoSiteReputationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		CF2A54E325A627CA00AF0FEF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD691E6CF1AA94E0559176DC /* Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU2W43R8JA;
@@ -894,15 +569,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.SudoSiteReputationIntegrationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SudoSiteReputationIntegrationTestHost.app/SudoSiteReputationIntegrationTestHost";
 			};
 			name = Debug;
 		};
 		CF2A54E425A627CA00AF0FEF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D5F6DFBE8F37D979A2559BA /* Pods-SudoSiteReputation-SudoSiteReputationIntegrationTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU2W43R8JA;
@@ -915,8 +593,12 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.SudoSiteReputationIntegrationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SudoSiteReputationIntegrationTestHost.app/SudoSiteReputationIntegrationTestHost";
 			};
 			name = Release;
@@ -1034,6 +716,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1043,62 +726,8 @@
 			};
 			name = Release;
 		};
-		CFA626AD25A3975700581543 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6B6117CDC61216904167C2B /* Pods-SudoSiteReputation.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SudoSiteReputation/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.SudoSiteReputation;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CFA626AE25A3975700581543 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D654D110FCF217C2CF123A7D /* Pods-SudoSiteReputation.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SudoSiteReputation/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.SudoSiteReputation;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		CFBA2A2925A650A10072594C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A66BB9ED9246FDE3A44EA8B1 /* Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1113,14 +742,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.SudoSiteReputationIntegrationTestHost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		CFBA2A2A25A650A10072594C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9EFD48B7AEFE20AE51BD961 /* Pods-SudoSiteReputation-SudoSiteReputationIntegrationTestHost.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1135,8 +767,12 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.SudoSiteReputationIntegrationTestHost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1170,15 +806,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CFA626AC25A3975700581543 /* Build configuration list for PBXNativeTarget "SudoSiteReputation" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CFA626AD25A3975700581543 /* Debug */,
-				CFA626AE25A3975700581543 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		CFBA2A2B25A650A10072594C /* Build configuration list for PBXNativeTarget "SudoSiteReputationIntegrationTestHost" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1189,6 +816,59 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E2FC2B052D5BDAD70035B591 /* XCRemoteSwiftPackageReference "sudo-entitlements-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sudoplatform/sudo-entitlements-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.0.0;
+			};
+		};
+		E2FC2B082D5BDB350035B591 /* XCRemoteSwiftPackageReference "sudo-entitlements-admin-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sudoplatform/sudo-entitlements-admin-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		E2FC2B0B2D5BDC2F0035B591 /* XCRemoteSwiftPackageReference "mockingbird" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/typealiased/mockingbird";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.20.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E2485B1B2D931D1900055EC1 /* Mockingbird */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2FC2B0B2D5BDC2F0035B591 /* XCRemoteSwiftPackageReference "mockingbird" */;
+			productName = Mockingbird;
+		};
+		E2FC2B002D5BD7C40035B591 /* SudoSiteReputation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SudoSiteReputation;
+		};
+		E2FC2B022D5BD7C70035B591 /* SudoSiteReputation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SudoSiteReputation;
+		};
+		E2FC2B062D5BDAD70035B591 /* SudoEntitlements */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2FC2B052D5BDAD70035B591 /* XCRemoteSwiftPackageReference "sudo-entitlements-ios" */;
+			productName = SudoEntitlements;
+		};
+		E2FC2B092D5BDB350035B591 /* SudoEntitlementsAdmin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2FC2B082D5BDB350035B591 /* XCRemoteSwiftPackageReference "sudo-entitlements-admin-ios" */;
+			productName = SudoEntitlementsAdmin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CFA6269B25A3975700581543 /* Project object */;
 }

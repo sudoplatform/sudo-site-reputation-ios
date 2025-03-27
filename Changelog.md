@@ -1,3 +1,8 @@
+### 9.0.0
+
+- Support Swift Package Manager
+- Remove support for cocoapods
+
 ### 8.0.0
 
 ### Changed

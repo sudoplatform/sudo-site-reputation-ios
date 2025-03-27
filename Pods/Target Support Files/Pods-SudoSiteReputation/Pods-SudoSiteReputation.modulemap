@@ -1,6 +1,0 @@
-framework module Pods_SudoSiteReputation {
-  umbrella header "Pods-SudoSiteReputation-umbrella.h"
-
-  export *
-  module * { export * }
-}

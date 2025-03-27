@@ -1,0 +1,14 @@
+theme: fullwidth
+skip_undocumented: true
+readme: README.md
+documentation: Documentation/*.md
+hide_documentation_coverage: true
+xcodebuild_arguments:
+  - -workspace
+  - SudoSiteReputation.xcworkspace
+  - -scheme
+  - SudoSiteReputation
+  - -destination
+  - 'platform=iOS Simulator,id=%%SIMULATOR_ID%%'
+output: docs
+clean: true
