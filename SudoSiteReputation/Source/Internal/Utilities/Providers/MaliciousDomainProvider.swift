@@ -6,7 +6,6 @@
 
 import Foundation
 import SudoLogging
-import AWSCore
 
 protocol MaliciousDomainListProviding {
     func fetchMaliciousDomainLists() async -> [MaliciousDomainList]?
@@ -18,14 +17,14 @@ protocol MaliciousDomainListProviding {
 class MaliciousDomainListProvider: MaliciousDomainListProviding {
 
     let staticDataBucket: String
-    var s3: S3Client
+    var s3: S3DataSource
     var cache: ServiceDataCache
     var cancelInProgressUpdate: (() -> Void)?
     var logger: Logger
 
     internal init(
         staticDataBucket: String,
-        s3: S3Client,
+        s3: S3DataSource,
         cache: ServiceDataCache,
         logger: Logger
     ) {
@@ -63,12 +62,12 @@ class MaliciousDomainListProvider: MaliciousDomainListProviding {
     // Data is cached and referenced before downloading list data if it hasn't changed.
     func update() async throws {
         let s3 = self.s3
-        let logger = self.logger
         let bucket = self.staticDataBucket
+        let logger = self.logger
 
         let updateTask = Task {
             // Get all keys in cache
-            let keys = try await listMaliciousDomainListKeys(s3: s3, logger: logger, bucket: bucket)
+            let keys = try await s3.listMaliciousDomainListKeys(bucket: bucket)
 
             try Task.checkCancellation()
 
@@ -92,10 +91,9 @@ class MaliciousDomainListProvider: MaliciousDomainListProviding {
                 for key in keysNeedingFetch {
                     group.addTask(priority: nil) {
                         do {
-                            async let list = fetchMaliciousDomainList(s3: s3, logger: logger, key: key)
-                            return try await list
+                            return try await s3.fetchMaliciousDomainList(key: key)
                         } catch {
-                            // log error of download failure.
+                            logger.error("Failed to fetch malicious domain list: \(error.localizedDescription)")
                             return nil
                         }
                     }

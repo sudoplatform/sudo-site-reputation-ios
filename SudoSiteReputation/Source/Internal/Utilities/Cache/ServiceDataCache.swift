@@ -34,26 +34,42 @@ protocol ServiceDataCache: Actor {
 }
 
 /// An error raised by a `ServiceDataCache`.
-enum CacheAccessError: Error {
+enum CacheAccessError: LocalizedError {
     /// An error occurred when accessing the persistent storage.
     case storageError(_ underlyingError: Error)
 
     /// An error occurred when encoding or decoding cached data.
     case codableError(_ underlyingError: Error)
+
+    // MARK: - Conformance: LocalizedError
+
+    public var errorDescription: String? {
+        switch self {
+        case .storageError(let underlyingError):
+            return L10n.SiteReputation.Errors.CacheAccessError.storageError(underlyingError.localizedDescription)
+        case .codableError(let underlyingError):
+            return L10n.SiteReputation.Errors.CacheAccessError.codableError(underlyingError.localizedDescription)
+        }
+    }
 }
 
 /// An implementation of `ServiceDataCache` that stores malicious domain lists to disk.
 actor DiskServiceDataCache: ServiceDataCache {
-    private let fileManager: FileManager
-    private let directory: URL
+
+    // MARK: - Properties
+
+    var fileManager: FileManager = .default
+    let directory: URL
+
+    // MARK: - Lifecycle
 
     /// Instantiates a `DiskCacheAccessor`.
-    /// - Parameter fileManager: File manager.
     /// - Parameter directory: Directory the accessor will read and write to.
-    init(fileManager: FileManager, directory: URL) {
-        self.fileManager = fileManager
+    init(directory: URL) {
         self.directory = directory
     }
+
+    // MARK: - Conformance: ServiceDataCache
 
     func put(list: MaliciousDomainList) -> Result<Void, CacheAccessError> {
         return Result { try JSONEncoder().encode(list) }

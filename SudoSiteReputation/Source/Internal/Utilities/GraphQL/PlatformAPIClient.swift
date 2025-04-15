@@ -4,8 +4,7 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
-import AWSAppSync
-import AWSCore
+import Amplify
 import Foundation
 import SudoApiClient
 import SudoConfigManager
@@ -20,9 +19,16 @@ protocol APIClient {
 
 /// Default implementation of APIClient which speaks to the platform site reputation service..
 class PlatformAPIClient: APIClient {
-    // App sync client used to interact with the remote service via graphQL
+
+    // MARK: - Properties
+
+    /// App sync client used to interact with the remote service via graphQL
     let appSyncClient: SudoApiClient
-    
+
+    let reputationCache = ExpensiveObjectCache<GraphQL.GetSiteReputationQuery.Data>()
+
+    // MARK: - Lifecycle
+
     init(appSyncClient: SudoApiClient) {
         self.appSyncClient = appSyncClient
     }
@@ -30,31 +36,24 @@ class PlatformAPIClient: APIClient {
     /// Create a new client using the shared SudoAPIClient instance
     convenience init(userClient: SudoUserClient) throws {
         guard let client = try SudoApiClientManager.instance?.getClient(sudoUserClient: userClient) else {
-            throw InvalidDependencyError()
+            throw SudoSiteReputationError.invalidConfig
         }
         self.init(appSyncClient: client)
     }
-    
-    let reputationCache = ExpensiveObjectCache<GraphQL.GetSiteReputationQuery.Data>()
+
+    // MARK: - Conformance: APIClient
 
     func getReputation(url: String) async throws -> GraphQL.GetSiteReputationQuery.Data {
-        return try await reputationCache.get(key: url) {
+        return try await reputationCache.get(key: url) { [weak self] in
+            guard let self else {
+                throw SudoSiteReputationError.internalError("Instance deallocated")
+            }
             let query = GraphQL.GetSiteReputationQuery(uri: url)
-            let result = try await self.appSyncClient.fetch(query: query, cachePolicy: .fetchIgnoringCacheData, queue: .global(qos: .userInitiated))
-            
-            if let error = result.error {
-                throw error
+            do {
+                return try await self.appSyncClient.fetch(query: query)
+            } catch {
+                throw SudoSiteReputationError.fromApiOperationError(error: error)
             }
-            
-            if let graphQLErrors = result.result?.errors {
-                throw PlatformGraphQLError(errors: graphQLErrors)
-            }
-            
-            guard let data = result.result?.data else {
-                throw MissingResponseDataError()
-            }
-            
-            return data
         }
     }
     

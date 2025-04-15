@@ -35,13 +35,22 @@ public protocol LegacySudoSiteReputationClient {
 }
 
 /// An error raised by `SudoSiteReputationClient.getSiteReputation`.
-public enum LegacySiteReputationCheckError: Error {
+public enum LegacySiteReputationCheckError: LocalizedError {
     /// Reputation data is not present. Call `update` or `loadCachedData` to obtain the latest reputation data.
     case reputationDataNotPresent
+
+    // MARK: - Conformance: LocalizedError
+
+    public var errorDescription: String? {
+        switch self {
+        case .reputationDataNotPresent:
+            return L10n.SiteReputation.Errors.LegacySiteReputationCheckError.reputationDataNotPresent
+        }
+    }
 }
 
 /// An error raised by `SudoSiteReputationClient.update`.
-public enum LegacySiteReputationUpdateError: Error {
+public enum LegacySiteReputationUpdateError: LocalizedError {
     /// An outstanding call to `update` or `clearStorage` is already in progress.
     case alreadyInProgress
 
@@ -49,5 +58,18 @@ public enum LegacySiteReputationUpdateError: Error {
     case cancelled
 
     /// An error occurred when accessing the Sudo Platform Site Reputation Service.
-    case serviceError(_ underylingError: Error)
+    case serviceError(_ underlyingError: Error)
+
+    // MARK: - Conformance: LocalizedError
+
+    public var errorDescription: String? {
+        switch self {
+        case .alreadyInProgress:
+            return L10n.SiteReputation.Errors.LegacySiteReputationUpdateError.alreadyInProgress
+        case .cancelled:
+            return L10n.SiteReputation.Errors.LegacySiteReputationUpdateError.cancelled
+        case .serviceError(let underlyingError):
+            return L10n.SiteReputation.Errors.LegacySiteReputationUpdateError.serviceError(underlyingError.localizedDescription)
+        }
+    }
 }

@@ -1,0 +1,47 @@
+/* 
+  Localizable.strings
+  SudoSiteReputation
+*/
+
+// MARK: - Errors
+
+"site_reputation.errors.invalidConfig" = "There was an issue with the configuration file. Please check that a valid configuration is included in the bundle";
+"site_reputation.errors.notSignedIn" = "Not signed in";
+
+"site_reputation.errors.serviceError" = "Service error has occurred";
+"site_reputation.errors.decodingError" = "A decoding error has occurred";
+"site_reputation.errors.environmentError" = "An environment error has occurred";
+"site_reputation.errors.invalidArgument" = "An invalid argument has been provided";
+"site_reputation.errors.invalidTokenError" = "An invalid token error has occurred";
+"site_reputation.errors.accountLockedError" = "Account is locked";
+"site_reputation.errors.identityInsufficient" = "Identity is insufficient";
+"site_reputation.errors.identityNotVerified" = "Identity is not verified";
+"site_reputation.errors.unknownTimezone" = "Time zone is not known";
+"site_reputation.errors.insufficientEntitlementsError" = "Insufficient entitlements for requested operation";
+"site_reputation.errors.invalidRequest" = "The request sent to the service was was not valid";
+"site_reputation.errors.noEntitlementsError" = "User has no entitlements associated with them";
+"site_reputation.errors.limitExceeded" = "API limit exceeded";
+"site_reputation.errors.notAuthorized" = "User is not authorized to perform the requested operation";
+"site_reputation.errors.versionMismatch" = "The version of the resource being updated does not match the current version";
+"site_reputation.errors.requestFailed" = "The request failed due to connectivity or server error";
+"site_reputation.errors.rateLimitExceeded" = "API rate limit exceeded";
+"site_reputation.errors.graphQLError" = "Unknown GraphQL error was returned";
+"site_reputation.errors.fatalError" = "Unexpected fatal error occurred";
+
+"site_reputation.errors.legacySiteReputationCheckError.reputationDataNotPresent" = "Reputation data is not present. Call `update` or `loadCachedData` to obtain the latest reputation data.";
+
+"site_reputation.errors.legacySiteReputationUpdateError.alreadyInProgress" = "An outstanding call to `update` or `clearStorage` is already in progress.";
+"site_reputation.errors.legacySiteReputationUpdateError.cancelled" = "An outstanding call to `update` or `clearStorage` is already in progress.";
+"site_reputation.errors.legacySiteReputationUpdateError.serviceError" = "Failed to access the Site Reputation Service: %@";
+
+"site_reputation.errors.s3DataSourceNonFatal.tooManyLists" = "Exceeded maximum number of pages of S3 data.";
+"site_reputation.errors.s3DataSourceNonFatal.tooManyLists" = "S3 object with key %@ is missing required metadata.";
+
+"site_reputation.errors.cacheAccessError.storageError" = "An error occurred when accessing the persistent storage: %@";
+"site_reputation.errors.cacheAccessError.codableError" = "An error occurred when encoding or decoding cached data: %@";
+
+"site_reputation.errors.s3DataSourceError.serviceError" = "A service error occurred: %@";
+"site_reputation.errors.s3DataSourceError.noSuchKey" = "The requested key was not found";
+"site_reputation.errors.s3DataSourceError.missingMetadata" = "The returned object with key %@ was missing metadata.";
+"site_reputation.errors.s3DataSourceError.dataMissing" = "The returned object contained no data.";
+"site_reputation.errors.s3DataSourceError.failedToReadData" = "An error occurred while attempting to read the data from the returned object: %@";
