@@ -25,7 +25,6 @@ let package = Package(
             dependencies: [
                 .product(name: "Amplify", package: "amplify-swift"),
                 .product(name: "AWSAPIPlugin", package: "amplify-swift"),
-                .product(name: "AWSS3StoragePlugin", package: "amplify-swift"),
                 .product(name: "AWSCognitoAuthPlugin", package: "amplify-swift"),
                 .product(name: "AWSPluginsCore", package: "amplify-swift"),
                 .product(name: "SudoApiClient", package: "sudo-api-client-ios"),

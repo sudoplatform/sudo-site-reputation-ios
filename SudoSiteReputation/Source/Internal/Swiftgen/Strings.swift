@@ -44,38 +44,6 @@ internal enum L10n {
             return L10n.tr("Localizable", "site_reputation.errors.cacheAccessError.storageError", p1)
           }
         }
-        // MARK: - legacySiteReputationCheckError
-        internal enum LegacySiteReputationCheckError {
-          internal static let reputationDataNotPresent = L10n.tr("Localizable", "site_reputation.errors.legacySiteReputationCheckError.reputationDataNotPresent")
-        }
-        // MARK: - legacySiteReputationUpdateError
-        internal enum LegacySiteReputationUpdateError {
-          internal static let alreadyInProgress = L10n.tr("Localizable", "site_reputation.errors.legacySiteReputationUpdateError.alreadyInProgress")
-          internal static let cancelled = L10n.tr("Localizable", "site_reputation.errors.legacySiteReputationUpdateError.cancelled")
-          internal static func serviceError(_ p1: String) -> String {
-            return L10n.tr("Localizable", "site_reputation.errors.legacySiteReputationUpdateError.serviceError", p1)
-          }
-        }
-        // MARK: - s3DataSourceError
-        internal enum S3DataSourceError {
-          internal static let dataMissing = L10n.tr("Localizable", "site_reputation.errors.s3DataSourceError.dataMissing")
-          internal static func failedToReadData(_ p1: String) -> String {
-            return L10n.tr("Localizable", "site_reputation.errors.s3DataSourceError.failedToReadData", p1)
-          }
-          internal static func missingMetadata(_ p1: String) -> String {
-            return L10n.tr("Localizable", "site_reputation.errors.s3DataSourceError.missingMetadata", p1)
-          }
-          internal static let noSuchKey = L10n.tr("Localizable", "site_reputation.errors.s3DataSourceError.noSuchKey")
-          internal static func serviceError(_ p1: String) -> String {
-            return L10n.tr("Localizable", "site_reputation.errors.s3DataSourceError.serviceError", p1)
-          }
-        }
-        // MARK: - s3DataSourceNonFatal
-        internal enum S3DataSourceNonFatal {
-          internal static func tooManyLists(_ p1: String) -> String {
-            return L10n.tr("Localizable", "site_reputation.errors.s3DataSourceNonFatal.tooManyLists", p1)
-          }
-        }
       }
     }
 }

@@ -28,20 +28,5 @@
 "site_reputation.errors.graphQLError" = "Unknown GraphQL error was returned";
 "site_reputation.errors.fatalError" = "Unexpected fatal error occurred";
 
-"site_reputation.errors.legacySiteReputationCheckError.reputationDataNotPresent" = "Reputation data is not present. Call `update` or `loadCachedData` to obtain the latest reputation data.";
-
-"site_reputation.errors.legacySiteReputationUpdateError.alreadyInProgress" = "An outstanding call to `update` or `clearStorage` is already in progress.";
-"site_reputation.errors.legacySiteReputationUpdateError.cancelled" = "An outstanding call to `update` or `clearStorage` is already in progress.";
-"site_reputation.errors.legacySiteReputationUpdateError.serviceError" = "Failed to access the Site Reputation Service: %@";
-
-"site_reputation.errors.s3DataSourceNonFatal.tooManyLists" = "Exceeded maximum number of pages of S3 data.";
-"site_reputation.errors.s3DataSourceNonFatal.tooManyLists" = "S3 object with key %@ is missing required metadata.";
-
 "site_reputation.errors.cacheAccessError.storageError" = "An error occurred when accessing the persistent storage: %@";
 "site_reputation.errors.cacheAccessError.codableError" = "An error occurred when encoding or decoding cached data: %@";
-
-"site_reputation.errors.s3DataSourceError.serviceError" = "A service error occurred: %@";
-"site_reputation.errors.s3DataSourceError.noSuchKey" = "The requested key was not found";
-"site_reputation.errors.s3DataSourceError.missingMetadata" = "The returned object with key %@ was missing metadata.";
-"site_reputation.errors.s3DataSourceError.dataMissing" = "The returned object contained no data.";
-"site_reputation.errors.s3DataSourceError.failedToReadData" = "An error occurred while attempting to read the data from the returned object: %@";
